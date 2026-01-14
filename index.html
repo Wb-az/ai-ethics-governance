@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -11,7 +12,7 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
       background: #f9fafb;
       color: #0f172a;
     }
@@ -112,7 +113,6 @@
       const frame = document.getElementById('content-frame');
       frame.src = page;
 
-      // update active state
       const links = document.querySelectorAll('.nav-link');
       links.forEach(l => l.classList.remove('active'));
       if (linkId) {
@@ -139,46 +139,55 @@
         <div class="nav-section-title">Playbook Sections</div>
 
         <a id="link-intro" class="nav-link"
+           href="sp-03-introduction.html"
            onclick="loadPage('sp-03-introduction.html', 'link-intro'); return false;">
           1. Introduction
         </a>
 
         <a id="link-scrum" class="nav-link"
+           href="sp-03-fair-ai-scrum-toolkit.html"
            onclick="loadPage('sp-03-fair-ai-scrum-toolkit.html', 'link-scrum'); return false;">
           2. Fair AI Scrum Toolkit
         </a>
 
         <a id="link-org" class="nav-link"
+           href="sp-03-organisational-integration-toolkit.html"
            onclick="loadPage('sp-03-organisational-integration-toolkit.html', 'link-org'); return false;">
           3. Organisational Integration & Governance
         </a>
 
         <a id="link-arch" class="nav-link"
+           href="sp-03-advanced-architecture-cookbook.html"
            onclick="loadPage('sp-03-advanced-architecture-cookbook.html', 'link-arch'); return false;">
           4. Advanced Architecture Cookbook
         </a>
 
         <a id="link-reg" class="nav-link"
+           href="sp-03-regulatory-compliance-guide.html"
            onclick="loadPage('sp-03-regulatory-compliance-guide.html', 'link-reg'); return false;">
           5. Regulatory Compliance & Risk Alignment
         </a>
 
         <a id="link-val" class="nav-link"
+           href="sp-03-validation-framework.html"
            onclick="loadPage('sp-03-validation-framework.html', 'link-val'); return false;">
           6. Validation Framework
         </a>
 
         <a id="link-app" class="nav-link"
+           href="sp-03-appendices.html"
            onclick="loadPage('sp-03-appendices.html', 'link-app'); return false;">
           7. Appendices
         </a>
 
         <a id="link-case" class="nav-link"
+           href="sp-03-case-study.html"
            onclick="loadPage('sp-03-case-study.html', 'link-case'); return false;">
           8. Case Study
         </a>
 
         <a id="link-iter" class="nav-link"
+           href="sp-03-playbook-iterations-insights.html"
            onclick="loadPage('sp-03-playbook-iterations-insights.html', 'link-iter'); return false;">
           9. Future Iterations & Insights
         </a>
@@ -193,3 +202,5 @@
   </div>
 </body>
 </html>
+
+
