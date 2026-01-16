@@ -1,6 +1,6 @@
 # AI Fairness Interventions Playbook
 
-This repository provides a comprehensive, step-by-step playbook for implementing AI fairness in practice, aligned with the **EU AI Act** and **GDPR**. It offers structured guidance for Agile delivery teams and organisations to embed fairness across the AI lifecycle — from sprint-level execution to governance, architectural intervention, validation, and regulatory compliance.
+This repository provides a comprehensive, step-by-step playbook for implementing AI fairness in practice, aligned with the **EU AI Act** and **GDPR**. It offers structured guidance for Agile delivery teams and organisations to embed fairness across the AI lifecycle, from sprint-level execution to governance, architectural intervention, validation, and regulatory compliance.
 
 The playbook is designed to help teams move from high-level fairness principles to **operational, auditable, and scalable implementation**, ensuring AI systems are developed and deployed responsibly, transparently, and equitably.
 
@@ -63,7 +63,5 @@ It assumes familiarity with basic AI and Agile concepts but does not require pri
 
 ## Key Principle
 
-Fairness cannot be achieved through models alone.  
-It requires clear ownership, explicit decision-making, architectural controls, and continuous validation all of 
-which this playbook is designed to support.
+Fairness cannot be achieved through models alone. It requires clear ownership, explicit decision-making, architectural controls, and continuous validation, all of  which this playbook is designed to support.
 
