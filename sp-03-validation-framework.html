@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Validation Framework</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      color: #111827;
+      background: #ffffff;
+    }
+    h1, h2, h3, h4, h5 {
+      color: #0f172a;
+      line-height: 1.3;
+    }
+    h1 { font-size: 2rem; margin-top: 0; }
+    h2 { margin-top: 2.25rem; }
+    h3 { margin-top: 1.75rem; }
+    h4 { margin-top: 1.5rem; }
+
+    p { margin: 0.6rem 0 1rem; }
+
+    ul, ol {
+      margin: 0.4rem 0 1rem 1.5rem;
+    }
+
+    em, i { font-style: italic; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.25rem 0;
+      font-size: 0.95rem;
+    }
+    table th, table td {
+      border: 1px solid #d1d5db;
+      padding: 0.5rem 0.6rem;
+      vertical-align: top;
+      text-align: left;
+    }
+    table th {
+      background: #e5e7eb;
+      font-weight: 600;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #0b1120;
+      color: #e5e7eb;
+      padding: 1rem 1.25rem;
+      overflow: auto;
+      border-radius: 0.5rem;
+      margin: 1.25rem 0;
+      font-size: 0.88rem;
+    }
+
+    blockquote {
+      margin: 1.25rem 0;
+      padding: 0.75rem 1rem;
+      border-left: 4px solid #1d4ed8;
+      background: #eff6ff;
+      color: #111827;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1><span style="color:#00008B">Validation Framework</span></h1>
+
+<h2><span style="color:#00008B">1. Introduction</span></h2>
+
+<p>The validation framework provides guidance on how teams and governance bodies can
+verify that fairness has been implemented effectively, proportionately, and in
+line with regulatory and organisational expectations. Validation in this
+playbook does not focus solely on model performance; it evaluates whether
+fairness controls, governance decisions, and accountability mechanisms are
+functioning as intended across the AI system lifecycle.</p>
+
+<p>This framework is not intended to be exhaustive or prescriptive. It provides a
+baseline that organisations can adapt and extend to reflect their operating
+context, regulatory exposure, and risk appetite.</p>
+
+<p>The validation framework aims to ensure that:</p>
+
+<ul>
+  <li>Fairness risks have been identified, assessed, and documented appropriately.</li>
+  <li>Controls and mitigations are proportionate to inherent system risk.</li>
+  <li>Governance decisions are justified, traceable, and reviewable.</li>
+  <li>Monitoring mechanisms detect emerging risks over time.</li>
+  <li>Evidence is sufficient to support internal assurance and external scrutiny.</li>
+</ul>
+
+<p>Effective validation indicates that fairness objectives have been implemented in
+a way that is compatible with business goals, operational constraints, and
+regulatory obligations. Validation therefore supports both technical assurance
+and governance assurance, enabling organisations to deploy AI systems with
+confidence and accountability.</p>
+
+<h2><span style="color:#00008B">2. Validation Scope</span></h2>
+
+<p>Validation applies across five complementary dimensions:</p>
+
+<ol>
+  <li><strong>Risk classification validity</strong>: confirming that the Total Risk Score (TRS) and resulting risk tier accurately
+  reflect the system’s inherent risk.</li>
+
+  <li><strong>Control effectiveness</strong>: verifying that fairness, oversight, and robustness controls operate as designed
+  and reduce residual risk.</li>
+
+  <li><strong>Governance process integrity</strong>: ensuring that governance gates, reviews, and escalation mechanisms are applied
+  consistently and at the appropriate organisational level.</li>
+
+  <li><strong>Documentation completeness and quality</strong>: checking that required artefacts are produced, versioned, and internally
+  consistent.</li>
+
+  <li><strong>Operational monitoring and responsiveness</strong>: assessing whether monitoring signals, alerts, and review cycles function in
+  practice and lead to timely action.</li>
+</ol>
+
+<h2><span style="color:#00008B">3. Validation Activities by Lifecycle Stage</span></h2>
+
+<p>Validation is performed iteratively, rather than as a one-off exercise.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lifecycle stage</th>
+      <th>Validation focus</th>
+      <th>Example validation checks</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Planning</td>
+      <td>Risk classification accuracy</td>
+      <td>TRS inputs justified; inherent vs residual risk clearly separated</td>
+    </tr>
+    <tr>
+      <td>Design</td>
+      <td>Control coverage</td>
+      <td>Oversight, transparency, and fairness controls mapped to identified risks</td>
+    </tr>
+    <tr>
+      <td>Build</td>
+      <td>Evidence generation</td>
+      <td>Fairness tests executed; artefacts generated and stored</td>
+    </tr>
+    <tr>
+      <td>Validation</td>
+      <td>Independent challenge</td>
+      <td>Metrics reviewed; trade-offs documented and approved</td>
+    </tr>
+    <tr>
+      <td>Deployment</td>
+      <td>Readiness confirmation</td>
+      <td>Monitoring active; escalation paths tested</td>
+    </tr>
+    <tr>
+      <td>Operation</td>
+      <td>Ongoing assurance</td>
+      <td>Drift alerts reviewed; governance reviews held</td>
+    </tr>
+    <tr>
+      <td>Retirement</td>
+      <td>Closure and accountability</td>
+      <td>Evidence archived; data erasure confirmed</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2><span style="color:#00008B">4. Validation Methods</span></h2>
+
+<p>The framework supports multiple validation methods, which may be combined based
+on system risk.</p>
+
+<ol>
+  <li><strong>Technical validation:</strong> data quality and provenance, model performance and fairness metrics, robustness testing, monitoring outputs, and drift detection.</li>
+  <li><strong>Access and control validation:</strong> verification that system access, record access, and audit evidence are role-based, proportionate to risk tier, and enforced in line with separation-of-duties requirements.</li>
+  <li><strong>Process and integration validation:</strong> verification that governance and delivery workflows operate as designed, including risk escalation, approval gates, monitoring-to-change-control hand-offs, and revalidation triggers following material change or detected drift.</li>
+  <li><strong>Artefact validation:</strong> checks for completeness, version control, and internal consistency of documentation.</li>
+  <li><strong>Decision validation:</strong> review of Decision Rationale Logs to ensure trade-offs are explicit and justified.</li>
+  <li><strong>Competence and training validation:</strong> confirmation that individuals involved in the development, operation, and oversight of the AI system have received role-appropriate training, with training records maintained where required.</li>
+  <li><strong>Supplier and dependency validation:</strong> proportionate assessment of external suppliers, models, datasets, or services supporting the AI system, including review of supplier assurances and documentation, and escalation where participation or evidence is insufficient.</li>
+  <li><strong>Independent challenge:</strong> peer review or external assessment for high- and critical-risk systems.</li>
+</ol>
+
+<h2><span style="color:#00008B">5. Validation Evidence</span></h2>
+
+<p>Validation relies on existing delivery and governance artefacts rather than the
+creation of additional documentation. The objective is to demonstrate effective
+implementation and control through evidence that is already generated as part of
+normal engineering, governance, and operational workflows.</p>
+
+<ul>
+  <li>Dataset Cards, Functional Design Requirements, User Requirements</li>
+  <li>Model Cards and Fairness Assessment Records</li>
+  <li>DPIA Annexes and impact summaries</li>
+  <li>Governance sign-off records such as Risk Assessments, Change Control, Configuration logs</li>
+  <li>Monitoring dashboards and alerts</li>
+  <li>Audit trail and evidence register entries</li>
+  <li>Change logs and version histories</li>
+</ul>
+
+<p>Evidence requirements scale with risk tier, in line with the Regulatory
+Compliance Guide. Periodic reviews form part of ongoing validation and are conducted at a frequency proportionate to system risk, with findings feeding change control and revalidation where required.</p>
+
+<h2><span style="color:#00008B">6. Roles and Accountability in Validation</span></h2>
+
+<p>Validation responsibilities align with the accountability model defined in the
+Organisational Integration Toolkit.</p>
+
+<ul>
+  <li>Delivery teams validate technical implementation and produce evidence.</li>
+  <li>Fairness and Responsible AI leads review fairness methodology and findings.</li>
+  <li>Product and domain leadership validate business and domain appropriateness.</li>
+  <li>Legal, risk, and compliance functions validate regulatory readiness.</li>
+  <li>Governance bodies approve residual risk for high- and critical-risk systems.</li>
+</ul>
+
+<p>No system may progress beyond its applicable governance gate without validation
+appropriate to its risk tier.</p>
+
+<h2><span style="color:#00008B">7. Validation Outcomes</span></h2>
+
+<p>Validation activities result in one or more of the following outcomes:</p>
+
+<ul>
+  <li>Confirmation that the system may proceed to the next lifecycle stage.</li>
+  <li>Identification of remediation actions prior to approval.</li>
+  <li>Escalation to a higher governance forum.</li>
+  <li>Temporary suspension or rollback pending mitigation.</li>
+  <li>Documented acceptance of residual risk at the appropriate level.</li>
+</ul>
+
+<p>All outcomes must be recorded and traceable through the audit trail.</p>
+
+<h2><span style="color:#00008B">8. Continuous Validation and Reassessment</span></h2>
+
+<p>Validation is an ongoing process. Re-validation is required when:</p>
+
+<ul>
+  <li>Material model or data changes occur</li>
+  <li>System scope or population changes</li>
+  <li>Monitoring indicates emerging or unexpected impacts</li>
+  <li>Regulatory or organisational risk thresholds change</li>
+</ul>
+
+<p>This ensures that fairness assurance remains aligned with real-world system
+behaviour over time.</p>
+
+<h2><span style="color:#00008B">9. Using the Validation Framework</span></h2>
+
+<p>Teams should use this framework as a readiness guide rather than a post-hoc audit
+tool. By integrating validation into delivery and governance workflows,
+organisations can demonstrate that fairness is actively managed rather than
+retrospectively justified.</p>
+
+</body>
+</html>
+

@@ -1,0 +1,1317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Regulatory Compliance &amp; Risk Alignment</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      color: #111827;
+      background: #ffffff;
+    }
+    h1, h2, h3, h4, h5 {
+      color: #0f172a;
+      line-height: 1.3;
+    }
+    h1 { font-size: 2rem; margin-top: 0; }
+    h2 { margin-top: 2.25rem; }
+    h3 { margin-top: 1.75rem; }
+    h4 { margin-top: 1.5rem; }
+
+    p { margin: 0.6rem 0 1rem; }
+
+    ul, ol {
+      margin: 0.4rem 0 1rem 1.5rem;
+    }
+
+    em, i { font-style: italic; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.25rem 0;
+      font-size: 0.95rem;
+    }
+    table th, table td {
+      border: 1px solid #d1d5db;
+      padding: 0.5rem 0.6rem;
+      vertical-align: top;
+      text-align: left;
+    }
+    table th {
+      background: #e5e7eb;
+      font-weight: 600;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #0b1120;
+      color: #e5e7eb;
+      padding: 1rem 1.25rem;
+      overflow: auto;
+      border-radius: 0.5rem;
+      margin: 1.25rem 0;
+      font-size: 0.88rem;
+    }
+
+    blockquote {
+      margin: 1.25rem 0;
+      padding: 0.75rem 1rem;
+      border-left: 4px solid #1d4ed8;
+      background: #eff6ff;
+      color: #111827;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Regulatory Compliance &amp; Risk Alignment</h1>
+
+<h2><span style="color:#00008B">1. Introduction</span></h2>
+
+<p>The Regulatory Compliance Guide supports teams in translating ethical principles, regulatory obligations, and governance expectations into concrete, testable development practices across the AI lifecycle.</p>
+
+<p>This toolkit:</p>
+<ul>
+  <li>Applies a risk-based, proportionate approach</li>
+  <li>Supports fairness, non-discrimination, and human rights</li>
+  <li>Integrates with Agile delivery and organisational governance</li>
+  <li>Produces audit-ready evidence without excessive overhead</li>
+</ul>
+
+<p>Normative foundations:</p>
+<ul>
+  <li>NIST AI Risk Management Framework (AI RMF)</li>
+  <li>UNESCO Recommendation on the Ethics of Artificial Intelligence</li>
+  <li>ISO/IEC TR 24028 (Trustworthiness in AI)</li>
+</ul>
+
+<p>This guide is domain-agnostic and applies across:</p>
+<ul>
+  <li>Healthcare, finance, recruitment, public sector, etc.</li>
+  <li>Classification, regression, ranking, and generative AI systems</li>
+</ul>
+
+<h2><span style="color:#00008B">2. Regulatory Mapping Framework</span></h2>
+
+<p>The regulatory framework translates abstract legal and ethical requirements into:</p>
+<ul>
+  <li>Development tasks</li>
+  <li>Acceptance criteria</li>
+  <li>Validation artefacts</li>
+</ul>
+
+<h3><span style="color:#00008B">2.1 Consolidated Regulatory Principles</span></h3>
+
+<p>Across jurisdictions, regulatory requirements converge on the following principles:</p>
+<ul>
+  <li>Fairness and non-discrimination</li>
+  <li>Human oversight and contestability</li>
+  <li>Transparency and explainability</li>
+  <li>Safety, security, and robustness</li>
+  <li>Accountability and traceability</li>
+</ul>
+
+<p>These principles are consistent across:</p>
+<ul>
+  <li>EU AI Act and GDPR</li>
+  <li>UNESCO ethical guidance</li>
+  <li>NIST AI RMF</li>
+  <li>ISO trustworthiness standards</li>
+</ul>
+
+<h3><span style="color:#00008B">2.2 Mapping Principles to Development Work</span></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Regulatory principle</th>
+      <th>Development task</th>
+      <th>Acceptance criteria</th>
+      <th>Evidence artefact</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Fairness</td>
+      <td>Subgroup and intersectional evaluation</td>
+      <td>Disparities analysed and justified</td>
+      <td>Fairness assessment</td>
+    </tr>
+    <tr>
+      <td>Human oversight</td>
+      <td>Override mechanism implemented</td>
+      <td>Overrides logged with rationale</td>
+      <td>Oversight log</td>
+    </tr>
+    <tr>
+      <td>Transparency</td>
+      <td>Intended use documented</td>
+      <td>User-facing explanation available</td>
+      <td>Model card</td>
+    </tr>
+    <tr>
+      <td>Accountability</td>
+      <td>Ownership assigned</td>
+      <td>Named approvers recorded</td>
+      <td>Gate sign-off</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Mapped tasks must be embedded into:</p>
+<ul>
+  <li>Backlog refinement</li>
+  <li>Definition of Done</li>
+  <li>Release approvals</li>
+</ul>
+
+<h3><span style="color:#00008B">2.3 Integrated Engineering Compliance Matrix</span></h3>
+
+<p>The Integrated Engineering Compliance Matrix maps key stages of the AI system lifecycle to binding legal obligations under the EU Artificial Intelligence Act and GDPR. It translates regulatory requirements into concrete engineering controls, validation metrics, and accountability assignments, ensuring that compliance is operationalised within day-to-day development and deployment activities.</p>
+
+<p>This matrix is used to derive backlog items, acceptance criteria, release gates, and evidence required for governance reviews. All new AI systems and material changes to existing systems require reassessment of the Total Risk Score (TRS), which determines the applicable governance gate and mandatory artefacts.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>SDLC Phase</th>
+      <th>EU AI Act Article</th>
+      <th>Requirement</th>
+      <th>Control Activity</th>
+      <th>Validation Metric</th>
+      <th>RACI (Owner / Consult)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Planning</td>
+      <td>EU Art 9: Risk Management System<br>GDPR Art 35: DPIA</td>
+      <td>Identify and assess AI risks before deployment</td>
+      <td>TRS calculation; DPIA triggered if TRS ≥ 15</td>
+      <td>TRS recorded; DPIA approved where required</td>
+      <td>A: Product / Domain Leadership<br>C: Fairness Leads, Legal</td>
+    </tr>
+    <tr>
+      <td>Data Ingestion</td>
+      <td>EU Art 10: Data Governance<br>GDPR Art 5: Data Minimisation</td>
+      <td>Training data must be relevant, representative, and free of bias where possible</td>
+      <td>Automated bias scan; data quality checks (ISO 5259)</td>
+      <td>Bias report stored; representativeness thresholds met or justified</td>
+      <td>R: Delivery Teams<br>C: Fairness Domain Specialists</td>
+    </tr>
+    <tr>
+      <td>Model Training</td>
+      <td>EU Art 11: Technical Documentation<br>EU Art 12: Record-keeping<br>EU Art 15: Accuracy &amp; Robustness</td>
+      <td>Maintain technical documentation and training logs</td>
+      <td>Logged training runs, parameters and datasets, generated Model Card</td>
+      <td>Model Card generated; training logs complete</td>
+      <td>R: Delivery Teams<br>C: Technical Fairness Leads</td>
+    </tr>
+    <tr>
+      <td>System Design</td>
+      <td>EU Art 13: Transparency<br>EU Art 14: Human Oversight</td>
+      <td>Users can understand and override decisions</td>
+      <td>Human-in-the-loop UI; transparency artefacts</td>
+      <td>Override paths tested; explanations available</td>
+      <td>A: Product Leadership<br>C: Fairness Leads</td>
+    </tr>
+    <tr>
+      <td>Validation</td>
+      <td>EU Art 15: Robustness<br>GDPR Art 22: Automated Decision-making Safeguards</td>
+      <td>Validate performance, fairness, and robustness</td>
+      <td>Fairness testing; robustness and red-team tests</td>
+      <td>Metrics meet thresholds or are justified</td>
+      <td>R: Delivery Teams<br>C: Fairness Leads, Legal</td>
+    </tr>
+    <tr>
+      <td>Deployment</td>
+      <td>EU Art 61: Post-market Monitoring<br>EU Art 23: Deployer / Importer Obligations</td>
+      <td>Monitor real-world performance and risks</td>
+      <td>Monitoring dashboards; alerts configured</td>
+      <td>Fairness drift alerts active; logs retained</td>
+      <td>A: Governance Body<br>R: Delivery Teams</td>
+    </tr>
+    <tr>
+      <td>Operate</td>
+      <td>EU Art 73: Reporting of Serious Incidents</td>
+      <td>Detect and report serious incidents</td>
+      <td>Incident detection &amp; reporting workflow</td>
+      <td>Incident reports submitted within time limits</td>
+      <td>A: Legal / Risk / Compliance<br>C: Governance Body</td>
+    </tr>
+    <tr>
+      <td>Retirement &amp; Archival</td>
+      <td>EU Art 18: Documentation Keeping<br>GDPR Art 17: Erasure</td>
+      <td>Retain compliance docs; delete personal data</td>
+      <td>Archive conformity &amp; QMS artefacts; purge data</td>
+      <td>Evidence retained 10 years; erasure confirmed</td>
+      <td>A: Governance Body<br>C: Legal, Delivery Teams</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Governance gates associated with each SDLC phase and RACI roles correspond to the accountability model defined in the Organisational Integration Toolkit. Mandatory regulatory artefacts (e.g. DPIA, Fundamental Rights Impact Assessment, conformity documentation) are produced or updated at specific lifecycle stages.</p>
+
+<p>Technical artefacts such as Fairness Assessment Records, Decision Rationale Logs, and monitoring outputs serve as supporting evidence and are referenced within those mandatory artefacts where required.</p>
+
+<p><strong>Translation Layer for Data Science Teams</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>SDLC Phase (The &quot;Gate&quot;)</th>
+      <th>Includes ML/AI Activity</th>
+      <th>Also Includes (Regulatory Requirement)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1. Planning</td>
+      <td>Problem Definition</td>
+      <td>Legal Impact Assessment (DPIA), Risk Scoring (TRS).</td>
+    </tr>
+    <tr>
+      <td>2. Data Ingestion</td>
+      <td>Data Collection &amp; EDA</td>
+      <td>PII Scrubbing, Copyright Checks, Bias Scanning.</td>
+    </tr>
+    <tr>
+      <td>3. Model Training</td>
+      <td>Experimentation</td>
+      <td>Hyperparameter Logging (MLflow), Reproducibility Checks.</td>
+    </tr>
+    <tr>
+      <td>4. System Design</td>
+      <td>Model Architecture</td>
+      <td>User Interface Design (Transparency), Security (Access Control).</td>
+    </tr>
+    <tr>
+      <td>5. Validation</td>
+      <td>Model Evaluation</td>
+      <td>System Testing (Integration), Adversarial Testing (Security), Conformity Assessment.</td>
+    </tr>
+    <tr>
+      <td>6. Deployment</td>
+      <td>Inference / Serving</td>
+      <td>Incident Reporting API, Logging Infrastructure, Conformity.</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Note to Engineers:</strong> When you see &quot;System Design,&quot; do not just think about the Neural Network layers. You must also account for the application wrapper, the user interface, and the data logging mechanisms required by Law.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Conformity Assessment:</strong> For high-risk AI systems, conformity assessment must be completed before the system is placed on the market or put into service (EU AI Article 43). <br>If a high-risk system is later substantially modified in a way that affects its intended purpose or how it meets the high-risk requirements, a new conformity assessment is required before the system continues to be used, consistent with the definition of “substantial modification” in Article 3(23).</p>
+</blockquote>
+
+<h2><span style="color:#00008B">3. Risk Classification System</span></h2>
+
+<p>A risk classification system ensures compliance controls are proportionate to inherent risk.</p>
+
+<h3><span style="color:#00008B">3.1 Risk Scoring Model</span></h3>
+
+<p>Total Risk Score (TRS):</p>
+
+<p><code>TRS = (P × S) + E – M</code></p>
+
+<p>Where:</p>
+<ul>
+  <li><strong>P</strong> = Probability of harm (1–5)</li>
+  <li><strong>S</strong> = Severity of harm (1–5), informed by human rights impacts</li>
+  <li><strong>E</strong> = Exposure factor (1–3), based on scale and duration</li>
+  <li><strong>M</strong> = Mitigation readiness (0–4), based on documented controls</li>
+</ul>
+
+<p>Risk classification is based on inherent risk, not residual risk. Residual risk is assessed to determine whether controls are sufficient, not to downgrade the risk tier.</p>
+
+<h3><span style="color:#00008B">3.2 Risk Tiers and Governance Triggers</span></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>TRS</th>
+      <th>Risk Tier</th>
+      <th>Governance Gate</th>
+      <th>Required Review Mechanisms</th>
+      <th>Mandatory Artefacts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>≥ 22</td>
+      <td>Critical</td>
+      <td>Organisational Risk / Ethics Committee</td>
+      <td>External conformity assessment<br>Independent fairness/bias audit</td>
+      <td>Ethical &amp; Regulatory Impact Summary<br>DPIA (or equivalent)<br>Fairness Assessment Record<br>Decision Rationale Log</td>
+    </tr>
+    <tr>
+      <td>15–21</td>
+      <td>High</td>
+      <td>Central AI Governance Forum</td>
+      <td>Internal conformity review<br>External or cross-team peer review</td>
+      <td>Ethical &amp; Regulatory Impact Summary<br>Model Card<br>Fairness Assessment Record</td>
+    </tr>
+    <tr>
+      <td>8–14</td>
+      <td>Moderate</td>
+      <td>Product Director / Product Governance</td>
+      <td>Team self-assessment</td>
+      <td>Model Card<br>Fairness Assessment Record<br>Monitoring Plan</td>
+    </tr>
+    <tr>
+      <td>≤ 7</td>
+      <td>Low</td>
+      <td>Team Lead</td>
+      <td>Lightweight check</td>
+      <td>Lightweight Model Summary</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Governance gates correspond to the accountability model defined in the Organisational Integration Toolkit, including the Fairness RACI and leadership roles. Mandatory artefacts represent the formal evidence required at each risk tier, while technical artefacts such as Fairness Assessment Records, Decision Rationale Logs, and monitoring outputs serve as supporting evidence and are referenced within the mandatory artefacts where applicable.</p>
+
+<p>All new AI systems and material changes to existing systems require a reassessment of the Total Risk Score (TRS) to confirm that the applicable governance gate and artefact requirements remain appropriate.</p>
+
+<h3><span style="color:#00008B">3.3 Multi-Standard Risk Classification (Rosetta Stone)</span></h3>
+
+<p>The table below serves as a cross-regulatory alignment reference for multistandard risk classification for AI systems. Appendix F provides a wider reference of standards and guidance with overlapping risk principles.</p>
+
+<p>This section provides a consolidated reference mapping between the EU Artificial Intelligence Act, GDPR, and selected international standards and frameworks. The EU AI Act and GDPR constitute the primary legal obligations; referenced standards are used to support consistent, auditable implementation across the playbook.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>TRS Range</th>
+      <th>Internal Tier</th>
+      <th>EU AI Act</th>
+      <th>NIST AI RMF</th>
+      <th>ISO 23894</th>
+      <th>GDPR</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>≥ 22</td>
+      <td>Critical</td>
+      <td>Prohibited (Art. 5) or High Risk<br>(Annex III - Safety)</td>
+      <td>GOVERN / MAP (Go/No-Go Decision)</td>
+      <td>Intolerable - Immediate risk treatment or cessation</td>
+      <td>High Risk. Mandatory DPIA + Prior Consultation (Art. 36).</td>
+    </tr>
+    <tr>
+      <td>15–21</td>
+      <td>High</td>
+      <td>High Risk (Annex III - Standalone)</td>
+      <td>MANAGE (Specific TEVV &amp; Human Oversight)</td>
+      <td>Significant - Mitigate until residual risk is accepted</td>
+      <td>High Risk Mandatory DPIA (Art. 35)</td>
+    </tr>
+    <tr>
+      <td>8–14</td>
+      <td>Moderate</td>
+      <td>Limited Risk (Art. 50 - Transparency)</td>
+      <td>MEASURE (Continuous Monitoring)</td>
+      <td>Moderate - Treatment via transparency &amp; monitoring</td>
+      <td>Medium - Standard Data Protection safeguards</td>
+    </tr>
+    <tr>
+      <td>≤ 7</td>
+      <td>Low</td>
+      <td>Minimal Risk</td>
+      <td>MAP (Document Context)</td>
+      <td>Acceptable - No treatment required</td>
+      <td>Low Standard - Record of Processing Activities (ROPA)</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3><span style="color:#00008B">3.4 Risk Classification Clarifications and Assessment Principles</span></h3>
+
+<p>Risk-based regulation underpins modern AI governance frameworks, including the EU Artificial Intelligence Act and GDPR. These frameworks do not apply uniform obligations to all systems; instead, they calibrate governance requirements according to the potential impact and harm associated with an AI system. To apply such regulation consistently and defensibly, organisations must clearly distinguish how risk is defined, assessed, and revisited over time. This section clarifies key principles that guide robust and regulator-aligned risk classification.</p>
+
+<h3><span style="color:#00008B">3.4.1 Inherent Risk versus Residual Risk</span></h3>
+
+<p>Effective risk classification requires a clear distinction between inherent risk and residual risk.</p>
+
+<ul>
+  <li><strong>Inherent risk</strong> refers to the potential harm associated with an AI system before any mitigating controls are applied. It is driven by factors such as the system’s purpose, decision impact, scale, affected populations, and degree of automation.</li>
+  <li><strong>Residual risk</strong> refers to the risk that remains after controls and safeguards are implemented, such as human oversight, monitoring, or bias mitigation techniques.</li>
+</ul>
+
+<p>Risk tier classification is based on inherent risk, not residual risk. Controls are designed to reduce residual risk to an acceptable level, but they do not change the fundamental classification of a system. For example, an AI system supporting university admissions decisions has high inherent risk because it influences access to education and processes sensitive personal characteristics.</p>
+
+<p>Human review and appeal mechanisms may significantly reduce residual risk, but they do not alter the system’s inherent risk profile or its regulatory classification. Separating these concepts prevents the inappropriate downgrading of system risk based on planned or assumed mitigations and ensures governance controls remain proportionate to potential harm.</p>
+
+<h3><span style="color:#00008B">3.4.2 Risk Assessment Models: Quantitative, Qualitative, and Hybrid</span></h3>
+
+<p>Risk classification may be performed using one or more of the following assessment models. Organisations should select and combine approaches in a consistent and documented manner.</p>
+
+<ul>
+  <li><strong>Quantitative scoring:</strong> Numeric evaluation of risk dimensions using weighted factors to support consistency and comparability.</li>
+  <li><strong>Qualitative analysis:</strong> Expert judgement applying legal, technical, and domain knowledge to assess contextual and socio-technical risks.</li>
+  <li><strong>Semi-structured assessment:</strong> Guided evaluation combining predefined criteria with expert judgement.</li>
+  <li><strong>Comparative benchmarking:</strong> Classification by comparison with previously assessed systems or recognised reference cases.</li>
+  <li><strong>Hybrid approaches:</strong> Intentional combination of multiple models to balance consistency, context, and defensibility.</li>
+</ul>
+
+<p>This toolkit adopts a hybrid approach. Quantitative scoring (such as the TRS calculation) provides consistency and comparability across systems, while qualitative review ensures contextual factors, domain-specific harms, and ethical considerations are properly evaluated.</p>
+
+<h3><span style="color:#00008B">3.4.3 Cross-Functional Risk Assessment</span></h3>
+
+<p>AI risk cannot be accurately assessed from a single organisational perspective. Legal, technical, domain, and governance considerations all shape potential harm and regulatory exposure. Risk classification should therefore be conducted through cross-functional assessment, involving, as appropriate:</p>
+
+<ul>
+  <li>Legal and compliance functions</li>
+  <li>Technical teams</li>
+  <li>Product or domain experts</li>
+  <li>Fairness or responsible AI specialists</li>
+</ul>
+
+<p>Structured deliberation and documented rationale are essential, particularly where perspectives differ. Escalation pathways should exist for resolving disagreements or for approving classifications with significant uncertainty or impact. This cross-functional approach reduces blind spots, increases consistency, and strengthens accountability for classification decisions.</p>
+
+<h3><span style="color:#00008B">3.4.3 Static versus Dynamic Risk Classification</span></h3>
+
+<p>Risk classification is not a one-time activity. AI systems evolve through retraining, data changes, deployment context shifts, and regulatory developments. Risk reassessment is required when predefined triggers occur, including:</p>
+
+<ul>
+  <li>Material model or data changes</li>
+  <li>Expansion to new populations or use cases</li>
+  <li>Evidence of unexpected or disproportionate impact</li>
+  <li>Changes in regulatory guidance or organisational risk appetite</li>
+</ul>
+
+<p>Periodic review cycles and ongoing monitoring support early detection of risk profile changes. Where reassessment indicates a higher inherent risk, governance controls and obligations must be updated accordingly.</p>
+
+<p>Dynamic classification ensures that governance remains aligned with actual system behaviour and avoids compliance gaps caused by outdated risk assumptions.</p>
+
+<blockquote>
+  <p>By embedding these clarifications into the risk classification framework, organisations align their internal practices with regulatory expectations while maintaining flexibility across domains and AI technologies.</p>
+</blockquote>
+
+<h2><span style="color:#00008B">4. Documentation Templates</span></h2>
+
+<p><strong>A. Design Principles</strong></p>
+<ul>
+  <li>Risk-based depth</li>
+  <li>Incremental completion</li>
+  <li>Auto-generated where possible</li>
+  <li>Reusable across regulatory regimes</li>
+</ul>
+
+<p>Documentation is treated as a fairness and governance control, not an administrative burden.</p>
+
+<p><strong>B. Documentation Requirements by Risk Tier</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Risk Tier</th>
+      <th>Mandatory Templates</th>
+      <th>Optional / Contextual Templates</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Critical</td>
+      <td>Data Card<br>Model Card<br>Ethical &amp; Regulatory Impact Summary<br>Fairness Assessment Record<br>Decision Rationale Log</td>
+      <td>External audit report</td>
+    </tr>
+    <tr>
+      <td>High</td>
+      <td>Data Card<br>Model Card<br>Ethical &amp; Regulatory Impact Summary<br>Fairness Assessment Record</td>
+      <td>Decision Rationale Log</td>
+    </tr>
+    <tr>
+      <td>Moderate</td>
+      <td>Model Card<br>Fairness Assessment Record</td>
+      <td>Impact summary</td>
+    </tr>
+    <tr>
+      <td>Low</td>
+      <td>Lightweight Model Summary</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>C. Core Documentation Templates</strong></p>
+
+<ul>
+  <li><strong>Data Card:</strong> describes dataset provenance, representativeness, limitations, and known biases.</li>
+  <li><strong>Model Card:</strong> documents intended use, performance, fairness characteristics, limitations, and oversight mechanisms.</li>
+  <li><strong>Ethical &amp; Regulatory Impact Summary:</strong> concise synthesis of ethical, human rights, and regulatory considerations.</li>
+  <li><strong>Fairness Assessment Record:</strong> records fairness metrics, subgroup analyses, trade-offs, and justifications.</li>
+  <li><strong>Decision Rationale Log:</strong> captures key design and deployment decisions and accepted risks.</li>
+</ul>
+
+<h3><span style="color:#00008B">4.1 Model Card Template Example</span></h3>
+
+<div style="border:1px solid #1f2937; border-radius:10px; padding:16px; background:#f9fafb;font-size: 0.8rem">
+  <h2 style="margin-top:5px; font-size: 1.2rem">AI Model Card:<em>[Model Name]</em></h2>
+
+  <h3>Document control</h3>
+  <ul>
+    <li><strong>Document ID:</strong> [auto]</li>
+    <li><strong>Version:</strong> [auto] &nbsp; <strong>Status:</strong> Draft / Approved / Retired</li>
+    <li><strong>Owner role:</strong> [e.g., Product ML Lead] &nbsp; <strong>Approver role:</strong> [per TRS gate]</li>
+    <li><strong>Last updated:</strong> [auto] &nbsp; <strong>Next review date:</strong> [auto]</li>
+  </ul>
+
+  <h3>1. Header (autofilled provenance)</h3>
+  <ul>
+    <li><strong>Model ID / hash:</strong> [SHA-256]</li>
+    <li><strong>System / service name:</strong> [e.g., Candidate Ranking Service]</li>
+    <li><strong>Repository + commit SHA:</strong> [link + SHA]</li>
+    <li><strong>Build / pipeline run ID:</strong> [CI/CD or MLflow run]</li>
+    <li><strong>Dataset version(s):</strong> [training/validation/test] + <strong>dataset hash(es)</strong></li>
+    <li><strong>Feature schema version:</strong> [auto]</li>
+    <li><strong>Model type:</strong> [classification/regression/LLM component/etc.]</li>
+  </ul>
+
+  <h3>2. Regulatory &amp; risk profile (legal-facing summary)</h3>
+  <ul>
+    <li><strong>TRS score + tier:</strong> [auto] &nbsp; <strong>Annex category (if applicable):</strong> [e.g., employment/recruitment]</li>
+    <li><strong>EU AI Act classification:</strong> Minimal / Limited / High-risk / Prohibited (justify)</li>
+    <li><strong>Conformity route (if high-risk):</strong> [internal / notified body / other]</li>
+    <li><strong>Required transparency / instructions artefacts:</strong> [link(s)]</li>
+    <li><strong>Record-keeping / logging reference:</strong> [link to audit trail location + log schema version]</li>
+  </ul>
+
+  <h4>2.1 GDPR profile (if personal data involved)</h4>
+  <ul>
+    <li><strong>Controller / processor role:</strong> [controller/processor/joint] + <strong>DPO contact channel:</strong> [role mailbox]</li>
+    <li><strong>Lawful basis:</strong> [Art 6 basis] &nbsp; <strong>Special category data:</strong> [yes/no + Art 9 condition if yes]</li>
+    <li><strong>Automated decision-making significance:</strong> [is Art 22 engaged? yes/no + rationale]</li>
+    <li><strong>DPIA ID + link:</strong> [required for high-risk personal-data use cases]</li>
+    <li><strong>Data minimisation statement:</strong> [why features are necessary]</li>
+    <li><strong>Retention period:</strong> [inputs / outputs / logs] + <strong>erasure mechanism:</strong> [how executed]</li>
+  </ul>
+
+  <h3>3. Intended use &amp; out-of-scope</h3>
+  <ul>
+    <li><strong>Intended users (roles):</strong> [deployers/operators]</li>
+    <li><strong>Intended decisions supported:</strong> [e.g., shortlist recommendation only]</li>
+    <li><strong>Geographies / populations in scope:</strong> [e.g. within the EU]</li>
+    <li><strong>Out-of-scope uses:</strong> [explicit list]</li>
+    <li><strong>Known limitations:</strong> [data coverage gaps, known failure modes]</li>
+  </ul>
+
+  <h3>4. Data &amp; quality summary</h3>
+  <ul>
+    <li><strong>Training data sources:</strong> [systems + date ranges]</li>
+    <li><strong>Representativeness assessment:</strong> [method + key findings]</li>
+    <li><strong>Label quality approach:</strong> [QA steps]</li>
+    <li><strong>Bias screening performed:</strong> [yes/no + tooling reference]</li>
+  </ul>
+
+  <h3>5. Performance, fairness &amp; robustness evidence</h3>
+
+  <h4>5.1 Overall performance</h4>
+  <ul>
+    <li><strong>Primary metric(s):</strong> [e.g., AUC, F1, RMSE]</li>
+    <li><strong>Thresholds + justification:</strong> [link to trade-off / risk–benefit analysis]</li>
+    <li><strong>Results:</strong> [values + confidence intervals if used]</li>
+  </ul>
+
+  <h4>5.2 Fairness evaluation (slice + intersectional where feasible)</h4>
+  <ul>
+    <li><strong>Fairness metric suite:</strong> [e.g., demographic parity diff, equal opportunity diff]</li>
+    <li><strong>Metrics Rationale:</strong> [decision context rationale]</li>
+    <li><strong>Disaggregated or intersectional analysis performed:</strong> yes / no</li>
+    <li><strong>Protected / salient groups assessed:</strong> [list + data basis]</li>
+    <li><strong>Slice results:</strong> [table link] &nbsp; <strong>Pass/Fail criteria:</strong> [explicit]</li>
+    <li><strong>Residual fairness risk:</strong> [summary + escalation decision if any]</li>
+  </ul>
+
+  <h4>5.3 Robustness &amp; security checks</h4>
+  <ul>
+    <li><strong>Stress tests:</strong> [distribution shift, missingness, adversarial if relevant]</li>
+    <li><strong>Results + mitigations:</strong> [summary + links]</li>
+  </ul>
+
+  <h3>6. Transparency, explainability &amp; user information pack</h3>
+  <ul>
+    <li><strong>User-facing explanation method:</strong> [global/local explanations as applicable]</li>
+    <li><strong>Deployers’ instructions / “how to use”:</strong> [link]</li>
+    <li><strong>Human-readable limitations &amp; risks:</strong> [bullet list]</li>
+  </ul>
+
+  <h3>7. Human oversight &amp; operational controls</h3>
+  <ul>
+    <li><strong>Human-in-the-loop points:</strong> [where + who]</li>
+    <li><strong>Override capability:</strong> [yes/no + UI/API reference] &nbsp; <strong>Override logging:</strong> [where recorded]</li>
+    <li><strong>Escalation ladder:</strong> [roles + response times]</li>
+  </ul>
+
+  <h3>8. Monitoring &amp; post-deployment obligations</h3>
+  <ul>
+    <li><strong>Monitoring signals:</strong> [performance drift, fairness drift, data drift]</li>
+    <li><strong>Alert thresholds:</strong> [explicit]</li>
+    <li><strong>Review cadence:</strong> [e.g., monthly] &nbsp; <strong>Owner role:</strong> [role]</li>
+    <li><strong>Serious incident criteria &amp; reporting path:</strong> [link to incident SOP]</li>
+  </ul>
+
+  <h3>9. Audit references &amp; retention</h3>
+  <ul>
+    <li><strong>Audit trail pointers:</strong> [event stream/topic + immutable log table + evidence graph node IDs]</li>
+    <li><strong>Retention schedule:</strong> [docs/logs] &nbsp; <strong>Archival owner role:</strong> [role]</li>
+  </ul>
+
+  <h3>10. Change log (auto-appended on each merge / release)</h3>
+  <table style="border-collapse:collapse; width:100%">
+    <thead>
+      <tr>
+        <th style="border:1px solid #d1d5db; padding:8px">Date</th>
+        <th style="border:1px solid #d1d5db; padding:8px">Change type</th>
+        <th style="border:1px solid #d1d5db; padding:8px">Reason</th>
+        <th style="border:1px solid #d1d5db; padding:8px">Commit / Artefact ref</th>
+        <th style="border:1px solid #d1d5db; padding:8px">Reviewer role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border:1px solid #d1d5db; padding:8px">[auto]</td>
+        <td style="border:1px solid #d1d5db; padding:8px">[retrain/threshold change/etc.]</td>
+        <td style="border:1px solid #d1d5db; padding:8px">[auto/provide rationale for the change]</td>
+        <td style="border:1px solid #d1d5db; padding:8px">[SHA + run ID]</td>
+        <td style="border:1px solid #d1d5db; padding:8px">[role]</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h3><span style="color:#00008B">4.2 Data Protection Impact Assessment (DPIA) Template</span></h3>
+
+<div style="border:1px solid #1f2937; border-radius:20px; padding:16px; background:#f9fafb">
+  <h2 style="margin-top:5px; font-size: 1.2rem">DPIA Annex — AI System Technical Summary</h2>
+
+  <div style="font-size: 0.8rem; font-family: sans-serif; flex-direction: column">
+    <h3>System identification</h3>
+    <ul>
+      <li>AI system name:</li>
+      <li>System ID:</li>
+      <li>Model(s) covered (ID / version):</li>
+      <li>Deployment context:</li>
+      <li>Risk tier (TRS):</li>
+      <li>DPIA reference (legal DPIA ID):</li>
+      <li>Owner (role):</li>
+      <li>Date completed:</li>
+      <li>Last review date:</li>
+    </ul>
+
+    <h3>1. Purpose</h3>
+    <p>This annex provides technical and operational information required to support the organisation’s Data Protection Impact Assessment. It links AI system design, data use, and operational controls to identified data protection risks and mitigations.</p>
+
+    <h3>2. Description of processing</h3>
+    <ul>
+      <li>Description of the AI-supported decision or recommendation:</li>
+      <li>Role of the AI system in the overall process:
+        <br>decision-making / decision-support / advisory</li>
+      <li>Degree of automation:
+        <br>fully automated / human-in-the-loop / human-on-the-loop</li>
+      <li>Categories of data subjects affected:</li>
+      <li>Expected scale of processing (volume, frequency):</li>
+    </ul>
+
+    <h3>3. Personal data involved</h3>
+    <ul>
+      <li>Categories of personal data processed:</li>
+      <li>Special category data involved: yes / no<br>
+        If yes, specify category and justification:</li>
+      <li>Data sources:
+        <br>internal / external / user-provided / derived</li>
+      <li>Data minimisation rationale:
+        <br>why each data category is necessary for the stated purpose</li>
+    </ul>
+
+    <h3>4. Lawful basis and rights considerations</h3>
+    <ul>
+      <li>GDPR lawful basis for processing:</li>
+      <li>Additional condition for special category data (if applicable):</li>
+      <li>Automated decision-making significance (GDPR Art 22):
+        <br>yes / no<br>
+        If yes, describe safeguards in place:</li>
+      <li>Mechanisms for exercising data subject rights:
+        <br>access / rectification / objection / explanation</li>
+    </ul>
+
+    <h3>5. Fairness, bias, and impact considerations</h3>
+    <ul>
+      <li>Potential impacts on individuals or groups:</li>
+      <li>Protected or vulnerable groups potentially affected:</li>
+      <li>Fairness risks identified:</li>
+      <li>Summary of fairness evaluation performed:</li>
+      <li>Residual fairness risks after mitigation:</li>
+      <li>Link to Fairness Assessment Record:</li>
+    </ul>
+
+    <h3>6. Risk assessment summary</h3>
+    <ul>
+      <li>Key data protection risks identified:</li>
+      <li>Likelihood and severity assessment:</li>
+      <li>Risk acceptance decision:
+        <br>accepted / mitigated / escalated</li>
+      <li>Governance body or role approving residual risk:</li>
+    </ul>
+
+    <h3>7. Mitigation and safeguards</h3>
+    <ul>
+      <li>Technical safeguards:
+        <br>access controls, encryption, logging, monitoring</li>
+      <li>Organisational safeguards:
+        <br>policies, training, governance reviews</li>
+      <li>Human oversight mechanisms:
+        <br>override capability, escalation paths</li>
+      <li>Effectiveness assessment of safeguards:</li>
+    </ul>
+
+    <h3>8. Retention and deletion</h3>
+    <ul>
+      <li>Retention period for:
+        <br>- Input data
+        <br>- Model outputs
+        <br>- Logs and audit evidence</li>
+      <li>Storage location</li>
+      <li>Deletion or anonymisation mechanisms:</li>
+      <li>Trigger points for deletion:
+        <br>end of purpose / model retirement / user request</li>
+    </ul>
+
+    <h3>9. Monitoring and review</h3>
+    <ul>
+      <li>Indicators monitored for data protection risk:</li>
+      <li>Review cadence:</li>
+      <li>Responsible role:</li>
+      <li>Triggers for DPIA reassessment:
+        <br>material model change / new data source / new use case</li>
+    </ul>
+
+    <h3>10. References and linkage</h3>
+    <ul>
+      <li>Model Card reference:</li>
+      <li>Audit Trail &amp; Evidence Register reference:</li>
+      <li>Related policies or procedures:</li>
+      <li>Supporting documentation links:</li>
+    </ul>
+
+    <h3>11. Declaration</h3>
+    <ul>
+      <li>Prepared by (role):</li>
+      <li>Reviewed by (role):</li>
+      <li>Date:</li>
+      <li>Outstanding actions or conditions (if any):</li>
+    </ul>
+  </div>
+</div>
+
+<h3><span style="color:#00008B">4.3 Audit Trail &amp; Evidence Register Template</span></h3>
+
+<div style="border:1px solid #1f2937; border-radius:20px; padding:16px; background:#f9fafb">
+  <h2 style="margin-top:5px; font-size: 1.2rem">Audit Trail Registry Record</h2>
+
+  <div style="font-size: 0.8rem; font-family: sans-serif; flex-direction: column">
+
+    <h3>System identification</h3>
+    <ul>
+      <li>AI system name:</li>
+      <li>System ID:</li>
+      <li>Model(s) covered (ID / version):</li>
+      <li>Risk tier (TRS):</li>
+      <li>Deployment status: Design / Build / Live / Retired</li>
+      <li>Owning function (role):</li>
+      <li>Governance owner (role):</li>
+      <li>Last review date:</li>
+    </ul>
+
+    <h3>1. Purpose and scope</h3>
+    <ul>
+      <li>Purpose of this audit trail:</li>
+      <li>Decisions and processes covered:</li>
+      <li>Lifecycle stages included:
+        <br>Design / Training / Validation / Deployment / Operation / Retirement</li>
+    </ul>
+
+    <p>This audit trail supports end-to-end traceability of fairness-related decisions, evidence, and governance actions across the system lifecycle.</p>
+
+    <h3>2. Decision and evidence chronology</h3>
+    <p>This section records when key fairness decision points occurred and how they were resolved.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Decision or event</th>
+          <th>Evidence reviewed</th>
+          <th>Outcome</th>
+          <th>Accountable role</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>[DD-MM-YYYY]</td>
+          <td>[Document decision]</td>
+          <td>[Reviewer’s name]</td>
+          <td>[Result]</td>
+          <td>[Accountable role and name]</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>3. Risk and governance evidence</h3>
+    <ul>
+      <li>Risk classification (TRS) and date:</li>
+      <li>Risk tier justification reference:</li>
+      <li>Governance gate(s) passed:</li>
+      <li>Impact assessments referenced:
+        <br>- Ethical / regulatory impact summary:
+        <br>- DPIA (if applicable):
+        <br>- Other assessments (if any):</li>
+    </ul>
+
+    <h3>4. Data and model lineage</h3>
+    <ul>
+      <li>Dataset snapshot references (IDs / hashes):</li>
+      <li>Training run identifiers:</li>
+      <li>Model versioning approach:</li>
+      <li>Feature set or schema version reference:</li>
+      <li>Known data or modelling constraints:</li>
+    </ul>
+
+    <h3>5. Performance and fairness evidence</h3>
+    <ul>
+      <li>Metrics recorded:</li>
+      <li>Disaggregated or intersectional analysis performed: yes / no</li>
+      <li>Key findings:</li>
+      <li>Thresholds applied and rationale:</li>
+      <li>Residual fairness risks identified:</li>
+      <li>Fairness assessment record reference:</li>
+    </ul>
+
+    <h3>6. Human oversight and escalation</h3>
+    <ul>
+      <li>Oversight model (human-in-the-loop / on-the-loop / escalation):</li>
+      <li>Roles responsible for oversight:</li>
+      <li>Override capability present: yes / no</li>
+      <li>Override events logged: yes / no</li>
+      <li>Escalation events and outcomes (if any):</li>
+      <li>Decision rationale log reference:</li>
+    </ul>
+
+    <h3>7. Monitoring and ongoing assurance</h3>
+    <ul>
+      <li>Monitoring signals tracked:
+        <br>performance drift / fairness drift / data drift / other</li>
+      <li>Review cadence:</li>
+      <li>Responsible role:</li>
+      <li>Alerts or triggers defined:</li>
+      <li>Actions taken in response to monitoring signals:</li>
+    </ul>
+
+    <h3>8. Documentation integrity and currency</h3>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Control area</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Artefacts monitored for completeness</td>
+          <td>Model Cards, DPIA Annexes, Fairness Assessment Records</td>
+        </tr>
+        <tr>
+          <td>Version control mechanism</td>
+          <td>All artefacts versioned via source control or document management system</td>
+        </tr>
+        <tr>
+          <td>Staleness or gap detection</td>
+          <td>Automated checks for missing, outdated, or inconsistent documentation</td>
+        </tr>
+        <tr>
+          <td>Notification mechanism</td>
+          <td>Alerts sent to responsible roles when updates or reviews are required</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>9. Retention, access, and integrity</h3>
+    <ul>
+      <li>Retention periods by evidence type:</li>
+      <li>Storage location (logical / jurisdictional):</li>
+      <li>Cross-border access or storage involved: yes / no<br>
+        If yes, applicable safeguards or restrictions:</li>
+      <li>Access controls (role-based):</li>
+      <li>Separation of duties enforced: yes / no</li>
+      <li>Integrity controls (e.g. append-only, hashing):</li>
+      <li>Evidence verification frequency:</li>
+    </ul>
+
+    <h3>10. Audit readiness declaration</h3>
+    <ul>
+      <li>Can an individual decision be reconstructed end-to-end: yes / no</li>
+      <li>Estimated reconstruction time:</li>
+      <li>Known limitations or gaps:</li>
+    </ul>
+
+    <h3>11. Review and sign-off</h3>
+    <ul>
+      <li>Reviewed by (role):</li>
+      <li>Review date:</li>
+      <li>Outstanding actions:</li>
+    </ul>
+
+    <h3>12. Change log</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>User</th>
+          <th>Change Ref</th>
+          <th>Description</th>
+          <th>Reason</th>
+          <th>Approved by (role)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>DD-MM_YY</td>
+          <td>J Doe</td>
+          <td>FXYPTP001</td>
+          <td>Counterfactual Analysis and Model retrain</td>
+          <td>TP rate drifting for intersectional group black female 50 years</td>
+          <td>R Roe</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+<h3><span style="color:#00008B">4.4 Retention Periods by Artefact Type</span></h3>
+
+<p>Retention periods are defined to satisfy the most stringent applicable regulatory obligation across horizontal AI regulation, data protection law, and domain-specific frameworks.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Document or Evidence Type</th>
+      <th>Retention Duration</th>
+      <th>Primary Legal / Governance Basis</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Technical documentation (system, risk, conformity records)</td>
+      <td>10 years after system is placed on the market or put into service</td>
+      <td>EU AI Act Art. 18</td>
+    </tr>
+    <tr>
+      <td>DPIA and DPIA Annex</td>
+      <td>10 years after end of processing activity</td>
+      <td>GDPR Art. 35 (accountability principle)</td>
+    </tr>
+    <tr>
+      <td>Model Card / System Card</td>
+      <td>Lifetime of the AI system + 2 years</td>
+      <td>EU AI Act Art. 11, Art. 18</td>
+    </tr>
+    <tr>
+      <td>Fairness decision records and governance approvals</td>
+      <td>Lifetime of the AI system</td>
+      <td>Risk management and accountability obligations</td>
+    </tr>
+    <tr>
+      <td>Audit logs and evidence graph (non-identifiable where possible)</td>
+      <td>5–10 years, depending on system risk</td>
+      <td>EU AI Act Art. 12, Art. 61</td>
+    </tr>
+    <tr>
+      <td>Monitoring and post-market surveillance records</td>
+      <td>Minimum 10 years</td>
+      <td>EU AI Act Art. 61</td>
+    </tr>
+    <tr>
+      <td>Incident and escalation records</td>
+      <td>10 years</td>
+      <td>EU AI Act Art. 62–63 (incident handling)</td>
+    </tr>
+    <tr>
+      <td>Healthcare AI decision evidence (if applicable)</td>
+      <td>Minimum 6 years</td>
+      <td>HIPAA (45 CFR §164.316(b)(2))</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2><span style="color:#00008B">5. Audit Trail Design</span></h2>
+
+<p>Audit trails provide end-to-end traceability from regulatory obligation to system decision. They support chronological tracking of fairness-related decisions, versioned documentation artefacts, and ongoing compliance monitoring, including notifications for documentation gaps or required updates.</p>
+
+<p><strong>A. Evidence Layers</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lifecycle stage</th>
+      <th>Evidence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Design</td>
+      <td>Risk classification, impact summaries</td>
+    </tr>
+    <tr>
+      <td>Build</td>
+      <td>Fairness metrics, test results</td>
+    </tr>
+    <tr>
+      <td>Deploy</td>
+      <td>Release approvals</td>
+    </tr>
+    <tr>
+      <td>Operate</td>
+      <td>Monitoring, incidents, overrides</td>
+    </tr>
+    <tr>
+      <td>Retire</td>
+      <td>Data deletion, artefact archiving</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Audit trails must be:</p>
+<ul>
+  <li>Tamper-evident</li>
+  <li>Time-stamped</li>
+  <li>Role-restricted</li>
+  <li>Retained according to governance policy</li>
+</ul>
+
+<p><strong>Audit trail flow overview</strong></p>
+
+<pre><code>User action  →  Decision engine  →  Event broker  →  Immutable log storage</code></pre>
+
+<p>At each stage, relevant metadata (timestamps, identifiers, version references, and governance context) is recorded and linked to supporting documentation artefacts such as model cards, impact assessments, dashboards and decision records. Events are captured asynchronously to avoid impacting system performance and are persisted in an append-only or immutable storage layer to support post hoc audit, investigation, and regulatory review (Figure 1). An illustrative template can be found in section 4.3.</p>
+
+<div class="mermaid">
+%%{init: {'theme': 'neutral', 'themeVariables': { 'fontSize': '14px'}}}%%
+
+flowchart LR
+    U[User Action] --> D["Decision Engine<br/>(AI Model)"]
+    D --> E["Event Broker<br/>(e.g. Kafka)"]
+
+    E --> L["Immutable Log<br/>(WORM Storage<br/>Hash-chained)"]
+    E --> M["Monitoring API<br/>(e.g. InfluxDB, MLflow)"]
+    E --> G["Evidence Graph Service<br/>(e.g. Neo4j, Neptune)"]
+
+    L --> A["Audit &amp; Regulatory Review"]
+    M --> O[Operational Monitoring<br/>and Alerts]
+    G --> R[Decision Reconstruction<br/>and Traceability]
+
+    classDef main fill:#bbf, stroke:#333,stroke-width:2px;
+    classDef desc fill:#ECECFF,stroke:#333,stroke-width:1px;
+    classDef purpose fill:#c9e4ff,stroke:#333,stroke-width:1px;
+    classDef broker fill:#D5E8D4,stroke:#333,stroke-width:1px;
+    classDef desc fill:#ECECFF,stroke:#333,stroke-width:1px;
+
+    class U main;
+    class D desc;
+    class E broker;
+    class L,M,G purpose;
+</div>
+
+<p style="font-size:0.8rem;"><strong>Figure 1.</strong> Audit trail workflow from user action to immutable evidence and governance review.</p>
+
+<h3><span style="color:#00008B">5.1 Audit Trail and Organisational Accountability</span></h3>
+
+<p>An effective fairness governance framework must enable organisations to demonstrate not only <em>what</em> decisions were made, but <em>how</em>, <em>when</em>, and <em>by whom</em> they were made. The documentation system defined in this toolkit therefore supports the creation of a clear and auditable fairness decision trail across the AI system lifecycle.</p>
+
+<p>The audit trail is not a separate artefact. It emerges from the consistent use of Fairness Decision Records, responsibility assignments, escalation pathways, and linked delivery artefacts.</p>
+
+<h3><span style="color:#00008B">5.2 What the audit trail captures</span></h3>
+
+<p>When applied consistently, the toolkit enables organisations to reconstruct:</p>
+
+<ul>
+  <li>When a fairness concern or decision point was identified</li>
+  <li>What evidence was reviewed, including disaggregated and intersectional analysis where required</li>
+  <li>Which options and trade-offs were considered</li>
+  <li>Who was responsible and accountable for the decision</li>
+  <li>Whether escalation occurred and at what level</li>
+  <li>What conditions or mitigations were approved</li>
+  <li>How the decision was monitored, revisited, or retired over time</li>
+</ul>
+
+<p>This information allows internal and external reviewers to understand fairness decisions in their operational and organisational context.</p>
+
+<h3><span style="color:#00008B">5.3 Sources of audit evidence</span></h3>
+
+<p>The audit trail is composed of linked artefacts rather than a single report, and they should be accessible to governance, legal, and risk functions and retained in line with organisational and regulatory requirements. Typical sources include:</p>
+
+<ul>
+  <li>Fairness Decision Records (Appendix A)</li>
+  <li>Responsibility matrices and role mappings</li>
+  <li>Model cards and system summaries</li>
+  <li>Monitoring dashboards and alerts</li>
+  <li>Backlog items, release notes, and version histories</li>
+  <li>Records of governance reviews and escalation outcomes</li>
+</ul>
+
+<h3><span style="color:#00008B">5.4 Audit Trail Integration</span></h3>
+
+<p>This section describes how auditability and documentation integrity are embedded into delivery and governance workflows to support ongoing fairness assurance.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Type of Audit Trail</th>
+      <th>Applicable Artefacts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Artefacts monitored for completeness</td>
+      <td>Model Cards, DPIA Annexes, Fairness Assessment Records</td>
+    </tr>
+    <tr>
+      <td>Version control mechanism</td>
+      <td>All artefacts versioned via source control or document management system</td>
+    </tr>
+    <tr>
+      <td>Staleness or gap detection</td>
+      <td>Automated checks for missing, outdated, or inconsistent documentation</td>
+    </tr>
+    <tr>
+      <td>Notification mechanism</td>
+      <td>Alerts sent to responsible roles when updates or reviews are required</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3><span style="color:#00008B">5.5 Using the audit trail in practice</span></h3>
+
+<p>The audit trail supports multiple organisational needs:</p>
+
+<ul>
+  <li><strong>Internal assurance:</strong> enabling leadership to review fairness risks and decisions confidently.</li>
+  <li><strong>Regulatory readiness:</strong> supporting inquiries, audits, or conformity assessments.</li>
+  <li><strong>Learning and improvement:</strong> allowing teams to reuse prior decisions and avoid repeated debate.</li>
+  <li><strong>Incident response:</strong> providing context and justification when fairness concerns escalate externally.</li>
+</ul>
+
+<p>The depth and formality of audit evidence should scale with system risk, impact, and regulatory exposure. By embedding auditability into everyday delivery and governance workflows, organisations avoid retrospective reconstruction of fairness decisions. Instead, accountability is created incrementally, as systems evolve, decisions are made, and risks are managed.</p>
+
+<h2><span style="color:#00008B">6. Stage-Gate Implementation Model</span></h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Gate</th>
+      <th>Purpose</th>
+      <th>Example Required Evidence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>G0</td>
+      <td>Ideation</td>
+      <td>Draft TRS, proportionality check</td>
+    </tr>
+    <tr>
+      <td>G1</td>
+      <td>Design</td>
+      <td>Risk controls mapped</td>
+    </tr>
+    <tr>
+      <td>G2</td>
+      <td>Build</td>
+      <td>Fairness tests, unit test, model card</td>
+    </tr>
+    <tr>
+      <td>G3</td>
+      <td>Validate</td>
+      <td>Independent QA review and sign-off, DPIA approved, conformity Report</td>
+    </tr>
+    <tr>
+      <td>G4</td>
+      <td>Launch</td>
+      <td>Monitoring live, legal notice update, Change control/request</td>
+    </tr>
+    <tr>
+      <td>G5</td>
+      <td>Operate</td>
+      <td>Periodic fairness review</td>
+    </tr>
+    <tr>
+      <td>G6</td>
+      <td>Retire</td>
+      <td>Evidence archived (tombstone log)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each gate aligns with Agile ceremonies and release planning.</p>
+
+<h2><span style="color:#00008B">7. How to Apply this Guide</span></h2>
+
+<ol>
+  <li>Describe the AI system and intended use</li>
+  <li>Perform risk classification (TRS)</li>
+  <li>Identify applicable regulatory principles</li>
+  <li>Translate principles into backlog tasks</li>
+  <li>Produce proportionate documentation</li>
+  <li>Implement audit trail and monitoring</li>
+  <li>Validate before release and iteratively thereafter</li>
+</ol>
+
+<h2><span style="color:#00008B">8. Integration with Other Toolkits</span></h2>
+
+<ul>
+  <li><strong>Fair AI Scrum Toolkit</strong>: embeds compliance into sprint execution</li>
+  <li><strong>Organisational Integration Toolkit</strong>: defines ownership and escalation</li>
+  <li><strong>Advanced Architecture Cookbook</strong>: provides technical patterns</li>
+</ul>
+
+<p>Outputs from this guide act as inputs to all other toolkits.</p>
+
+<!-- Mermaid JS for GitHub Pages rendering -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    securityLevel: "loose",
+    theme: "neutral"
+  });
+</script>
+
+</body>
+</html>

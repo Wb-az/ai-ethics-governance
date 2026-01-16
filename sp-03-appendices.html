@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fairness Implementation Playbook – Appendices</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      color: #111827;
+      background: #ffffff;
+    }
+    h1, h2, h3, h4, h5 {
+      color: #0f172a;
+      line-height: 1.3;
+    }
+    h1 { font-size: 2rem; margin-top: 0; }
+    h2 { margin-top: 2.25rem; }
+    h3 { margin-top: 1.75rem; }
+    h4 { margin-top: 1.5rem; }
+
+    p { margin: 0.6rem 0 1rem; }
+
+    ul, ol {
+      margin: 0.4rem 0 1rem 1.5rem;
+    }
+
+    em, i { font-style: italic; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.25rem 0;
+      font-size: 0.95rem;
+    }
+    table th, table td {
+      border: 1px solid #d1d5db;
+      padding: 0.5rem 0.6rem;
+      vertical-align: top;
+      text-align: left;
+    }
+    table th {
+      background: #e5e7eb;
+      font-weight: 600;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #0b1120;
+      color: #e5e7eb;
+      padding: 1rem 1.25rem;
+      overflow: auto;
+      border-radius: 0.5rem;
+      margin: 1.25rem 0;
+      font-size: 0.88rem;
+    }
+
+    blockquote {
+      margin: 1.25rem 0;
+      padding: 0.75rem 1rem;
+      border-left: 4px solid #1d4ed8;
+      background: #eff6ff;
+      color: #111827;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Appendices</h1>
+
+<p>This document contains illustrative templates and examples referenced throughout the Fairness Implementation
+Playbook. All appendices are non-prescriptive and should be adapted to organisational context.</p>
+
+<h2><span style="color:#00008B">Appendix A: Illustrative Fairness Decision Record (FDR)</span></h2>
+
+<p>This appendix provides an illustrative example of a Fairness Decision Record (FDR). It is intended to show the minimum set of information organisations should capture to support accountability, traceability, and governance review.</p>
+
+<p>This example is not a mandatory template. Organisations are expected to adapt the structure, level of detail, and tooling to their domain, risk profile, regulatory context, and organisational maturity.</p>
+
+<h3><span style="color:#00008B">A.1 Purpose of a Fairness Decision Record</span></h3>
+
+<p>A Fairness Decision Record captures material fairness-related decisions made during the AI system lifecycle. It provides a shared reference point for delivery teams, governance bodies, and oversight functions by recording:</p>
+
+<ul>
+  <li>What decision was made</li>
+  <li>Why it was made</li>
+  <li>What evidence informed it</li>
+  <li>Who was accountable</li>
+  <li>How residual risks are managed</li>
+</ul>
+
+<p>FDRs support both forward-looking decision-making and backward-looking accountability.</p>
+
+<h3><span style="color:#00008B">A.2 Minimum Recommended Fields</span></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Section</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Decision summary</td>
+      <td>Concise description of the fairness concern or decision being addressed</td>
+    </tr>
+    <tr>
+      <td>System / model reference</td>
+      <td>Name, version, and scope of the AI system or model</td>
+    </tr>
+    <tr>
+      <td>Trigger or context</td>
+      <td>What prompted this record (e.g. design choice, audit finding, monitoring alert, stakeholder feedback)</td>
+    </tr>
+    <tr>
+      <td>Affected groups</td>
+      <td>Groups considered, including any relevant intersectional combinations</td>
+    </tr>
+    <tr>
+      <td>Evidence reviewed</td>
+      <td>Metrics, tests, evaluations, audits, or monitoring signals considered</td>
+    </tr>
+    <tr>
+      <td>Trade-offs considered</td>
+      <td>Options evaluated, including alternatives not chosen</td>
+    </tr>
+    <tr>
+      <td>Decision rationale</td>
+      <td>Explanation for the selected option, including proportionality considerations</td>
+    </tr>
+    <tr>
+      <td>Residual risks and limitations</td>
+      <td>Known limitations, uncertainty, or accepted risks</td>
+    </tr>
+    <tr>
+      <td>Decision gate</td>
+      <td>Governance checkpoint at which the decision was taken (e.g. pre-deployment, release, monitoring, decommissioning)</td>
+    </tr>
+    <tr>
+      <td>Decision outcome</td>
+      <td>Result of the decision (e.g. mitigation approved, risk accepted, escalation, halt, decommissioning)</td>
+    </tr>
+    <tr>
+      <td>Accountable owner</td>
+      <td>Role accountable for the decision (aligned with the RACI matrix)</td>
+    </tr>
+    <tr>
+      <td>Approval level</td>
+      <td>Level at which the decision was approved (e.g. team, governance body, executive)</td>
+    </tr>
+    <tr>
+      <td>Review or expiry date</td>
+      <td>When the decision should be revisited (e.g. after retraining or policy change)</td>
+    </tr>
+    <tr>
+      <td>Linked artefacts</td>
+      <td>Backlog items, model cards, monitoring dashboards, or related FDRs</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3><span style="color:#00008B">A.3 Notes on Use</span></h3>
+
+<ul>
+  <li>FDRs should be created or updated incrementally, not completed retrospectively.</li>
+  <li>The level of detail should scale with risk and impact.</li>
+  <li>For high-risk systems, FDRs should explicitly document intersectional considerations and uncertainty where data is sparse.</li>
+  <li>FDRs should remain accessible for audit, governance review, and organisational learning, even after a system is retired.</li>
+  <li>FDRs should be updated when material changes occur, including retraining, scope changes, or significant monitoring alerts.</li>
+</ul>
+
+<p>Fairness Decision Records when used consistently enable organisations to make fairness decisions, explain them
+transparently, and revisit them responsibly as systems and contexts evolve.</p>
+
+<h2><span style="color:#00008B">Appendix B: Fairness Decision Gate Checklist</span></h2>
+
+<p>This appendix provides an illustrative Fairness Decision Gate Checklist. It is intended to support consistent,
+auditable decision-making at key governance checkpoints in the AI system lifecycle. The checklist is not a mandatory control. Organisations should adapt the gates, evidence requirements, and approval levels based on system risk, regulatory exposure, and organisational maturity.</p>
+
+<h3><span style="color:#00008B">B.1 Purpose of a Fairness Decision Gate</span></h3>
+
+<p>A Fairness Decision Gate is a formal governance checkpoint where fairness-related evidence is reviewed and a documented decision is required before proceeding.</p>
+
+<p>Decision gates ensure that:</p>
+
+<ul>
+  <li>fairness signals from teams and dashboards lead to action</li>
+  <li>decision authority is exercised at the appropriate level</li>
+  <li>outcomes are explicit, documented, and traceable</li>
+</ul>
+
+<p>Decision gates are triggered by events, not calendars.</p>
+
+<h3><span style="color:#00008B">B.2 Core Fairness Decision Gates</span></h3>
+
+<p>Organisations should define, at a minimum, the following fairness decision gates.</p>
+
+<div style="border:1px solid #1f2937; border-radius:20px; padding:16px; background:#f9fafb">
+  <h2 style="margin-top:5px; font-size: 1.2rem">Decision gate: Checklist</h2>
+
+  <div style="font-size: 0.8rem; font-family: sans-serif; flex-direction: column">
+
+    <h4><span style="color:#00008B">Gate 1: Pre-deployment Fairness Approval</span></h4>
+
+    <p><strong>Trigger</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Completion of initial model development</li>
+      <li>[&nbsp;&nbsp;] New AI system entering production or pilot</li>
+    </ul>
+
+    <p><strong>Required inputs</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Fairness Decision Record (draft or final)</li>
+      <li>[&nbsp;&nbsp;] Fairness requirements and thresholds</li>
+      <li>[&nbsp;&nbsp;] Risk Assessment</li>
+      <li>[&nbsp;&nbsp;] Baseline fairness metrics</li>
+      <li>[&nbsp;&nbsp;] Initial monitoring plan</li>
+      <li>[&nbsp;&nbsp;] Conformity Assessment (for high risk)</li>
+    </ul>
+
+    <p><strong>Key questions</strong></p>
+    <ul>
+      <li>Are agreed fairness metrics within acceptable thresholds? [Yes/No and rationale]</li>
+      <li>Are affected groups and intersectional considerations documented? [Yes/No and rationale]</li>
+      <li>Are known limitations and residual risks explicit? [Yes/No and rationale]</li>
+    </ul>
+
+    <p><strong>Decision options</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Approve deployment</li>
+      <li>[&nbsp;&nbsp;] Approve with required mitigations</li>
+      <li>[&nbsp;&nbsp;] Escalate to governance body</li>
+      <li>[&nbsp;&nbsp;] Block deployment</li>
+    </ul>
+
+    <p>Note: Log the decision justification.</p>
+
+    <p><strong>Decision authority</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Product / Domain Leadership</li>
+      <li>[&nbsp;&nbsp;] Governance body for high-risk systems</li>
+    </ul>
+
+    <h4><span style="color:#00008B">Gate 2: Release or Application Change Approval</span></h4>
+
+    <p><strong>Trigger</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Model retraining</li>
+      <li>[&nbsp;&nbsp;] Feature changes</li>
+      <li>[&nbsp;&nbsp;] Data source or label changes</li>
+      <li>[&nbsp;&nbsp;] Product / System changes in intended use</li>
+      <li>[&nbsp;&nbsp;] Other (provide rationale): ____________________</li>
+    </ul>
+
+    <p><strong>Required inputs</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Updated Fairness Decision Record</li>
+      <li>[&nbsp;&nbsp;] Comparative fairness metrics (before / after)</li>
+      <li>[&nbsp;&nbsp;] Updated dashboard snapshot</li>
+      <li>[&nbsp;&nbsp;] Other: [provide information of other inputs required]</li>
+    </ul>
+
+    <p><strong>Key questions</strong></p>
+    <ul>
+      <li>Has fairness performance changed materially? [Yes/No and rationale]</li>
+      <li>Do changes introduce new affected groups or risks? [Yes/No and rationale]</li>
+      <li>Are prior commitments still valid? [Yes/No and rationale]</li>
+    </ul>
+
+    <p><strong>Decision options</strong></p>
+    <ul>
+      <li>Approve change: [Yes/No and rationale]</li>
+      <li>Require additional testing or mitigation: [Yes/No and rationale]</li>
+      <li>Escalate: [Yes/No and rationale]</li>
+    </ul>
+
+    <p><strong>Decision authority</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Product / Domain Leadership</li>
+      <li>[&nbsp;&nbsp;] Governance body if thresholds are exceeded</li>
+    </ul>
+
+    <h4><span style="color:#00008B">Gate 3: Post-deployment Monitoring Review</span></h4>
+
+    <p><strong>Trigger</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Dashboard threshold breach</li>
+      <li>[&nbsp;&nbsp;] Drift or degradation detected</li>
+      <li>[&nbsp;&nbsp;] User complaints or external feedback</li>
+      <li>[&nbsp;&nbsp;] Change to regulation</li>
+      <li>[&nbsp;&nbsp;] Incident or near miss</li>
+      <li>[&nbsp;&nbsp;] Other: [provide information of other triggers (e.g., introduction of a new feature/functionality / configuration)]</li>
+    </ul>
+
+    <p><strong>Required inputs</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Monitoring dashboard evidence</li>
+      <li>[&nbsp;&nbsp;] Updated Fairness Decision Record</li>
+      <li>[&nbsp;&nbsp;] Change Initiation</li>
+      <li>[&nbsp;&nbsp;] Update Risk Assessment and/or Impact Analysis</li>
+      <li>[&nbsp;&nbsp;] Incident or escalation summary (if applicable)</li>
+      <li>[&nbsp;&nbsp;] Other [provide input and rationale]</li>
+    </ul>
+
+    <p><strong>Key questions</strong></p>
+    <ul>
+      <li>Is the risk temporary, systemic, or worsening? [Yes/No and rationale]</li>
+      <li>Are affected groups experiencing disproportionate impact? [Yes/No and rationale]</li>
+      <li>Are mitigations effective and timely? [Yes/No and rationale]</li>
+    </ul>
+
+    <p><strong>Decision options</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Accept risk temporarily (with review date)</li>
+      <li>[&nbsp;&nbsp;] Mandate mitigation</li>
+      <li>[&nbsp;&nbsp;] Suspend or roll back deployment</li>
+      <li>[&nbsp;&nbsp;] Escalate to executive level</li>
+    </ul>
+
+    <p><strong>Decision authority</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Governance body</li>
+      <li>[&nbsp;&nbsp;] Executive oversight for critical risks</li>
+    </ul>
+
+    <h4><span style="color:#00008B">Gate 4: Decommissioning or Major Repurposing</span></h4>
+
+    <p><strong>Trigger</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Persistent or unmitigable fairness harm</li>
+      <li>[&nbsp;&nbsp;] Regulatory non-compliance</li>
+      <li>[&nbsp;&nbsp;] System retirement or replacement</li>
+    </ul>
+
+    <p><strong>Required inputs</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Final Fairness Decision Record</li>
+      <li>[&nbsp;&nbsp;] Risk closure documentation</li>
+      <li>[&nbsp;&nbsp;] Stakeholder communication plan (if applicable)</li>
+    </ul>
+
+    <p><strong>Key questions</strong></p>
+    <ul>
+      <li>Can risks be mitigated within acceptable bounds? [Yes/No and rationale]</li>
+      <li>Are there obligations to users or affected groups? [Yes/No and rationale]</li>
+      <li>How is organisational learning captured? [Yes/No and rationale]</li>
+    </ul>
+
+    <p><strong>Decision options</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Decommission system</li>
+      <li>[&nbsp;&nbsp;] Replace with alternative solution</li>
+      <li>[&nbsp;&nbsp;] Restrict scope or use</li>
+    </ul>
+
+    <p><strong>Decision authority</strong></p>
+    <ul>
+      <li>[&nbsp;&nbsp;] Executive leadership / Board oversight</li>
+    </ul>
+
+  </div>
+</div>
+
+<h3><span style="color:#00008B">B.3 Relationship to Other Toolkit Artefacts</span></h3>
+
+<ul>
+  <li>Each decision gate must be recorded in a Fairness Decision Record.</li>
+  <li>Dashboards provide signals, not decisions.</li>
+  <li>The RACI matrix defines who is accountable at each gate.</li>
+</ul>
+
+<h2><span style="color:#00008B">Appendix C: Fairness Governance Body Charter</span></h2>
+
+<p>This appendix provides a lightweight example charter for a fairness governance body (e.g. Responsible AI Council,
+Fairness Steering Committee). It is intended to help organisations establish clear mandates without introducing unnecessary bureaucracy.</p>
+
+<h3><span style="color:#00008B">C.1 Purpose</span></h3>
+
+<p>The Fairness Governance Body provides independent oversight of fairness-related decisions for AI systems, particularly where risks are high, cross-cutting, or externally visible.</p>
+
+<p>Its role is to:</p>
+
+<ul>
+  <li>review escalated fairness decisions</li>
+  <li>resolve conflicts between fairness and business objectives</li>
+  <li>ensure alignment with organisational values and risk appetite</li>
+</ul>
+
+<h3><span style="color:#00008B">C.2 Scope</span></h3>
+
+<p>The governance body:</p>
+
+<ul>
+  <li>reviews high-risk fairness decisions</li>
+  <li>oversees post-deployment monitoring outcomes</li>
+  <li>approves or rejects risk acceptance proposals</li>
+  <li>may halt or restrict deployment where necessary</li>
+</ul>
+
+<p>It does not:</p>
+
+<ul>
+  <li>perform day-to-day development work</li>
+  <li>replace delivery team accountability</li>
+</ul>
+
+<h3><span style="color:#00008B">C.3 Membership (example)</span></h3>
+
+<ul>
+  <li>Chair (senior leadership sponsor)</li>
+  <li>Product / Domain representative</li>
+  <li>Fairness / Responsible AI lead</li>
+  <li>Legal / Risk / Compliance representative</li>
+  <li>Technical expert (as required)</li>
+  <li>User or stakeholder advocate (optional, context-dependent)</li>
+</ul>
+
+<h3><span style="color:#00008B">C.4 Decision Authority</span></h3>
+
+<p>The governance body has authority to:</p>
+
+<ul>
+  <li>Approve or reject high-risk fairness decisions</li>
+  <li>Mandate mitigations</li>
+  <li>Escalate critical risks to executive or board level</li>
+</ul>
+
+<p>Decisions must be:</p>
+
+<ul>
+  <li>Documented</li>
+  <li>Traceable</li>
+  <li>Time-bound where risk is accepted</li>
+</ul>
+
+<h3><span style="color:#00008B">C.5 Operating Model</span></h3>
+
+<ul>
+  <li><strong>Cadence:</strong> event-driven, with regular reviews for high-risk systems</li>
+  <li><strong>Inputs:</strong> Fairness Decision Records, dashboards, escalation summaries</li>
+  <li><strong>Outputs:</strong> documented decisions, conditions, follow-up actions</li>
+</ul>
+
+<h3><span style="color:#00008B">C.6 Relationship to Delivery Teams</span></h3>
+
+<ul>
+  <li>Delivery teams surface fairness risks and evidence</li>
+  <li>The governance body provides challenge, consistency, and oversight</li>
+  <li>Accountability remains with defined roles per the RACI matrix</li>
+</ul>
+
+<h2><span style="color:#00008B">Appendix D: Conceptual Foundations for LLM Fairness</span></h2>
+
+<p>This appendix summarises key conceptual themes underpinning fairness in large language models (LLMs).
+It is provided for contextual understanding and onboarding purposes. The material in this appendix is informative rather than prescriptive and does not replace the implementation guidance, recipes, or governance controls defined in Toolkit 3.</p>
+
+<h3><span style="color:#00008B">D.1 Pre-training Data Bias</span></h3>
+
+<p>Pre-training data fundamentally shapes LLM behaviour. Models trained on large-scale web corpora inherit historical biases, stereotypes, and discriminatory patterns present in those sources. These biases may be amplified through scale and pattern learning, affecting representation, language use, and downstream generative behaviour.</p>
+
+<h3><span style="color:#00008B">D.2 Prompt-Based Fairness Strategies</span></h3>
+
+<p>LLMs enable fairness interventions through prompt design, allowing teams to guide model behaviour without architectural changes. Techniques such as explicit fairness instructions, self-critique prompts, scaffolded reasoning, and counterfactual prompting can reduce prompt sensitivity and inconsistent treatment across demographic groups.</p>
+
+<h3><span style="color:#00008B">D.3 Fine-tuning for Fairness</span></h3>
+
+<p>Fine-tuning provides a targeted mechanism to mitigate specific fairness risks in pre-trained models. Approaches include balanced fine-tuning datasets, counterfactual data augmentation, fairness-oriented reinforcement learning from human feedback, and bias-focused adapters. These methods aim to reduce harmful bias while preserving general model capabilities.</p>
+
+<h3><span style="color:#00008B">D.4 Emergent Behaviours and Safety Guardrails</span></h3>
+
+<p>LLMs exhibit emergent behaviours that create fairness risks not observed in traditional models, including sycophancy, in-context learning effects, hallucination, and susceptibility to adversarial prompting. Addressing these risks requires layered safety guardrails, monitoring, and escalation mechanisms beyond static model evaluation.</p>
+
+<h3><span style="color:#00008B">D.5 Evaluation Frameworks for LLM Fairness</span></h3>
+
+<p>Traditional fairness metrics are insufficient for generative systems. LLM fairness evaluation relies on specialised approaches such as red-teaming, counterfactual testing, benchmark suites, structured human evaluation, and multidimensional assessment. These methods support ongoing monitoring and governance rather than one-off validation.</p>
+
+<p>This conceptual grounding informs but does not substitute the architecture-specific recipes, validation targets, and governance decision gates defined in the main body of the Advanced Architecture Cookbook.</p>
+
+<h2><span style="color:#00008B">Appendix E: Remediation Script Sample</span></h2>
+
+<p>This appendix provides an illustrative remediation script demonstrating how a fairness failure is diagnosed, mitigated, verified, and approved following a blocked release. It is intended as an example of good practice rather than a prescriptive template.</p>
+
+<p>The example reflects a multimodal AI system and aligns with the Advanced Architecture Cookbook and the EU AI Act requirements for risk mitigation, validation, and documented decision-making.</p>
+
+<div style="border:1px solid #1f2937; border-radius:20px; padding:16px; background:#f9fafb">
+  <h2 style="margin-top:5px; font-size: 1.2rem">Blocked Release: Fairness Metric Failure</h2>
+
+  <div style="font-size: 0.8rem; font-family: sans-serif; flex-direction: column">
+
+    <p><strong>System:</strong> Smart Home Assistant (Audio + Video)<br>
+    <strong>Model Version:</strong> <code>HomeGuard-Multimodal-v3.2</code><br>
+    <strong>Date:</strong> 2025-10-27<br>
+    <strong>Owner:</strong> J Doe (Perception Team)<br>
+    <strong>Trigger:</strong> Release blocked due to failure of a fairness-critical evaluation gate.</p>
+
+    <h3>1. Failure Diagnosis</h3>
+    <p><em>Which validation gate failed? (refer to Validation Framework)</em></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Metric Name</th>
+          <th>Required Threshold</th>
+          <th>Observed Value</th>
+          <th>Severity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cross-Modal Consistency</td>
+          <td>&gt; 90%</td>
+          <td>74.2%</td>
+          <td>Critical</td>
+        </tr>
+        <tr>
+          <td>Stratified Accuracy (Low Light)</td>
+          <td>Gap &lt; 5%</td>
+          <td>12.8% (Elderly users)</td>
+          <td>High</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Impact summary</strong></p>
+    <ul>
+      <li>Users experience degraded command recognition when lighting conditions are poor.</li>
+      <li>Impact is disproportionately higher for elderly users, indicating a fairness risk.</li>
+    </ul>
+
+    <h3>2. Root Cause Analysis (RCA)</h3>
+    <p><em>Identify contributing factors.</em></p>
+
+    <ul>
+      <li>[x] Data skew in underrepresented operating conditions</li>
+      <li>[&nbsp;&nbsp;] Annotation or label bias</li>
+      <li>[&nbsp;&nbsp;] Feature leakage</li>
+      <li>[x] Objective function underweights minority conditions</li>
+      <li>[x] Environment-dependent degradation (low light)</li>
+    </ul>
+
+    <p><strong>Working hypothesis</strong></p>
+
+    <blockquote>
+      <p>The system exhibits <strong>dominant modality bias</strong> (Architecture Cookbook).
+      The attention mechanism over-relies on video inputs due to higher average training confidence. When video quality degrades (lights off), the model fails to fall back to audio signals. This disproportionately affects elderly users with softer speech patterns, resulting in reduced cross-modal consistency.</p>
+    </blockquote>
+
+    <h3>3. Selected Remediation Recipe</h3>
+    <p><em>Reference: Advanced Architecture Cookbook (Section 6.)</em></p>
+
+    <p><strong>Chosen pattern:</strong><br>
+    <strong>Cross-Modal Consistency Loss with Modality Dropout</strong></p>
+
+    <p><strong>Rationale</strong></p>
+    <ul>
+      <li>Targets the identified failure mode directly.</li>
+      <li>Encourages robustness when one modality degrades.</li>
+      <li>Proportionate intervention without architectural redesign.</li>
+    </ul>
+
+    <p><strong>Implementation strategy</strong></p>
+
+    <blockquote>
+      <p>Apply <strong>modality dropout</strong> during fine-tuning by randomly disabling the video stream in a subset of training batches. This forces the model to learn stable representations from audio-only inputs and improves alignment between modalities under degraded conditions.</p>
+    </blockquote>
+
+    <p><strong>Hyperparameter adjustments</strong></p>
+    <ul>
+      <li><code>video_dropout_rate</code>: <code>0.0 → 0.4</code></li>
+      <li><code>consistency_loss_weight</code>: <code>1.0 → 1.8</code></li>
+    </ul>
+
+    <h3>4. Verification (Post-Remediation)</h3>
+    <p><em>Re-run full evaluation suite, including stratified and intersectional checks.</em></p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Metric Name</th>
+          <th>Pre-Fix</th>
+          <th>Post-Fix</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cross-Modal Consistency</td>
+          <td>74.2%</td>
+          <td>91.5%</td>
+          <td>Pass</td>
+        </tr>
+        <tr>
+          <td>Stratified Accuracy Gap (Low Light)</td>
+          <td>12.8%</td>
+          <td>4.1%</td>
+          <td>Pass</td>
+        </tr>
+        <tr>
+          <td>Clean Audio Accuracy (for each subgroup)</td>
+          <td>96.0%</td>
+          <td>95.7%</td>
+          <td>Acceptable</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><strong>Conclusion</strong></p>
+    <ul>
+      <li>Fairness thresholds restored.</li>
+      <li>No material degradation in core performance.</li>
+      <li>Residual risk deemed acceptable.</li>
+    </ul>
+
+    <h3>5. Governance Sign-Off</h3>
+    <p><em>Required for high-impact or fairness-critical remediation.</em></p>
+
+    <ul>
+      <li>[x] Fix approved</li>
+      <li>[&nbsp;&nbsp;] Exception granted (risk acceptance memo required)</li>
+    </ul>
+    <p><strong>Approved by:</strong><br>
+    John Doe, AI Ethics Lead</p>
+
+    <p><strong>Decision record:</strong><br>
+    Linked Fairness Decision Record (FDR-042) updated with remediation rationale, evidence, and approval.</p>
+
+    <h3>Regulatory alignment note</h3>
+
+    <p>This remediation workflow supports EU AI Act obligations for:</p>
+    <ul>
+      <li><strong>Risk mitigation and control effectiveness</strong> (Article 9)</li>
+      <li><strong>Validation and testing of high-risk systems</strong> (Article 15)</li>
+      <li><strong>Documented governance decisions and traceability</strong> (Articles 11 and 19)</li>
+    </ul>
+
+    <p>All remediation steps, evidence, and approvals are retained in accordance with organisational record-keeping requirements.</p>
+
+  </div>
+</div>
+
+<h2><span style="color:#00008B">Appendix F: Cross-regulatory Alignment Reference</span></h2>
+
+<p>This appendix provides a consolidated reference mapping between the EU Artificial Intelligence Act, GDPR, and selected international standards and frameworks. The EU AI Act and GDPR constitute the primary legal obligations; referenced standards support consistent, auditable implementation across this playbook.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Regulatory or<br>Standard Source</th>
+      <th>Focus area</th>
+      <th>Alignment with<br>EU AI Act</th>
+      <th>Alignment with GDPR</th>
+      <th>How it is used in this playbook</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>EU AI Act</td>
+      <td>Horizontal AI regulation</td>
+      <td>Primary legal framework governing AI system risk, documentation, transparency, oversight, and post-market monitoring</td>
+      <td>Complementary to GDPR where personal data is involved</td>
+      <td>Defines mandatory obligations, risk tiers, governance gates, and record-keeping expectations</td>
+    </tr>
+    <tr>
+      <td>GDPR</td>
+      <td>Data protection and fundamental rights</td>
+      <td>Applies where AI systems process personal data; informs data governance, transparency, and safeguards</td>
+      <td>Primary legal framework</td>
+      <td>Drives DPIA requirements, lawful basis analysis, retention limits, and rights safeguards</td>
+    </tr>
+    <tr>
+      <td>ISO/IEC 42001</td>
+      <td>AI management system</td>
+      <td>Supports implementation of AI Act risk management, governance, and accountability obligations</td>
+      <td>Supports GDPR accountability principle</td>
+      <td>Used as the organisational control framework for roles, documentation, monitoring, and review</td>
+    </tr>
+    <tr>
+      <td>ISO/IEC 42001 Clause 7.5</td>
+      <td>Documented information</td>
+      <td>Supports AI Act requirements for technical documentation and record-keeping</td>
+      <td>Supports GDPR accountability and auditability</td>
+      <td>Informs documentation templates, version control, and retention practices</td>
+    </tr>
+    <tr>
+      <td>ISO/IEC 42001 Control A.9.1</td>
+      <td>Monitoring</td>
+      <td>Aligns with AI Act post-market monitoring and logging obligations</td>
+      <td>Supports ongoing compliance and security monitoring</td>
+      <td>Used to design monitoring dashboards and audit trail evidence</td>
+    </tr>
+    <tr>
+      <td>ISO/IEC 23894</td>
+      <td>AI risk management</td>
+      <td>Complements AI Act risk identification, treatment, and reporting obligations</td>
+      <td>Indirect support via risk-based controls</td>
+      <td>Used to structure risk classification, mitigation decisions, and governance escalation</td>
+    </tr>
+    <tr>
+      <td>ISO/IEC 23894 Clause 6.6</td>
+      <td>Recording and reporting</td>
+      <td>Reinforces AI Act expectations for traceability and reporting</td>
+      <td>Supports GDPR accountability</td>
+      <td>Informs audit trail design and evidence recording</td>
+    </tr>
+    <tr>
+      <td>ISO/IEC 42005</td>
+      <td>AI system impact assessment</td>
+      <td>Supports AI Act ex-ante risk assessment (Arts 9–11)</td>
+      <td>Supports DPIA preparation</td>
+      <td>Used during planning to structure impact analysis before development</td>
+    </tr>
+    <tr>
+      <td>ISO/IEC 5259</td>
+      <td>Data quality for analytics and ML</td>
+      <td>Supports AI Act data governance requirements (Art 10)</td>
+      <td>Supports GDPR data accuracy and minimisation</td>
+      <td>Used to guide data ingestion checks and representativeness analysis</td>
+    </tr>
+    <tr>
+      <td>ISO/IEC TR 24027</td>
+      <td>Bias and fairness considerations</td>
+      <td>Supports AI Act non-discrimination and fairness objectives</td>
+      <td>Supports GDPR fairness principle</td>
+      <td>Informs fairness metrics, evaluation methods, and documentation</td>
+    </tr>
+    <tr>
+      <td>ISO/IEC TR 24028</td>
+      <td>Trustworthiness of AI</td>
+      <td>Supports AI Act transparency, human oversight, and robustness</td>
+      <td>Indirect support</td>
+      <td>Used to frame transparency, explainability, and oversight controls</td>
+    </tr>
+    <tr>
+      <td>NIST AI RMF</td>
+      <td>AI risk management framework</td>
+      <td>Non-binding best practice aligned with AI Act risk lifecycle</td>
+      <td>Non-binding support for accountability</td>
+      <td>Used as a practical risk-management lens, not as a legal substitute</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2><span style="color:#00008B">Appendix G: Glossary of Key Terms</span></h2>
+
+<p>This glossary provides working definitions for terms used throughout the Fairness Implementation Playbook. Definitions are written for data scientists, ML engineers, product owners, and ethics or responsible AI teams.</p>
+
+<p><strong>Accountability</strong><br>
+The allocation of responsibility and answerability for decisions, outcomes, and oversight actions related to an AI system.</p>
+
+<p><strong>Algorithmic Bias</strong><br>
+Systematic patterns of error or differential outcomes in an AI system that lead to unfair or unequal treatment of individuals or groups.</p>
+
+<p><strong>Area Under the ROC Curve (AUC)</strong><br>
+A performance metric for binary classifiers that measures how well the model separates positive and negative cases. It can be interpreted as the probability that a randomly chosen positive example is ranked higher than a randomly chosen negative example.</p>
+
+<p><strong>Audit Trail</strong><br>
+A structured record of key decisions, evidence, and artefacts that enables traceability and independent review of how a system was designed, tested, and deployed.</p>
+
+<p><strong>Backlog</strong><br>
+A prioritised list of work items for a product or system, including features, tests, documentation, and risk or compliance tasks.</p>
+
+<p><strong>Conformity Assessment</strong><br>
+A formal process for verifying that a high-risk AI system meets the EU AI Act requirements before deployment and, if substantially modified, before continued use.</p>
+
+<p><strong>Data Governance</strong><br>
+Policies, standards, and processes ensuring data quality, documentation, compliance, and access control across the AI lifecycle.</p>
+
+<p><strong>Data Protection Impact Assessment (DPIA)</strong><br>
+A GDPR-required assessment for processing activities likely to pose high risk to individuals’ rights and freedoms, often used alongside AI-specific impact assessments.</p>
+
+<p><strong>Deployment</strong><br>
+The point at which an AI system is placed on the market or put into service for real-world use.</p>
+
+<p><strong>Disparity Analysis</strong><br>
+Evaluation of differences in error, performance, or outcomes across demographic or contextually relevant groups to identify fairness issues.</p>
+
+<p><strong>Escalation Pathway</strong><br>
+The defined route for raising fairness, compliance, or safety issues from delivery teams to governance bodies for review or decision.</p>
+
+<p><strong>False Negative (FN)</strong><br>
+A case where the system fails to detect or select something that <em>should</em> have been detected or selected (e.g. an eligible candidate incorrectly classified as not suitable).</p>
+
+<p><strong>False Positive (FP)</strong><br>
+A case where the system detects or selects something that <em>should not</em> have been detected or selected (e.g. an ineligible candidate incorrectly classified as suitable).</p>
+
+<p><strong>Fairness Definition</strong><br>
+A context-specific articulation of what fairness means for a system (e.g., equal opportunity, non-discrimination, or parity of error rates) used to guide metric selection and decision-making.</p>
+
+<p><strong>Fairness Metric</strong><br>
+A quantitative measure used to assess whether an AI system behaves equitably across groups or individuals.</p>
+
+<p><strong>Governance Gate</strong><br>
+A review point at which evidence, risks, and approvals are assessed before progression to the next lifecycle stage.</p>
+
+<p><strong>High-Risk AI System</strong><br>
+An AI system classified as high-risk under the EU AI Act and therefore subject to enhanced obligations including risk management, documentation, human oversight, and conformity assessment.</p>
+
+<p><strong>Human Oversight</strong><br>
+Controls that allow humans to understand, supervise, intervene in, or override an AI system and to detect and address anomalies or harms.</p>
+
+<p><strong>Impact Assessment</strong><br>
+A structured evaluation of how an AI system may affect individuals, groups, or society, including potential harms, benefits, and rights implications.</p>
+
+<p><strong>Intervention Strategy</strong><br>
+A set of actions intended to mitigate identified fairness or rights-related risks discovered during development or operation.</p>
+
+<p><strong>Lifecycle</strong><br>
+The end-to-end stages of an AI system from design through deployment, monitoring, and eventual retirement.</p>
+
+<p><strong>Mean Intersection over Union (mIoU)</strong><br>
+A metric commonly used in segmentation tasks. For each class, it measures the overlap between the predicted and true regions (intersection over union) and then averages this score across classes.</p>
+
+<p><strong>Mitigation</strong><br>
+Actions taken to reduce the likelihood or impact of an identified risk.</p>
+
+<p><strong>Model Card</strong><br>
+A structured documentation artefact describing an AI model’s intended use, performance, limitations, and known risks.</p>
+
+<p><strong>Monitoring</strong><br>
+Ongoing observation of an AI system in production to detect shifts in performance, fairness, or compliance-relevant signals.</p>
+
+<p><strong>Proportionality</strong><br>
+The principle that the level of controls, testing, and documentation should align with the system’s risk level.</p>
+
+<p><strong>Protected Characteristic</strong><br>
+Attributes legally protected from discrimination (e.g. sex, race, disability, religion, age), often used to define groups for fairness analysis.</p>
+
+<p><strong>Reinforcement Learning from Human Feedback (RLHF)</strong><br>
+A training approach where a model’s outputs are rated or ranked by humans. These preferences are used to train a reward model and then fine-tune the original model via reinforcement learning so that it better aligns with human judgements and values.</p>
+
+<p><strong>Reinforcement Learning from Constitutional Feedback (RLCF)</strong><br>
+A variant of RLHF where feedback is guided by a written set of principles or “constitution” (rather than only direct human ratings). Models are trained to prefer outputs that better follow those principles, sometimes using models themselves to generate critiques or preferences.</p>
+
+<p><strong>Reinforcement Learning from Expert Feedback (RLEF)</strong><br>
+A variant of RLHF where feedback comes from domain experts (e.g. clinicians, lawyers, compliance specialists) rather than general annotators. It is used when alignment with specialist knowledge or professional standards is critical.</p>
+
+<p><strong>Residual Risk</strong><br>
+The level of risk remaining after control measures have been applied and accepted.</p>
+
+<p><strong>Retrieval-Augmented Generation (RAG)</strong><br>
+An architecture pattern where a model first retrieves relevant documents or passages from a knowledge source (e.g. a database or search index) and then uses those retrieved materials as context when generating its answer. This helps keep outputs grounded in up-to-date or verifiable information.</p>
+
+<p><strong>Risk-Based Approach</strong><br>
+An approach that tailors governance and assurance activities to the risk profile of the system rather than applying uniform prescriptive controls.</p>
+
+<p><strong>Risk Owner</strong><br>
+An individual or role formally accountable for accepting or mitigating specific risks associated with an AI system.</p>
+
+<p><strong>Substantial Modification</strong><br>
+A change to an AI system that affects its intended purpose or its compliance with high-risk requirements, potentially triggering new conformity assessment obligations.</p>
+
+<p><strong>Traceability</strong><br>
+The ability to reconstruct how data, configurations, and decisions contributed to specific outputs or outcomes.</p>
+
+<p><strong>Validation</strong><br>
+Verification that fairness and governance controls have been correctly implemented and are effective in practice.</p>
+
+<h2><span style="color:#00008B">Appendix H: Methodological, Regulatory and Academic Sources</span></h2>
+
+<p>This appendix lists key methodological and academic sources that inform the fairness concepts, evaluation techniques, and governance patterns used throughout this playbook. It is not exhaustive; organisations are encouraged to adapt and extend this reference list to align with their own standards and research base.</p>
+
+<h3><span style="color:#00008B">H.1 Fairness Foundations and Conceptual Framing</span></h3>
+
+<ul>
+  <li>Selbst, A. D., Boyd, D., Friedler, S. A., Venkatasubramanian, S., &amp; Vertesi, J. (2019). Fairness and abstraction
+  in sociotechnical systems. In <em>Proceedings of the Conference on Fairness, Accountability, and Transparency</em> (pp. 59–68). https://doi.org/10.1145/3287560.3287598.</li>
+  <li>Mitchell, M., Baker, D., Denton, E., Hutchinson, B., Hanna, A., &amp; Smart, A. (2021). Algorithmic accountability in
+  practice. In <em>Proceedings of the 2021 ACM Conference on Fairness, Accountability, and Transparency</em> (pp. 174–183). https://doi.org/10.1145/3442188.3445928.</li>
+</ul>
+
+<h3><span style="color:#00008B">H.2 Bias, Datasets and Representativeness</span></h3>
+
+<ul>
+  <li>Buolamwini, J., &amp; Gebru, T. (2018). Gender shades: Intersectional accuracy disparities in commercial gender
+  classification. In <em>Proceedings of the 1st Conference on Fairness, Accountability, and Transparency</em> (pp. 77–91). https://proceedings.mlr.press/v81/buolamwini18a.html.</li>
+  <li>Gebru, T., Morgenstern, J., Vecchione, B., Vaughan, J. W., Wallach, H., Daumé III, H., &amp; Crawford, K. (2021).
+  Datasheets for datasets. <em>Communications of the ACM</em>, 64(12), 86–92. https://doi.org/10.1145/3458723.</li>
+  <li>Vethman, S., Smit, Q. T. S., van Liebergen, N. M., &amp; Veenman, C. J. (2025). Fairness beyond the algorithmic frame:
+  Actionable recommendations for an intersectional approach. In <em>Proceedings of the 2025 ACM Conference on Fairness, Accountability, and Transparency (FAccT '25)</em> (pp. 3276–3290). Association for Computing Machinery, New York, NY, USA. https://doi.org/10.1145/3715275.3732210.</li>
+</ul>
+
+<h3><span style="color:#00008B">H.3 Responsible AI Practice and Governance</span></h3>
+
+<ul>
+  <li>National Institute of Standards and Technology (NIST). (2023). <em>AI Risk Management Framework (AI RMF 1.0).</em></li>
+  <li>ISO/IEC 42001:2023. <em>Information technology — Artificial intelligence — Management system.</em></li>
+  <li>ISO/IEC 23894:2023. <em>Information technology — Artificial intelligence — Guidance on risk management.</em></li>
+  <li>ISO/IEC 42005:2025. <em>Artificial intelligence — System impact assessment.</em></li>
+  <li>Regulation (EU) 2024/1689 of the European Parliament and of the Council of 13 June 2024 laying down harmonised rules on artificial intelligence and amending Regulations (EC) No 300/2008, (EU) No 167/2013, (EU) No 168/2013, (EU) 2018/858, (EU) 2018/1139 and (EU) 2019/2144 and Directives 2014/90/EU, (EU) 2016/797 and (EU) 2020/1828 (Artificial Intelligence Act) [2024] OJ L2024/1689.</li>
+</ul>
+
+<h3><span style="color:#00008B">H.4 Risk and Decision-making</span></h3>
+
+<ul>
+  <li>Baldwin, R., &amp; Black, J. (2016). Driving priorities in risk-based regulation: What's the problem? <em>Journal of Law
+  and Society</em>, 43(4), 565–595. https://doi.org/10.1111/jols.12003.</li>
+  <li>Beutel, A., Chen, J., Zhao, Z., &amp; Chi, E. H. (2019). Data decisions and theoretical implications when
+  adversarially learning fair representations. In <em>Proceedings of the 2019 Conference on Fairness, Accountability, and Transparency</em> (pp. 325–334). https://doi.org/10.1145/3287560.3287590.</li>
+  <li>Smuha, N. A., Ahmed-Rengers, E., &amp; Hacker, P. (2023). How to operationalize AI regulation: Machine learning risk
+  assessment frameworks, compliance procedures and practical challenges. <em>Law, Innovation and Technology</em>, 15(1), 1–41. https://doi.org/10.1080/17579961.2023.2184135.</li>
+  <li>Gat, I., Schwartz, I., Schwing, A., &amp; Hazan, T. (2022). Multimodal fairness: Analyzing multimodal fusion for
+  fairness in vision-language tasks. In <em>Proceedings of the 2022 IEEE/CVF Conference on Computer Vision and Pattern Recognition</em> (pp. 11837–11846). https://doi.org/10.1109/CVPR52688.2022.01154.</li>
+  <li>Bommasani, R., Hudson, D. A., Adeli, E., Altman, R., Arora, S., von Arx, S., Bernstein, M. S., Bohg, J., Bosselut,
+  A., Brunskill, E., et al. (2021). On the opportunities and risks of foundation models. <em>arXiv preprint</em> arXiv:2108.07258. https://arxiv.org/abs/2108.07258.</li>
+  <li>Ganguli, D., Hernandez, D., Lovitt, L., Hassabis, D., Silverstein, S., &amp; Sadigh, D. (2023). Red teaming language
+  models with language models. <em>arXiv preprint</em> arXiv:2202.03286. https://arxiv.org/abs/2202.03286.</li>
+</ul>
+
+</body>
+</html>

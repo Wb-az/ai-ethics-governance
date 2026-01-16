@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Organisational Integration &amp; Governance Toolkit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      color: #111827;
+      background: #ffffff;
+    }
+    h1, h2, h3, h4, h5 {
+      color: #0f172a;
+      line-height: 1.3;
+    }
+    h1 { font-size: 2rem; margin-top: 0; }
+    h2 { margin-top: 2.25rem; }
+    h3 { margin-top: 1.75rem; }
+    h4 { margin-top: 1.5rem; }
+
+    p { margin: 0.6rem 0 1rem; }
+
+    ul, ol {
+      margin: 0.4rem 0 1rem 1.5rem;
+    }
+
+    em, i { font-style: italic; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.25rem 0;
+      font-size: 0.95rem;
+    }
+    table th, table td {
+      border: 1px solid #d1d5db;
+      padding: 0.5rem 0.6rem;
+      vertical-align: top;
+      text-align: left;
+    }
+    table th {
+      background: #e5e7eb;
+      font-weight: 600;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #0b1120;
+      color: #e5e7eb;
+      padding: 1rem 1.25rem;
+      overflow: auto;
+      border-radius: 0.5rem;
+      margin: 1.25rem 0;
+      font-size: 0.88rem;
+    }
+
+    blockquote {
+      margin: 1.25rem 0;
+      padding: 0.75rem 1rem;
+      border-left: 4px solid #1d4ed8;
+      background: #eff6ff;
+      color: #111827;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Organisational Integration &amp; Governance Toolkit</h1>
+
+<h2><span style="color:#00008B">1. Introduction and Scope</span></h2>
+
+<p>Fairness in AI systems cannot be sustained through team-level practices alone. While delivery teams play a critical role in identifying and mitigating bias during development, fairness often breaks down when responsibility, authority, and accountability are unclear at the organisational level. Without explicit governance, fairness decisions become inconsistent, difficult to justify, and difficult to scale as organisations grow.</p>
+
+<p>The Organisational Integration &amp; Governance Toolkit addresses this gap by providing a structured approach to embedding fairness into organisational decision-making. It defines how fairness responsibilities are distributed across roles and seniority levels, how decisions are escalated and resolved, and how trade-offs are documented to create accountability and organisational memory.</p>
+
+<p>This toolkit is designed to complement the Fair AI Scrum Toolkit. Together, they connect execution and governance: Scrum teams surface fairness risks and evidence through their daily work, while organisational governance ensures those signals lead to consistent decisions, clear ownership, and alignment with organisational values, risk appetite, and regulatory obligations.</p>
+
+<p>By adopting this toolkit, organisations can move from ad-hoc or person-dependent fairness efforts to a systematic, repeatable approach that supports growth, cross-team coordination, and long-term trust in AI-enabled systems.</p>
+
+<blockquote>
+  <p><strong>Note 1:</strong> This toolkit provides a baseline, domain-agnostic framework for organisational fairness governance. It is non-exhaustive and is designed to be adapted to an organisation’s specific domain, risk profile, regulatory context, and level of organisational maturity.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Note 2:</strong> This toolkit is designed to support compliance with risk-based AI regulation, including the EU Artificial Intelligence Act. In particular, it supports governance obligations for high-risk AI systems, such as those used in recruitment, employment, creditworthiness, education, and access to essential services.</p>
+  <p>While this toolkit does not replace legal advice or a formal conformity assessment, it establishes the organisational structures, documentation practices, and decision accountability required to meet regulatory expectations.</p>
+</blockquote>
+
+<h2><span style="color:#00008B">2. Fairness Governance Framework</span></h2>
+
+<p>This section defines the organisational fairness governance framework that enables consistent, accountable, and scalable fairness practices across AI systems. While the Fair AI Scrum Toolkit embeds fairness within delivery teams, this framework ensures that fairness decisions are owned, coordinated, and governed at the appropriate organisational levels.</p>
+
+<p>The framework is designed to support organisations as they scale, preventing fairness from becoming fragmented, inconsistent, or dependent on individual teams.</p>
+
+<h3><span style="color:#00008B">2.1 Purpose of Fairness Governance</span></h3>
+
+<p>Fairness failures in AI systems rarely stem from a lack of technical knowledge alone. More commonly, they arise from:</p>
+<ul>
+  <li>Unclear ownership of fairness decisions</li>
+  <li>Diffused responsibility across teams</li>
+  <li>Lack of escalation pathways for ethical or societal risks</li>
+  <li>Inconsistent decision-making between products or teams</li>
+</ul>
+
+<p>The purpose of this governance framework is to:</p>
+<ul>
+  <li>Define who is accountable for fairness decisions</li>
+  <li>Clarify where decisions are made</li>
+  <li>Ensure consistency and traceability across teams</li>
+  <li>Enable early escalation of high-risk fairness issues</li>
+  <li>Balance local team autonomy with organisational oversight</li>
+</ul>
+
+<p>Fairness governance is therefore an operational system, not a compliance afterthought or advisory function.</p>
+
+<h3><span style="color:#00008B">2.2 Governance Principles</span></h3>
+
+<p>The framework is grounded in the following principles:</p>
+
+<ul>
+  <li><strong>Accountability</strong><br>
+  Every fairness decision must have a named owner with the authority to act.</li>
+</ul>
+
+<ul>
+  <li><strong>Proportionality</strong><br>
+  Governance effort should scale with the risk, impact, and regulatory exposure of the AI system.</li>
+</ul>
+
+<ul>
+  <li><strong>Subsidiarity</strong><br>
+  Decisions should be made at the lowest appropriate organisational level, with escalation only when necessary.</li>
+</ul>
+
+<ul>
+  <li><strong>Transparency</strong><br>
+  Fairness decisions, trade-offs, and rationales must be documented and reviewable.</li>
+</ul>
+
+<ul>
+  <li><strong>Cross-Functional Ownership</strong><br>
+  Fairness is not the responsibility of a single function; it requires collaboration across product, data, legal, and leadership roles.</li>
+</ul>
+
+<ul>
+  <li><strong>Challenge and Independence</strong><br>
+  Governance structures should enable constructive challenge, reduce conflicts of interest, and counteract cognitive biases such as groupthink or sunk-cost fallacy.</li>
+</ul>
+
+<h3><span style="color:#00008B">2.3 Organisational Levels and Decision Authority</span></h3>
+
+<p>Fairness decisions occur at multiple organisational levels. This framework distinguishes four primary levels, each with defined responsibilities and authority (Figure 1).</p>
+
+<h4><span style="color:#00008B">A. Team Level</span></h4>
+<ul>
+  <li>Identifies and mitigates fairness risks during development.</li>
+  <li>Executes fairness validation and documentation.</li>
+  <li>Escalates unresolved or high-impact issues.</li>
+</ul>
+
+<p><strong>Typical roles:</strong> Developers, Data Scientists, Product Managers, Scrum Masters.<br>
+<strong>Decision authority:</strong> Low to medium-risk fairness decisions within agreed organisational standards.</p>
+
+<h4><span style="color:#00008B">B. Product / Domain Level</span></h4>
+<ul>
+  <li>Reviews fairness trade-offs across related features or models.</li>
+  <li>Resolves conflicts between delivery goals and fairness constraints.</li>
+  <li>Prioritises fairness work across teams within a domain.</li>
+</ul>
+
+<p><strong>Typical roles:</strong> Product Leads, Domain Architects, Fairness or Ethics Leads.<br>
+<strong>Decision authority:</strong> Medium-risk decisions and cross-team consistency.</p>
+
+<h4><span style="color:#00008B">C. Organisational Governance Level</span></h4>
+<ul>
+  <li>Sets organisational fairness standards and thresholds.</li>
+  <li>Oversees consistency across products and domains.</li>
+  <li>Reviews high-risk or escalated fairness decisions.</li>
+  <li>Aligns fairness practices with organisational values and risk appetite.</li>
+</ul>
+
+<p><strong>Typical roles:</strong> Fairness Steering Committee, Responsible AI Council, Senior Leadership.<br>
+<strong>Decision authority:</strong> High-risk decisions with potential organisational, legal, or reputational impact.</p>
+
+<h4><span style="color:#00008B">D. Executive / Board Level</span></h4>
+<ul>
+  <li>Owns ultimate accountability for fairness outcomes.</li>
+  <li>Approves risk acceptance decisions for critical systems.</li>
+  <li>Ensures alignment with legal, regulatory, and strategic objectives.</li>
+</ul>
+
+<p><strong>Typical roles:</strong> Executive Leadership, Board Committees.<br>
+<strong>Decision authority:</strong> Critical or irreversible fairness risks.</p>
+
+<blockquote>
+  <p><strong>Relation to regulatory roles</strong><br>
+  In EU AI Act terms, governance responsibilities may span multiple regulated roles (e.g. AI provider, deployer,
+  authorised representative). This framework does not assume a single legal role per organisational level. Instead, it ensures that decision authority, accountability, and escalation paths are explicit, regardless of how regulatory roles are distributed across the organisation or supply chain.</p>
+</blockquote>
+
+<div class="mermaid">
+%%{init: {'theme': 'neutral', 'themeVariables': { 'fontSize': '14px'}}}%%
+flowchart TB
+
+    Team("Product &amp; AI Teams<br/>Fairness Signals<br/>(metrics, audits, user feedback)")
+    Embed["Embedded Fairness Roles<br/>(Product, DS, Eng, UX)"]
+    GovBody["Fairness Governance Bodies<br/>(Guild, Review Board, Council)"]
+    Exec["Executive Fairness Authority<br/>(Risk Appetite &amp; Policy)"]
+    Doc["Fairness Decision Records<br/>&amp; Accountability Trail"]
+    Monitor["Monitoring &amp; Continuous Review"]
+
+    Team --> Embed
+    Embed --> GovBody
+    GovBody -.->|Escalation| Exec
+    Exec -.->|"Decision &amp; Direction"| GovBody
+    GovBody --> Doc
+    Doc --> Monitor
+    Monitor --> Monitor
+    Monitor -.-> Team
+
+    classDef team fill:#D5E8D4,stroke:#333;
+    classDef gov fill:#c9e4ff,stroke:#333;
+    classDef exec fill:#bbf,stroke:#333;
+    classDef doc fill:#ECECFF,stroke:#333;
+
+    class Team,Embed team;
+    class GovBody gov;
+    class Exec exec;
+    class Doc,Monitor doc;
+</div>
+
+<p style="font-size:0.8rem"><strong>Figure 1.</strong> Organisational fairness governance loop: signals, escalation, documentation, and monitoring.</p>
+
+<h3><span style="color:#00008B">2.4 Governance Models</span></h3>
+
+<p>Organisations may adopt different governance structures depending on size, maturity, and regulatory exposure. This toolkit supports three common models.</p>
+
+<h4><span style="color:#00008B">A. Centralised Model</span></h4>
+<p>A dedicated fairness or Responsible AI function defines standards, reviews decisions, and provides oversight.</p>
+<p><strong>Best suited for:</strong> Highly regulated or early-stage organisations seeking consistency.</p>
+
+<h4><span style="color:#00008B">B. Federated Model</span></h4>
+<p>Fairness expertise is embedded within domains, with light central coordination.</p>
+<p><strong>Best suited for:</strong> Large organisations with diverse products and mature teams.</p>
+
+<h4><span style="color:#00008B">C. Hybrid (Hub-and-Spoke) Model</span></h4>
+<p>A central governance body sets standards and provides oversight, while domain teams retain execution autonomy.</p>
+<p><strong>Best suited for:</strong> Most growing organisations balancing speed and control.</p>
+
+<h3><span style="color:#00008B">2.5 Relationship to the Fair AI Scrum Toolkit</span></h3>
+
+<p>This governance framework <strong>does not replace</strong> team-level fairness practices. Instead, it:</p>
+<ul>
+  <li>Consumes outputs from Scrum teams (e.g. fairness metrics, decision records)</li>
+  <li>Provides escalation paths and decision support</li>
+  <li>Ensures organisational alignment and accountability</li>
+</ul>
+
+<p>Together, the two toolkits create a closed loop between <strong>execution</strong> and <strong>governance</strong>.</p>
+
+<p>A well-defined fairness governance framework ensures that fairness is not dependent on individual teams or champions. By clearly defining roles, responsibilities, and decision authority across organisational levels, organisations can scale fairness practices consistently while remaining responsive to real-world risks and constraints.</p>
+
+<p><strong>Intersectional Considerations</strong><br>
+Fairness governance must explicitly consider intersectional impacts, recognising that harms may emerge from the interaction of multiple attributes rather than single dimensions alone. Governance bodies are responsible for setting expectations on when intersectional analysis is required, based on system risk, scale, and domain context.</p>
+
+<h2><span style="color:#00008B">3. Roles, Responsibilities, and Decision Authority</span></h2>
+
+<p>Effective fairness governance depends on clearly defined roles, explicit responsibilities, and well-understood decision authority. Without this clarity, fairness work risks being duplicated, ignored, or deferred, particularly as organisations scale and AI systems become more complex.</p>
+
+<p>This section defines the key organisational roles involved in fairness governance and explains how decision authority is distributed across levels. It provides a shared language for accountability and ensures fairness decisions are made deliberately rather than implicitly.</p>
+
+<h3><span style="color:#00008B">3.1 Principles for Role Definition</span></h3>
+
+<p>Roles within the fairness governance framework are defined according to the following principles:</p>
+
+<ul>
+  <li><strong>Clear ownership</strong><br>
+  Every fairness-related activity and decision must have a clearly identified owner.</li>
+</ul>
+
+<ul>
+  <li><strong>Separation of execution and oversight</strong><br>
+  Where risk is high, organisations should ensure independence between AI system development and fairness evaluation or oversight, so that teams building AI systems are not solely responsible for approving high-impact fairness decisions. This reduces confirmation bias and enables effective challenge.</li>
+</ul>
+
+<ul>
+  <li><strong>Proportional authority</strong><br>
+  Decision-making authority should align with the risk, scope, and potential impact of the AI system.</li>
+</ul>
+
+<ul>
+  <li><strong>Cross-functional involvement</strong><br>
+  Fairness decisions require input from multiple disciplines, including technical, legal, and business perspectives.</li>
+</ul>
+
+<ul>
+  <li><strong>Capability and Enablement</strong><br>
+  Individuals assigned fairness governance responsibilities should be appropriately enabled to fulfil their roles. This includes access to role-relevant training, guidance, or expertise covering both technical and socio-technical aspects of AI risk and fairness, proportionate to the scope and impact of the systems they oversee.</li>
+</ul>
+
+<h3><span style="color:#00008B">3.2 Key Organisational Roles</span></h3>
+
+<p>The following roles represent typical responsibilities within a fairness governance structure. Titles may vary across organisations, but the functions remain consistent.</p>
+
+<h4><span style="color:#00008B">A. Delivery Teams</span></h4>
+
+<p><strong>Primary responsibilities</strong></p>
+<ul>
+  <li>Identify fairness risks during data collection, model development, and evaluation.</li>
+  <li>Implement fairness testing, mitigation strategies, and documentation.</li>
+  <li>Produce evidence (metrics, decision records) required for governance review.</li>
+  <li>Escalate unresolved or high-impact fairness concerns.</li>
+</ul>
+
+<p><strong>Decision authority</strong></p>
+<ul>
+  <li>Low-risk fairness decisions within established organisational standards.</li>
+  <li>No authority to accept high-impact or irreversible fairness risks.</li>
+</ul>
+
+<h4><span style="color:#00008B">B. Product and Domain Leadership</span></h4>
+
+<p><strong>Primary responsibilities</strong></p>
+<ul>
+  <li>Balance fairness considerations with product goals and delivery constraints.</li>
+  <li>Resolve fairness trade-offs across related features or teams.</li>
+  <li>Ensure consistency of fairness practices within a domain or product area.</li>
+</ul>
+
+<p><strong>Decision authority</strong></p>
+<ul>
+  <li>Medium-risk fairness decisions.</li>
+  <li>Authority to prioritise fairness work and approve mitigations within a domain.</li>
+  <li>Escalation required for organisation-wide or high-risk impacts.</li>
+</ul>
+
+<h4><span style="color:#00008B">C. Fairness, Ethics, or Responsible AI Leads</span></h4>
+
+<p><strong>Primary responsibilities</strong></p>
+<ul>
+  <li>Define organisational fairness standards, thresholds, and evaluation criteria.</li>
+  <li>Provide expert guidance on fairness risks and mitigation strategies.</li>
+  <li>Review and challenge fairness decisions proposed by teams or product leadership.</li>
+  <li>Support consistency across teams and domains.</li>
+</ul>
+
+<p><strong>Decision authority</strong></p>
+<ul>
+  <li>Advisory authority for low- and medium-risk decisions.</li>
+  <li>Shared authority for high-risk decisions when part of a formal governance body.</li>
+</ul>
+
+<h4><span style="color:#00008B">D. Legal, Risk, and Compliance Functions</span></h4>
+
+<p><strong>Primary responsibilities</strong></p>
+<ul>
+  <li>Interpret regulatory and legal requirements related to fairness.</li>
+  <li>Assess legal and compliance risk associated with fairness decisions.</li>
+  <li>Advise on documentation, audit readiness, and external disclosures.</li>
+</ul>
+
+<p><strong>Decision authority</strong></p>
+<ul>
+  <li>Veto or escalation authority for decisions that pose legal or regulatory risk.</li>
+  <li>No ownership of technical fairness implementation.</li>
+</ul>
+
+<h4><span style="color:#00008B">E. Fairness Governance Bodies</span></h4>
+
+<p>(e.g. Fairness Steering Committee, Responsible AI Council)</p>
+
+<p><strong>Primary responsibilities</strong></p>
+<ul>
+  <li>Review escalated or high-impact fairness decisions.</li>
+  <li>Ensure alignment with organisational values, risk appetite, and strategy.</li>
+  <li>Resolve conflicts between business objectives and fairness constraints.</li>
+  <li>Approve or reject risk acceptance proposals.</li>
+</ul>
+
+<p><strong>Decision authority</strong></p>
+<ul>
+  <li>High-risk fairness decisions with cross-team or organisational impact.</li>
+  <li>Authority to mandate corrective actions or halt deployment.</li>
+</ul>
+
+<h4><span style="color:#00008B">Executive Leadership and Board Oversight</span></h4>
+
+<p><strong>Primary responsibilities</strong></p>
+<ul>
+  <li>Own ultimate accountability for fairness outcomes.</li>
+  <li>Approve acceptance of critical or irreversible fairness risks.</li>
+  <li>Ensure fairness governance aligns with organisational strategy and public commitments.</li>
+</ul>
+
+<p><strong>Decision authority</strong></p>
+<ul>
+  <li>Final decision-making authority for critical systems.</li>
+  <li>Oversight responsibility rather than operational involvement.</li>
+</ul>
+
+<h4><span style="color:#00008B">3.2.1 Fairness Leadership Roles (Recommended)</span></h4>
+
+<p>Traditional organisational structures rarely include explicit fairness leadership positions, which can leave fairness without clear champions, budget authority, or escalation power. To avoid fairness becoming "everyone's responsibility and no one's job", organisations should define a small set of fairness leadership roles with clear mandates and decision rights.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th>Purpose</th>
+      <th>Typical responsibilities</th>
+      <th>Decision authority</th>
+      <th>Interfaces with</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Chief AI Ethics Officer (or Responsible AI Executive Sponsor)</strong></td>
+      <td>Owns organisation-wide fairness strategy and accountability</td>
+      <td>Sets fairness North Star and risk appetite; approves organisation-wide standards/thresholds; ensures governance bodies operate effectively; sponsors resources and training</td>
+      <td>Final/strategic authority on high-risk fairness trade-offs and risk acceptance (often with executive/board oversight)</td>
+      <td>Executive leadership, governance bodies, Legal/Risk, Product leadership</td>
+    </tr>
+    <tr>
+      <td><strong>Fairness Programme Manager</strong></td>
+      <td>Turns fairness strategy into operational delivery across teams</td>
+      <td>Coordinates roll-out of governance, templates, training, and reporting; tracks adoption; maintains playbook assets; supports escalations and audits</td>
+      <td>Operational authority to drive consistency and compliance with governance processes</td>
+      <td>Product/Domain leads, delivery teams, governance secretariat, PMO</td>
+    </tr>
+    <tr>
+      <td><strong>Fairness Domain Specialists (e.g. Hiring, Finance, Healthcare)</strong></td>
+      <td>Provides domain-aware fairness expertise</td>
+      <td>Advises on domain harms, protected groups, thresholds, and stakeholder needs; supports impact assessments; validates that fairness choices fit domain context</td>
+      <td>Advisory authority; may co-sign domain-level fairness requirements for high-risk systems</td>
+      <td>Product/domain leadership, User research, Legal/Risk, delivery teams</td>
+    </tr>
+    <tr>
+      <td><strong>Technical Fairness Leads</strong></td>
+      <td>Ensures technical fairness implementation is robust and testable</td>
+      <td>Defines metric suites and evaluation protocols; oversees bias testing and mitigation approaches; supports monitoring design; reviews technical evidence for governance gates</td>
+      <td>Technical authority over fairness evaluation methods and minimum evidence standards</td>
+      <td>Data science/engineering leads, MLOps, QA, governance review boards</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Intersectionality requirement:</strong> Leadership roles must explicitly own intersectional analysis expectations (e.g., when intersectional disaggregation is mandatory, what minimum sample thresholds apply, and how uncertainty is handled when data is sparse).</p>
+
+<h3><span style="color:#00008B">3.3 Positionality and Perspective in Fairness Governance</span></h3>
+
+<p>Fairness governance is influenced not only by formal roles and decision authority, but also by the perspectives and lived experiences of those making decisions. Governance bodies and senior decision-makers should therefore reflect on how their positionality including personal characteristics, professional background, institutional context, and team composition may shape which fairness risks are visible, prioritised, or overlooked.</p>
+
+<p>A lack of diversity or perspectival breadth within decision-making forums can result in blind spots, particularly for intersectional harms affecting marginalised or underrepresented groups. Conversely, deliberate reflection on positionality can help governance bodies identify missing perspectives, challenge implicit assumptions, and improve the quality of fairness decisions.</p>
+
+<p>Such reflection is especially important when:</p>
+<ul>
+  <li>Assessing high-risk or public-facing AI systems</li>
+  <li>Making trade-off decisions that may disproportionately affect specific groups</li>
+  <li>Determining whether additional stakeholder engagement or external input is required</li>
+</ul>
+
+<p>Organisations may choose to support this reflection using structured tools (e.g. positionality matrices or guided team discussions). These tools are intended to inform governance judgement, not to replace technical analysis or formal decision processes.</p>
+
+<h3><span style="color:#00008B">3.4 Decision Authority and Escalation</span></h3>
+
+<p>Fairness decisions should be made at the lowest appropriate level, escalating only when necessary. Escalation is required when:</p>
+
+<ul>
+  <li>A fairness risk exceeds predefined thresholds.</li>
+  <li>Trade-offs affect protected or vulnerable groups at scale.</li>
+  <li>Legal, regulatory, or reputational risk is significant.</li>
+  <li>Teams lack the authority or mandate to resolve the issue.</li>
+  <li>A fairness risk may result in non-compliance with applicable regulation, including prohibited or non-mitigable risks under the EU AI Act.</li>
+</ul>
+
+<p>Clear escalation paths prevent delays, reduce ambiguity, and ensure that fairness decisions are made transparently and consistently (Figure 2).</p>
+
+<div class="mermaid">
+%%{init: {"flowchart": {"diagramPadding":"100","markdownAutowrap":"true"}, "theme": "neutral", "themeVariables": { "fontSize": "14px"}}}%%
+graph TD
+
+    Root[Fairness Decision Identified]
+
+    Root --> |High Risk| Gov[Fairness Governance Body]
+    Root --> |Medium Risk| Domain[Product / Domain Leadership]
+    Root --> |Low Risk| Team[Delivery Team]
+
+    Domain --> |Escalate| Gov
+    Gov --> |Critical Risk| Exec[Executive / Board]
+
+    Team --> Team_Action[Mitigate &amp; Document]
+    Domain --> Domain_Action[Approve Trade-off]
+    Gov --> Gov_Action[Approve / Reject / Halt]
+    Exec --> Exec_Action[Risk Acceptance Decision]
+
+    classDef main fill:#bbf, stroke:#333,stroke-width:2px;
+    classDef level fill:#c9e4ff,stroke:#333,stroke-width:1px;
+    classDef action fill:#D5E8D4,stroke:#333,stroke-width:1px;
+
+    class Root main;
+    class Team,Domain,Gov,Exec level;
+    class Team_Action,Domain_Action,Gov_Action,Exec_Action action;
+</div>
+
+<p style="font-size:0.8rem"><strong>Figure 2.</strong> Fairness decision escalation based on risk and impact.</p>
+
+<p>Well-defined roles and decision authority are essential for scalable fairness governance. By distributing responsibility across organisational levels and establishing explicit escalation pathways, organisations can ensure that fairness decisions are accountable, consistent, and aligned with both delivery realities and organisational values.</p>
+
+<h2><span style="color:#00008B">4. Fairness Responsibility Matrix</span></h2>
+
+<p>A governance framework is only effective if responsibilities are made explicit and consistently understood across the organisation. This section translates the roles, decision authority, and escalation principles defined in Sections 2 and 3 into a fairness responsibility matrix that clarifies who is responsible, accountable, consulted, and informed for key fairness-related activities across the AI lifecycle.</p>
+
+<p>To support this clarity, the toolkit uses the RACI framework, a widely adopted governance and risk-management model for structuring ownership and decision-making. Applied to fairness, a RACI matrix helps teams move beyond informal or ad-hoc decision processes and ensures that fairness risks are actively owned rather than implicitly assumed.</p>
+
+<p>The matrix is designed to:</p>
+<ul>
+  <li>Reduce ambiguity and duplication of effort</li>
+  <li>Prevent diffusion of responsibility for fairness decisions</li>
+  <li>Support proportional escalation and independent challenge</li>
+  <li>Enable traceability and auditability of fairness outcomes</li>
+</ul>
+
+<p>This responsibility matrix should be treated as a living artefact. As systems evolve, risks change, or organisational structures mature, the matrix should be reviewed and adapted to reflect the organisation’s size, structure, and risk profile.</p>
+
+<h3><span style="color:#00008B">4.1 How to use this Matrix</span></h3>
+
+<p>The RACI framework defines four roles:</p>
+<ul>
+  <li><strong>Responsible (R):</strong> Performs the work and produces evidence.</li>
+  <li><strong>Accountable (A):</strong> Ultimately owns the decision and outcome.</li>
+  <li><strong>Consulted (C):</strong> Provides input or expert guidance.</li>
+  <li><strong>Informed (I):</strong> Kept aware of outcomes and decisions.</li>
+</ul>
+
+<p>Used in this way, the RACI framework operationalises fairness governance by making ownership explicit, enabling timely escalation, and supporting consistent decision-making across teams and organisational levels. Each fairness-related activity should have exactly one Accountable role. Multiple Responsible or Consulted roles may be appropriate.</p>
+
+<h3><span style="color:#00008B">4.2 Fairness Responsibility Matrix (RACI)</span></h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fairness Activity</th>
+      <th>Delivery Teams</th>
+      <th>Product / Domain Leadership</th>
+      <th>Fairness / Responsible AI Leads</th>
+      <th>Legal / Risk / Compliance</th>
+      <th>Governance Body</th>
+      <th>Executive / Board</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Identify fairness risks</td>
+      <td>R</td>
+      <td>A</td>
+      <td>C</td>
+      <td>I</td>
+      <td>I</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Perform fairness testing &amp; evaluation</td>
+      <td>R</td>
+      <td>C</td>
+      <td>A</td>
+      <td>I</td>
+      <td>I</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Interpret fairness metrics &amp; trade-offs</td>
+      <td>R</td>
+      <td>A</td>
+      <td>C</td>
+      <td>C</td>
+      <td>I</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Decide on low-risk mitigations</td>
+      <td>A</td>
+      <td>C</td>
+      <td>C</td>
+      <td>I</td>
+      <td>I</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Decide on medium-risk trade-offs</td>
+      <td>C</td>
+      <td>A</td>
+      <td>C</td>
+      <td>C</td>
+      <td>I</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Approve high-risk fairness decisions</td>
+      <td>I</td>
+      <td>C</td>
+      <td>C</td>
+      <td>C</td>
+      <td>A</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Accept critical or irreversible risk</td>
+      <td>I</td>
+      <td>I</td>
+      <td>C</td>
+      <td>C</td>
+      <td>C</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>Define fairness standards &amp; thresholds</td>
+      <td>I</td>
+      <td>C</td>
+      <td>R</td>
+      <td>C</td>
+      <td>A</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Escalate unresolved fairness concerns</td>
+      <td>R</td>
+      <td>R</td>
+      <td>C</td>
+      <td>C</td>
+      <td>A</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Maintain fairness documentation</td>
+      <td>R</td>
+      <td>C</td>
+      <td>C</td>
+      <td>C</td>
+      <td>I</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Review intersectional impacts (when required)</td>
+      <td>R</td>
+      <td>C</td>
+      <td>C</td>
+      <td>C</td>
+      <td>A</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Engage external stakeholders (if applicable)</td>
+      <td>I</td>
+      <td>R</td>
+      <td>C</td>
+      <td>C</td>
+      <td>A</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Post-incident review &amp; learning</td>
+      <td>R</td>
+      <td>R</td>
+      <td>C</td>
+      <td>C</td>
+      <td>A</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Regulatory readiness &amp; external fairness claims sign-off</td>
+      <td>R</td>
+      <td>C</td>
+      <td>C</td>
+      <td>A</td>
+      <td>I</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Approve external fairness claims / disclosures (if any)</td>
+      <td>I</td>
+      <td>R</td>
+      <td>C</td>
+      <td>A</td>
+      <td>C</td>
+      <td>I</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong>Note 3:</strong> <em>Executive / Board</em> refers to the organisation’s accountable senior leadership for AI risk and fairness outcomes (e.g., CEO/CTO/CPO, a board risk/ethics committee, or a formally appointed Responsible AI executive sponsor). It does not refer to a finance function unless your organisation assigns AI risk ownership there.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Note 4:</strong> <em>Legal / Risk / Compliance</em> is typically accountable (A) for regulatory readiness and external claims (e.g., audit readiness, disclosures, contractual assurances), and consulted (C) on fairness trade-offs. Accountability for fairness outcomes normally sits with product and governance functions, with executive ownership for critical risk acceptance.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>Note 5:</strong> If your organisation operates under a regulated model-risk or independent assurance regime, you may add an Independent Assurance / Audit column to the matrix (or represent it within <em>Legal/Risk/Compliance</em>) so that fairness evaluation and challenge are structurally independent of delivery teams for high-risk systems.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong>High-risk systems (EU AI Act)</strong><br>
+  For AI systems classified as high-risk (e.g. recruitment and employment decision systems), accountability for fairness decisions and residual risk acceptance must sit at governance or executive level, even where delivery teams perform the technical analysis. This requirement reflects regulatory expectations under the EU Artificial Intelligence Act and does not override internal role definitions; rather, it constrains where final accountability may sit for high-risk systems.</p>
+</blockquote>
+
+<h3><span style="color:#00008B">4.3 Notes on Intersectionality and Risk</span></h3>
+
+<p>Intersectional analysis is not required for every system, but it must be explicitly considered for AI systems that are high-risk, public-facing, or likely to affect marginalised or vulnerable groups.</p>
+
+<p>Governance bodies are accountable for:</p>
+<ul>
+  <li>Defining when intersectional analysis is required</li>
+  <li>Ensuring appropriate expertise and perspectives are consulted</li>
+  <li>Confirming that limitations and residual risks are documented</li>
+</ul>
+
+<h3><span style="color:#00008B">4.4 Adapting the Matrix to Organisational Context</span></h3>
+
+<p>Organisations should tailor this matrix to reflect:</p>
+<ul>
+  <li>Size and maturity of AI capability</li>
+  <li>Regulatory exposure and sector-specific obligations</li>
+  <li>Centralised, federated, or hybrid governance models</li>
+</ul>
+
+<p>In smaller organisations, a single role may cover multiple columns. In larger organisations, responsibilities may be distributed across specialised teams or committees. Regardless of structure, <strong>accountability must remain unambiguous</strong>.</p>
+
+<h2><span style="color:#00008B">5. Documentation System for Accountability and Organisational Memory</span></h2>
+
+<p>A fairness governance framework only scales if decisions are captured, traceable, and reusable. This section defines a lightweight documentation system that records fairness decisions, trade-offs, and rationales in a way that supports accountability, audit readiness, and learning across teams.</p>
+
+<p>Frameworks such as the NIST AI RMF<sup>1</sup> make emphasis on transparent documentation policies, including capturing assumptions, limitations, testing/validation outcomes, monitoring plans, and stakeholder engagement plans. This section aligns with NIST emphasis.</p>
+
+<h3><span style="color:#00008B">5.1 What this Documentation System must Achieve?</span></h3>
+
+<p>The documentation system supports fairness governance by ensuring that decisions are explicit, reviewable, and durable over time. At a minimum, it must enable the following:</p>
+
+<ul>
+  <li><strong>Traceability</strong>: Every material fairness decision can be traced to who decided, when, why, and what evidence was used.</li>
+  <li><strong>Consistency:</strong> Teams can reference prior decisions, thresholds, and trade-offs, reducing repeated debates and inconsistent outcomes across products or domains.</li>
+  <li><strong>Accountability:</strong> Decisions are explicitly linked to roles and approvals defined in the RACI matrix, including escalation outcomes where applicable.</li>
+  <li><strong>Intersectionality by design:</strong> Where relevant, documentation explicitly records intersectional impacts, limitations in subgroup data, and how uncertainty was handled.</li>
+  <li><strong>Lifecycle coverage:</strong> Documentation supports not only development and deployment, but also monitoring, iteration, and eventual decommissioning.</li>
+</ul>
+
+<p>Figure 3 illustrates how documentation supports fairness decision-making across the system lifecycle.</p>
+
+<div class="mermaid">
+%%{ init: { "flowchart": { "defaultRenderer": "dagre", "diagramPadding":"100","markdownAutowrap":"true"},
+"theme":"neutral", "themeVariables": { "fontSize": "14px" } } }%%
+flowchart TD
+
+    subgraph Fairness Concern Identification
+        A("&lt;b&gt;Start:&lt;/b&gt; Fairness concern&lt;br/&gt;or decision point identified")
+    end
+
+    subgraph Fairness Documentation
+        A --> B["FDR created or updated&lt;br/&gt;• decision owner&lt;br/&gt;• evidence linked&lt;br/&gt;• approval recorded"]
+        B --> C["Evidence attached&lt;br/&gt;(metrics, disaggregated results, tests)"]
+        C --> D["Trade-off recorded&lt;br/&gt;• options considered&lt;br/&gt;• rationale documented&lt;br/&gt;• residual risk noted"]
+    end
+
+    subgraph Risk Management
+        direction LR
+
+        E{"Risk level?"}
+        E -- "Low or Medium" --> F["Local approval&lt;sup&gt;1&lt;/sup&gt;"]
+        E -- "High or Critical" --> G["Escalation review&lt;sup&gt;2&lt;/sup&gt;"]
+        E -- "Unacceptable or obsolete" --> L["Decommission plan recorded&lt;br/&gt;(data retention, user comms,&lt;br/&gt;handover, audit trail)"]
+        L --> M("System retired")
+
+        F --> H["Decision logged and linked&lt;br/&gt;(backlog item, model version,&lt;br/&gt;release note)"]
+        G --> H
+
+        H --> I["Deploy or change&lt;br/&gt;implemented"]
+
+        A --> E
+        D --> E
+
+        BN["1. Product and Domain Leadership and Responsible AI Lead.&lt;br/&gt;2. Governance Body, with Legal, Risk and Compliance consulted and<br/>&nbsp;&nbsp;&nbsp; Executive Board Oversight if needed."]
+    end
+
+    subgraph Continuous Monitoring
+        I --> J["Monitoring &amp; feedback loop&lt;br/&gt;(alerts, audits, user feedback)"]
+        J --> K{"Metrics as&lt;br/&gt;expected?"}
+        K -.-> |"Yes: Continue with monitoring"| J
+        K -.-> |"No: Change required"| A
+    end
+
+    classDef main fill:#bbf, stroke:#333, stroke-width:1px;
+    classDef step fill:#c9e4ff, stroke:#333, stroke-width:1px;
+    classDef decision fill:#D5E8D4, stroke:#333, stroke-width:1px;
+    classDef note fill:#fff, stroke:#333, stroke-width:1px, text-align:left, font-size:12px;
+
+    class A,M main;
+    class F,G,J,L step;
+    class E,K decision;
+    class BN note;
+</div>
+<p style="font-size:0.8rem;"><strong>Figure 3.</strong> Fairness decision documentation and escalation flow.</p>
+
+<h3><span style="color:#00008B">5.2 Core Documentation Artefacts</span></h3>
+
+<p>The documentation system is composed of a small set of standardised artefacts. These artefacts are intentionally modular and may be adapted to organisational context, tooling, and regulatory exposure.</p>
+
+<h4><span style="color:#00008B">5.2.1 Fairness Decision Records (FDRs)</span></h4>
+
+<p>Fairness Decision Records (FDRs) are the primary mechanism for capturing material fairness decisions. They are lightweight, structured documents, similar in spirit to architectural decision records (ADRs), and should be co-located with code, models, or product documentation.</p>
+
+<p>Each FDR should capture:</p>
+<ul>
+  <li>Decision context and scope</li>
+  <li>Identified fairness risks and affected groups</li>
+  <li>Evidence reviewed (metrics, audits, tests)</li>
+  <li>Trade-offs considered and rationale for the chosen option</li>
+  <li>Residual risk and mitigation commitments</li>
+  <li>Decision owner, approvals, and escalation (if applicable)</li>
+</ul>
+
+<p>FDRs form the backbone of accountability and enable both internal review and external audit readiness. An illustrative example of a Fairness Decision Record, including recommended minimum fields, is provided in Appendix A. This example is intended as a reference point rather than a prescriptive template and should be adapted to organisational context and tooling.</p>
+
+<h4><span style="color:#00008B">5.2.2 Fairness Requirements and Constraints</span></h4>
+
+<p>Fairness requirements document the explicit objectives, constraints, and thresholds that apply to a system or feature. These may include:</p>
+
+<ul>
+  <li>Defined fairness metrics and acceptable ranges</li>
+  <li>Protected or vulnerable groups that must be assessed</li>
+  <li>Regulatory or organisational constraints</li>
+  <li>Monitoring expectations post-deployment</li>
+</ul>
+
+<p>These requirements should be referenced by user stories, backlog items, and model evaluation workflows, ensuring alignment between governance and delivery.</p>
+
+<h4><span style="color:#00008B">5.2.3 Trade-off and Alternatives Analysis</span></h4>
+
+<p>Where fairness goals conflict with performance, usability, or delivery constraints, teams must document:</p>
+
+<ul>
+  <li>Alternative options considered</li>
+  <li>Impacts on different groups, including intersectional effects</li>
+  <li>Rationale for the selected approach</li>
+  <li>Known limitations and residual risk</li>
+</ul>
+
+<p>This documentation supports proportional decision-making and protects teams from implicit or undocumented value judgements.</p>
+
+<h4><span style="color:#00008B">5.2.4 Limitation and risk acknowledgement</span></h4>
+
+<p>No AI system is perfectly fair. Documentation must therefore include transparent acknowledgement of:</p>
+
+<ul>
+  <li>Known fairness limitations</li>
+  <li>Data gaps or uncertainty in subgroup analysis</li>
+  <li>Scenarios where mitigation was not feasible</li>
+  <li>Conditions under which re-evaluation is required</li>
+</ul>
+
+<p>Explicitly documenting limitations strengthens trust and prevents false assurances of fairness.</p>
+
+<h4><span style="color:#00008B">5.2.5 Model cards and system summaries</span></h4>
+
+<p>Model cards or system summaries should be extended to include fairness-relevant information alongside technical details, such as:</p>
+
+<ul>
+  <li>Evaluated groups and metrics</li>
+  <li>Known biases or constraints</li>
+  <li>Monitoring signals and escalation triggers</li>
+  <li>Links to relevant FDRs</li>
+</ul>
+
+<p>These summaries act as a bridge between technical teams, governance bodies, and non-technical stakeholders.</p>
+
+<h4><span style="color:#00008B">5.2.6 Monitoring dashboards</span></h4>
+
+<p>Monitoring dashboards are primarily applicable after deployment, when an AI system is in active use, piloting, or operating in a changing environment. They provide ongoing evidence that fairness metrics remain within agreed thresholds and surface emerging or intersectional harms over time.</p>
+
+<p>Where dashboards indicate material changes, degradation, or threshold breaches, their outputs must trigger updates to Fairness Decision Records, model cards, and, where required, escalation through governance channels. Monitoring dashboards do not replace governance decision-making; instead, they act as decision triggers. In such cases, teams must initiate a formal fairness decision gate, supported by updated Fairness Decision Records and escalation to the appropriate decision authority.</p>
+
+<p>Organisations may also maintain aggregated governance or executive scorecards that summarise fairness performance, open risks, and trends across systems or domains. These scorecards support oversight, communication, and strategic decision-making but do not replace system-level monitoring dashboards or Fairness Decision Records.</p>
+
+<p>In the case that information is shared externally (e.g. public fairness charters or scorecards), disclosures should be derived from approved governance decisions and documented evidence, rather than raw monitoring outputs.</p>
+
+<h4><span style="color:#00008B">5.2.7 Mapping documentation to regulatory expectations</span></h4>
+
+<p>For high-risk AI systems, the documentation artefacts defined in this toolkit collectively support regulatory documentation requirements, including:</p>
+
+<ul>
+  <li>Risk management systems</li>
+  <li>Technical documentation</li>
+  <li>Post-market monitoring evidence</li>
+  <li>Audit and inspection readiness</li>
+</ul>
+
+<p>Organisations may reuse Fairness Decision Records, model cards, and monitoring dashboards as inputs to regulatory conformity assessments, provided they meet required completeness and retention standards.</p>
+
+<h3><span style="color:#00008B">5.3 Using the Documentation System in Practice</span></h3>
+
+<p>This documentation system is designed to integrate into existing delivery, governance, and risk-management workflows, rather than introducing parallel or heavyweight processes. Its purpose is to make fairness decisions visible, reviewable, and reusable across teams and over time.</p>
+
+<p>Documentation should be treated as a <strong>living artefact</strong> that evolves with the AI system. Updates are expected when a model is retrained or materially modified, when new monitoring signals or fairness issues emerge, when fairness definitions or thresholds change, or when a system is decommissioned, replaced, or significantly repurposed.</p>
+
+<p>Organisations should apply the system proportionately, based on system risk, scale, and regulatory exposure. For high-risk systems, post-deployment monitoring and documentation updates are mandatory and must be treated as governance obligations, not optional operational activities.</p>
+
+<blockquote>
+  <p><strong>Note 5:</strong> Documentation should be stored in locations that are version-controlled, accessible to governance functions, and linkable from delivery artefacts such as backlogs, repositories, model registries, or release records.</p>
+</blockquote>
+
+<h4><span style="color:#00008B">5.3.1 When documentation is required</span></h4>
+
+<p>A <strong>Fairness Decision Record (FDR)</strong> or equivalent artefact should be created or updated whenever:</p>
+
+<ul>
+  <li>A material fairness risk is identified.</li>
+  <li>A fairness metric, threshold, or definition is selected or changed.</li>
+  <li>A trade-off between fairness and other objectives is made.</li>
+  <li>An escalation or risk acceptance decision occurs.</li>
+  <li>Monitoring reveals unexpected or degrading fairness outcomes.</li>
+  <li>A system is significantly modified, retired, or replaced.</li>
+</ul>
+
+<p>Low-risk decisions may be documented briefly, while high-risk or public-facing systems require more detailed evidence and review.</p>
+
+<h4><span style="color:#00008B">5.3.2 How documentation fits into delivery workflows</span></h4>
+
+<p>For delivery teams, documentation should be lightweight and closely linked to existing artefacts:</p>
+
+<ul>
+  <li>FDRs should be referenced from backlog items, pull requests, model versions, or release notes.</li>
+  <li>Fairness requirements and constraints should align with acceptance criteria and Definitions of Done.</li>
+  <li>Updates should occur incrementally, rather than being deferred to the end of development.</li>
+</ul>
+
+<p>This ensures fairness evidence is created <strong>as work happens</strong>, not reconstructed later.</p>
+
+<h4><span style="color:#00008B">5.3.3 How documentation supports governance and escalation</span></h4>
+
+<p>For governance bodies and leadership, documentation provides a shared factual basis for decision-making:</p>
+
+<ul>
+  <li>Evidence and trade-offs are visible before approval or escalation.</li>
+  <li>Decisions can be reviewed consistently across teams and domains.</li>
+  <li>Risk acceptance is explicit, traceable, and time-bound.</li>
+</ul>
+
+<p>Documentation also enables independent challenge by Legal, Risk, or Responsible AI functions without requiring them to reconstruct technical context.</p>
+
+<h4><span style="color:#00008B">5.3.4 Supporting learning and reuse</span></h4>
+
+<p>Over time, documented fairness decisions form an organisational knowledge base. Teams should periodically review past FDRs and model summaries to:</p>
+
+<ul>
+  <li>Reuse previously agreed metrics, thresholds, or mitigation patterns.</li>
+  <li>Identify recurring risks or systemic gaps.</li>
+  <li>Improve consistency across products and teams.</li>
+</ul>
+
+<p>This reduces duplicated debate and accelerates responsible decision-making.</p>
+
+<h4><span style="color:#00008B">5.3.5 Proportionality and adaptation</span></h4>
+
+<p>The documentation system is intentionally flexible. To match their size, maturity, and regulatory context organisations should adapt:</p>
+
+<ul>
+  <li>Templates and required fields.</li>
+  <li>Review depth and approval levels.</li>
+  <li>Tooling and automation.</li>
+</ul>
+
+<p>The key requirement is not uniformity of format, but clarity of ownership, rationale, and evidence.</p>
+
+<h2><span style="color:#00008B">6. User Documentation: Implementing the Toolkit in Practice</span></h2>
+
+<p>This section provides practical guidance for organisations adopting the Organisational Integration &amp; Governance Toolkit. It explains how to implement the framework across different organisational sizes, structures, and maturity levels, while preserving the core principles of accountability, proportionality, and traceability.</p>
+
+<p>The toolkit is intentionally flexible. Organisations should adapt roles, processes, and artefacts to fit their context, provided that ownership, decision authority, and escalation remain clear.</p>
+
+<h3><span style="color:#00008B">6.1 Getting Started</span></h3>
+
+<p>Organisations adopting this toolkit should begin with a lightweight baseline assessment:</p>
+
+<ul>
+  <li>Identify existing governance, risk, and delivery structures that already influence AI decision-making.</li>
+  <li>Map current roles to the fairness governance roles defined in Sections 3 and 4.</li>
+  <li>Identify gaps where fairness responsibilities are implicit, duplicated, or missing.</li>
+  <li>Determine which AI systems are high-risk, regulated, or public-facing, and prioritise those first.</li>
+</ul>
+
+<p>Initial adoption does not require organisational redesign. Most organisations can start by clarifying decision ownership and introducing Fairness Decision Records for high-impact systems.</p>
+
+<p>Organisations should ensure that individuals with fairness governance responsibilities receive appropriate training or guidance to perform their roles effectively. This may include training on fairness concepts, regulatory expectations, organisational policies, and how to interpret fairness metrics and documentation. The depth of training should be proportionate to the role’s decision authority and the risk profile of the AI systems involved.</p>
+
+<h3><span style="color:#00008B">6.2 Applying the Toolkit by Organisational Size</span></h3>
+
+<p><strong>A. Small or early-stage organisations</strong></p>
+
+<p>In smaller organisations:</p>
+
+<ul>
+  <li>Individuals may hold multiple fairness roles.</li>
+  <li>Governance forums may be informal.</li>
+  <li>Documentation should remain lightweight but explicit.</li>
+</ul>
+
+<p>The primary requirement is clear accountability, not role separation.</p>
+
+<p><strong>B. Medium-sized organisations</strong></p>
+
+<p>As organisations grow:</p>
+
+<ul>
+  <li>Fairness responsibilities should be formalised within product or domain leadership.</li>
+  <li>A small governance forum (e.g. Responsible AI working group) should be established for escalation.</li>
+  <li>Fairness Decision Records and responsibility matrices should be reused across teams to ensure consistency.</li>
+</ul>
+
+<p>At this stage, organisations benefit most from reducing duplicated fairness debates and standardising thresholds and evidence expectations.</p>
+
+<p><strong>C. Large or regulated organisations</strong></p>
+
+<p>For large or highly regulated organisations:</p>
+
+<ul>
+  <li>Governance bodies should have formal mandates, cadence, and decision authority.</li>
+  <li>Independence between development and fairness oversight should be established for high-risk systems.</li>
+  <li>Documentation must support audit, regulatory inquiry, and external assurance.</li>
+</ul>
+
+<p>Integration with enterprise risk management, legal, and compliance functions becomes critical at this stage.</p>
+
+<h3><span style="color:#00008B">6.3 Aligning with Delivery Models</span></h3>
+
+<p>This toolkit is compatible with Scrum, Kanban, and hybrid delivery models:</p>
+
+<ul>
+  <li><em>Scrum teams</em> surface fairness risks through backlog refinement, sprint reviews, and retrospectives.</li>
+  <li><em>Kanban teams</em> use flow-based signals (e.g. monitoring alerts, incident tickets) to trigger documentation and escalation.</li>
+  <li><em>Governance</em> review is decoupled from sprint cadence and occurs when risk thresholds are crossed.</li>
+</ul>
+
+<p>The documentation system ensures continuity across delivery approaches.</p>
+
+<h3><span style="color:#00008B">6.4 Common Implementation Pitfalls</span></h3>
+
+<p>Organisations should be alert to the following risks:</p>
+
+<ul>
+  <li>Treating fairness governance as a compliance exercise rather than a decision-support system.</li>
+  <li>Creating documentation that is too heavyweight to maintain.</li>
+  <li>Failing to update records as systems evolve.</li>
+  <li>Allowing fairness ownership to remain informal or person-dependent.</li>
+</ul>
+
+<p>These pitfalls can be mitigated by starting small, prioritising high-risk systems, and iterating.</p>
+
+<h3><span style="color:#00008B">6.5 Measuring successful Adoption</span></h3>
+
+<p>Indicators that the toolkit is working as intended include:</p>
+
+<ul>
+  <li>Fairness decisions are documented and traceable.</li>
+  <li>Escalation pathways are used consistently.</li>
+  <li>Prior decisions and thresholds are reused across teams.</li>
+  <li>Governance bodies can explain and justify fairness outcomes confidently.</li>
+  <li>Fairness risks are identified earlier and resolved faster over time.</li>
+</ul>
+
+<p>Adoption should be reviewed periodically and refined as organisational maturity increases.</p>
+
+<blockquote>
+  <p>By embedding fairness into existing structures, clarifying decision authority, and maintaining living documentation, organisations can scale fairness practices without sacrificing delivery speed or accountability.</p>
+</blockquote>
+
+<h3><span style="color:#00008B">6.6 Fairness Decision Gates and Dashboards</span></h3>
+
+<p>Fairness dashboards must be explicitly linked to decision gates. Organisations should define, at a minimum, the following gates:</p>
+
+<ul>
+  <li>Pre-deployment fairness approval</li>
+  <li>Release or material change approval</li>
+  <li>Post-deployment monitoring review</li>
+  <li>Decommissioning or major repurposing</li>
+</ul>
+
+<p>Each gate requires named decision authority, documented evidence, and recorded outcomes. Dashboards provide the signals; governance bodies provide the decisions.</p>
+
+<hr>
+
+<p style="font-size:0.8rem;"><sup>1</sup> National Institute of Standards and Technology - AI Risk Management Framework - <a href="https://www.nist.gov/itl/ai-risk-management-framework">https://www.nist.gov/itl/ai-risk-management-framework</a></p>
+
+<!-- Mermaid JS for GitHub Pages rendering -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    securityLevel: "loose",
+    theme: "neutral"
+  });
+</script>
+
+</body>
+</html>
+

@@ -1,118 +1,107 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>AI Fairness Interventions Playbook</title>
+  <title>AI Fairness Implementation Playbook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    * {
-      box-sizing: border-box;
-    }
+  * {
+    box-sizing: border-box;
+  }
 
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: #f9fafb;
-      color: #0f172a;
-    }
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Helvetica, Arial, sans-serif;
+    background: #f9fafb;
+    color: #0f172a;
+  }
 
+  .layout {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    width: 270px;
+    background: #0f172a;
+    color: #e5e7eb;
+    padding: 1.75rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+
+  .nav-section-title {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #9ca3af;
+    margin: 0 0 0.4rem 0.2rem;
+  }
+
+  .nav-link {
+    display: block;
+    padding: 0.45rem 0.6rem;
+    margin-bottom: 0.1rem;
+    border-radius: 0.45rem;
+    text-decoration: none;
+    color: #e5e7eb;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: 1px solid transparent;
+    line-height: 1.3;
+  }
+
+  .nav-link:hover {
+    background: #111827;
+    border-color: #1f2937;
+  }
+
+  .content {
+    flex: 1;
+    padding: 0.75rem;
+  }
+
+  iframe {
+    width: 100%;
+    height: calc(100vh - 1.5rem);
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    background: #ffffff;
+  }
+
+  @media (max-width: 800px) {
     .layout {
-      display: flex;
-      min-height: 100vh;
-    }
-
-    .sidebar {
-      width: 270px;
-      background: #0f172a;
-      color: #e5e7eb;
-      padding: 1.5rem 1rem;
-      display: flex;
       flex-direction: column;
-      gap: 1rem;
     }
-
-    .sidebar h1 {
-      font-size: 1.05rem;
-      margin: 0 0 0.2rem 0;
-    }
-
-    .sidebar p {
-      font-size: 0.8rem;
-      margin: 0;
-      color: #9ca3af;
-    }
-
-    .nav-section-title {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: #9ca3af;
-      margin: 0.75rem 0 0.25rem 0.35rem;
-    }
-
-    .nav-link {
-      display: block;
-      padding: 0.4rem 0.6rem;
-      margin-bottom: 0.15rem;
-      border-radius: 0.4rem;
-      text-decoration: none;
-      color: #e5e7eb;
-      font-size: 0.86rem;
-      cursor: pointer;
-      border: 1px solid transparent;
-    }
-
-    .nav-link:hover {
-      background: #111827;
-      border-color: #1f2937;
-    }
-
-    .nav-link.active {
-      background: #1f2937;
-      border-color: #3b82f6;
-    }
-
-    .content {
-      flex: 1;
-      padding: 0.75rem;
-    }
-
-    iframe {
+    .sidebar {
       width: 100%;
-      height: calc(100vh - 1.5rem);
-      border: 1px solid #e5e7eb;
-      border-radius: 0.75rem;
-      background: #ffffff;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      padding: 1rem 1.25rem;
     }
-
-    @media (max-width: 800px) {
-      .layout {
-        flex-direction: column;
-      }
-      .sidebar {
-        width: 100%;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-items: center;
-      }
-      .nav-section-title {
-        width: 100%;
-        margin-top: 0.5rem;
-      }
-      .content {
-        padding: 0.5rem;
-      }
-      iframe {
-        height: calc(100vh - 6.5rem);
-      }
+    .nav-section-title {
+      width: 100%;
+      margin-top: 0.75rem;
     }
+    .content {
+      padding: 0.5rem;
+    }
+    iframe {
+      height: calc(100vh - 6.5rem);
+    }
+  }
   </style>
+
   <script>
     function loadPage(page, linkId) {
       const frame = document.getElementById('content-frame');
       frame.src = page;
 
+      // update active state
       const links = document.querySelectorAll('.nav-link');
       links.forEach(l => l.classList.remove('active'));
       if (linkId) {
@@ -131,63 +120,55 @@
   <div class="layout">
     <aside class="sidebar">
       <div>
-        <h1>AI Fairness Interventions Playbook</h1>
-        <p>Implementation & governance portfolio</p>
+        <h1>AI Fairness Implementation</h1>
+        <p> AI Ethics &amp; Governance Portfolio</p>
+        <p class="sidebar-subtitle">Author: Azucena Ascencio</p>
       </div>
 
       <div>
         <div class="nav-section-title">Playbook Sections</div>
 
         <a id="link-intro" class="nav-link"
-           href="sp-03-introduction.html"
            onclick="loadPage('sp-03-introduction.html', 'link-intro'); return false;">
           1. Introduction
         </a>
 
         <a id="link-scrum" class="nav-link"
-           href="sp-03-fair-ai-scrum-toolkit.html"
            onclick="loadPage('sp-03-fair-ai-scrum-toolkit.html', 'link-scrum'); return false;">
           2. Fair AI Scrum Toolkit
         </a>
 
         <a id="link-org" class="nav-link"
-           href="sp-03-organisational-integration-toolkit.html"
            onclick="loadPage('sp-03-organisational-integration-toolkit.html', 'link-org'); return false;">
           3. Organisational Integration & Governance
         </a>
 
         <a id="link-arch" class="nav-link"
-           href="sp-03-advanced-architecture-cookbook.html"
            onclick="loadPage('sp-03-advanced-architecture-cookbook.html', 'link-arch'); return false;">
           4. Advanced Architecture Cookbook
         </a>
 
         <a id="link-reg" class="nav-link"
-           href="sp-03-regulatory-compliance-guide.html"
            onclick="loadPage('sp-03-regulatory-compliance-guide.html', 'link-reg'); return false;">
           5. Regulatory Compliance & Risk Alignment
         </a>
 
         <a id="link-val" class="nav-link"
-           href="sp-03-validation-framework.html"
            onclick="loadPage('sp-03-validation-framework.html', 'link-val'); return false;">
           6. Validation Framework
         </a>
 
         <a id="link-app" class="nav-link"
-           href="sp-03-appendices.html"
            onclick="loadPage('sp-03-appendices.html', 'link-app'); return false;">
           7. Appendices
         </a>
 
         <a id="link-case" class="nav-link"
-           href="sp-03-case-study.html"
            onclick="loadPage('sp-03-case-study.html', 'link-case'); return false;">
-          8. Case Study
+          8. Case Study — Fairness, Governance & LLM Intervention
         </a>
 
         <a id="link-iter" class="nav-link"
-           href="sp-03-playbook-iterations-insights.html"
            onclick="loadPage('sp-03-playbook-iterations-insights.html', 'link-iter'); return false;">
           9. Future Iterations & Insights
         </a>
@@ -202,5 +183,3 @@
   </div>
 </body>
 </html>
-
-

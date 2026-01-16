@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fairness Case Study: AI Hiring Platform for Career Returners</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      color: #111827;
+      background: #ffffff;
+    }
+    h1, h2, h3, h4, h5 {
+      color: #0f172a;
+      line-height: 1.3;
+    }
+    h1 { font-size: 2rem; margin-top: 0; }
+    h2 { margin-top: 2.25rem; }
+    h3 { margin-top: 1.75rem; }
+    h4 { margin-top: 1.5rem; }
+
+    p { margin: 0.6rem 0 1rem; }
+
+    ul, ol {
+      margin: 0.4rem 0 1rem 1.5rem;
+    }
+
+    em, i { font-style: italic; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.25rem 0;
+      font-size: 0.95rem;
+    }
+    table th, table td {
+      border: 1px solid #d1d5db;
+      padding: 0.5rem 0.6rem;
+      vertical-align: top;
+      text-align: left;
+    }
+    table th {
+      background: #e5e7eb;
+      font-weight: 600;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #0b1120;
+      color: #e5e7eb;
+      padding: 1rem 1.25rem;
+      overflow: auto;
+      border-radius: 0.5rem;
+      margin: 1.25rem 0;
+      font-size: 0.88rem;
+    }
+
+    blockquote {
+      margin: 1.25rem 0;
+      padding: 0.75rem 1rem;
+      border-left: 4px solid #1d4ed8;
+      background: #eff6ff;
+      color: #111827;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Fairness Case Study: AI Hiring Platform for Career Returners</h1>
+
+<h2>Intersectional Fairness, Governance, and LLM Intervention</h2>
+
+<h2><span style="color:#00008B">Executive Summary</span></h2>
+
+<p>This case study describes how fairness risks were identified and mitigated in an AI-enabled hiring platform designed to support career returners in the UK, funded through a public employment initiative.</p>
+
+<p><strong>What the system does</strong></p>
+<ul>
+  <li>Screens and recommends candidates for interviews into a “career returner” programme.</li>
+  <li>Target population: individuals with significant career breaks (e.g. caring responsibilities, illness, redundancy), primarily in the UK, with some cross-border applicants.</li>
+</ul>
+
+<p><strong>What went wrong</strong></p>
+<ul>
+  <li>Eligible candidates, especially <em>women over 40, non-native English speakers, candidates from minority ethnic backgrounds, and migrants with lawful residence</em>, were systematically less likely to be recommended than comparable peers.</li>
+  <li>Candidates under 30 with no career break were frequently recommended, contrary to the programme’s goals.</li>
+  <li>Fairness KPIs did not improve, and a formal complaint alleged discriminatory outcomes and misuse of public funds, triggering an internal investigation.</li>
+</ul>
+
+<p><strong>What was implemented</strong></p>
+<ul>
+  <li>Embedded explicit fairness requirements and acceptance criteria into Agile delivery so teams had clear thresholds and evidence requirements.</li>
+  <li>Introduced an organisational AI governance model with clear RACI, fairness decision gates, and escalation paths.</li>
+  <li>Applied LLM-specific fairness interventions using the Advanced Architecture Cookbook (structured fairness-aware prompts, counterfactual probing, bias-aware re-ranking).</li>
+  <li>Aligned the interventions with high-risk AI system obligations, using the EU AI Act as a reference framework for documentation, monitoring, and post-deployment controls.</li>
+</ul>
+
+<p><strong>Key outcomes</strong></p>
+<ul>
+  <li>Screening disparity between priority groups and the overall population reduced from approximately <strong>48% to 4%</strong>.</li>
+  <li>Intersectional ΔTPR (difference in true positive rate between intersectional subgroups) reduced to <strong>≤ 0.03</strong>, and demographic parity difference within the eligible population reduced to <strong>≤ 0.01</strong>.</li>
+  <li>Ineligible candidates (e.g. under-30, no career break, outside permitted residence) were effectively blocked from recommendation by strengthened eligibility and fairness constraints.</li>
+  <li>Fairness governance became traceable, reviewable, and auditable through Fairness Decision Records, model documentation, and monitoring dashboards.</li>
+</ul>
+
+<p><strong>Residual risk and ongoing monitoring</strong></p>
+<ul>
+  <li>The system remains a <strong>high-risk AI system</strong> due to its impact on access to employment and the use of public funds.</li>
+  <li>Fairness metrics are still sensitive to shifts in the applicant pool and to upstream changes in LLM components.</li>
+  <li>Continuous monitoring, periodic fairness reviews, and governance decision gates have been established to manage residual risk and support ongoing regulatory scrutiny.</li>
+</ul>
+
+<h2><span style="color:#00008B">1. Introduction</span></h2>
+
+<p>The organisation developed an AI-enabled hiring tool designed to support career returners, with a specific focus on women who had taken a career break of at least two years due to caregiving, illness, relocation, or career transition. The service operated within the UK and received public funding to improve employment outcomes for this group.</p>
+
+<p>Despite its stated mission, operational metrics and user complaints indicated systemic failures:</p>
+
+<ul>
+  <li>Women over 40 were significantly less likely to be recommended for interviews.</li>
+  <li>Disparities were amplified for non-native English speakers and candidates from minority ethnic backgrounds.</li>
+  <li>Candidates under 30 without career breaks were recommended despite being outside the intended user population.</li>
+  <li>No candidates with lawful residence outside Europe or the Commonwealth were invited to interviews.</li>
+  <li>KPIs showed no improvement in equal opportunity or demographic parity.</li>
+</ul>
+
+<p>In practical terms, this meant that <em>eligible career returners; particularly older women, migrants, and candidates from minority ethnic backgrounds were systematically excluded from a programme explicitly intended to support them</em>. This represented not only a fairness failure in a publicly funded service, but also an ethical breach that risked eroding trust and exposing the organisation to discrimination and public law challenges.</p>
+
+<p>A formal complaint alleged discriminatory outcomes and misuse of public funding. This triggered internal escalation and a full application of the <strong>Fairness Implementation Playbook</strong> (our internal guide for systematically identifying, testing, and mitigating bias in AI systems across the lifecycle).</p>
+
+<h3><span style="color:#00008B">1.1 Stakeholders and Ethical Impact</span></h3>
+
+<p>The failures affected multiple stakeholder groups:</p>
+
+<ul>
+  <li><strong>Applicants</strong>: Eligible individuals facing barriers to re-entry into the labour market were denied access to a programme designed for their benefit.</li>
+  <li><strong>Programme operators and hiring partners</strong>: They received skewed shortlists, limiting the diversity and representativeness of candidates they considered.</li>
+  <li><strong>Public funders and regulators</strong>: Misalignment between the stated policy intent (supporting disadvantaged returners) and observed outcomes created reputational and regulatory risk.</li>
+  <li><strong>The organisation</strong>: The incident raised questions about its ability to design, monitor, and govern AI systems responsibly.</li>
+</ul>
+
+<p>Beyond quantitative disparity metrics, the core ethical problem was that the system reinforced and amplified existing structural inequalities within a context where fairness is a central policy objective.</p>
+
+<h2><span style="color:#00008B">2. System Overview and Architecture</span></h2>
+
+<p>The hiring tool was built as an LLM-based text classification and ranking system.</p>
+
+<p><strong>Architecture characteristics:</strong></p>
+<ul>
+  <li>Input: Free-text CVs and application statements.</li>
+  <li>Core model: Large Language Model fine-tuned for candidate suitability classification.</li>
+  <li>Output: Classification score indicating suitability for shortlisting.</li>
+  <li>Downstream logic: Threshold-based ranking and recruiter-facing recommendations.</li>
+  <li>Human involvement: Recruiters reviewed AI-ranked shortlists but relied heavily on model output.</li>
+</ul>
+
+<p><strong>Key risk factors:</strong></p>
+<ul>
+  <li>Text embeddings captured proxy signals for age, gender, ethnicity, and migration background.</li>
+  <li>CV gaps and non-linear career paths were implicitly penalised.</li>
+  <li>No hard constraints enforced eligibility criteria (career break duration, age range).</li>
+</ul>
+
+<p>Given its impact on employment access, the system was classified as high risk.</p>
+
+<h2><span style="color:#00008B">3. Improving Agile Artefacts and Ceremonies: Fair AI Scrum Toolkit</span></h2>
+
+<p>The initial response focused on Agile delivery practices, addressing fairness within team-level control before escalation.</p>
+
+<h3><span style="color:#00008B">3.1 Baseline Agile State: Before Intervention</span></h3>
+
+<ul>
+  <li>User stories focused on ranking accuracy and recruiter efficiency.</li>
+  <li>No fairness acceptance criteria were defined.</li>
+  <li>Sprint reviews presented aggregate accuracy only.</li>
+  <li>Retrospectives did not surface fairness risks.</li>
+  <li>Fairness tasks were informal and repeatedly deprioritised.</li>
+</ul>
+
+<p><strong>Observed impact</strong></p>
+
+<ul>
+  <li>Intersectional bias remained undetected across sprints.</li>
+  <li>Discriminatory outcomes persisted despite incremental model improvements.</li>
+</ul>
+
+<h3><span style="color:#00008B">3.2 Agile Interventions Introduced</span></h3>
+
+<p><strong>User stories</strong></p>
+
+<p>User stories were updated to include explicit fairness requirements:</p>
+
+<blockquote>
+  <p>As a recruiter,<br>
+  I want the system to classify candidates based on role-relevant skills,<br>
+  so that I can prioritise suitable applicants,<br>
+  while ensuring equivalent true positive rates across age, gender,<br>
+  and their intersections for eligible career returners.</p>
+</blockquote>
+
+<p>Before defining acceptance criteria, we clarified how key fairness metrics are used in this context:</p>
+
+<ul>
+  <li><strong>ΔTPR (difference in true positive rate)</strong> – the difference in the proportion of correctly recommended candidates between groups.</li>
+  <li><strong>Demographic parity difference</strong> – the difference in overall selection rates between groups.</li>
+</ul>
+
+<p><strong>Acceptance criteria (FAIR framework)</strong></p>
+<ul>
+  <li>Equal opportunity ΔTPR (Difference in True Positive Rate) ≤ 0.03 for all monitored intersections (e.g. age × gender × language).</li>
+  <li>Demographic parity difference ≤ 0.01 within the eligible population.</li>
+  <li>Disaggregated reporting mandatory for all releases.</li>
+</ul>
+
+<p><strong>Definition of Done</strong></p>
+<ul>
+  <li>Intersectional fairness tests required before merge.</li>
+  <li>Model cards updated per sprint.</li>
+  <li>Known trade-offs documented in Decision Rationale Logs.</li>
+</ul>
+
+<p><strong>Scrum Events (Ceremonies)</strong></p>
+<ul>
+  <li>Sprint planning add 20% extra capacity for fairness testing and documentation.</li>
+  <li>Sprint reviews included fairness metric snapshots.</li>
+  <li>Retrospectives tracked unresolved fairness risks explicitly.</li>
+</ul>
+
+<h3><span style="color:#00008B">3.3 Limitations Identified</span></h3>
+
+<p>While Agile interventions improved visibility and mitigated some issues:</p>
+
+<ul>
+  <li>Bias persisted across teams and model versions.</li>
+  <li>Threshold and eligibility decisions exceeded team authority.</li>
+  <li>Inconsistent fairness approaches emerged between teams.</li>
+</ul>
+
+<p>This triggered escalation to organisational governance.</p>
+
+<h2><span style="color:#00008B">4. Organisational Governance Failure and Remediation</span></h2>
+
+<h3><span style="color:#00008B">4.1 Governance Failure Diagnosis</span></h3>
+
+<p>While Agile-level interventions improved visibility of fairness issues, the system continued to fail due to organisational governance gaps, rather than purely technical shortcomings.</p>
+
+<p>The root causes were identified as:</p>
+
+<ul>
+  <li><strong>Unclear accountability</strong>:<br>
+  No single role or forum owned fairness decisions beyond the delivery team. Teams identified bias but lacked authority to resolve it.</li>
+  <li><strong>Inconsistent decision-making</strong>:<br>
+  Different teams applied different fairness definitions and thresholds without organisational alignment.</li>
+  <li><strong>Missing decision gates</strong>:<br>
+  Models progressed from development to deployment without formal fairness approval or escalation, despite high-risk characteristics.</li>
+  <li><strong>Undocumented trade-offs</strong>:<br>
+  Decisions affecting older women, non-native speakers, and migrant candidates were implicit rather than recorded or justified.</li>
+</ul>
+
+<p>As a result, fairness risks accumulated across releases without triggering corrective action, even when metrics repeatedly breached acceptable thresholds.</p>
+
+<h3><span style="color:#00008B">4.2 Governance Model Introduced</span></h3>
+
+<p>The organisation applied the Organisational Integration &amp; Governance Toolkit using a hybrid (hub-and-spoke) governance model.</p>
+
+<ul>
+  <li><strong>Delivery teams</strong> retained responsibility for identifying and evidencing fairness risks.</li>
+  <li><strong>Product and domain leadership</strong> coordinated decisions across features and teams.</li>
+  <li>A central <strong>Fairness Governance Body</strong> was established to resolve escalated risks and approve high-impact decisions.</li>
+  <li><strong>Executive leadership</strong> retained accountability for acceptance of residual or irreversible risk.</li>
+</ul>
+
+<p>This model ensured subsidiarity (decisions made as close to delivery as possible) while enabling escalation where authority or impact exceeded team-level control.</p>
+
+<h3><span style="color:#00008B">4.3 RACI-Based Responsibility Clarification</span></h3>
+
+<p>To address responsibility gaps, the organisation formalised fairness ownership using a <strong>RACI matrix</strong>, aligned with the toolkit.</p>
+
+<p><strong>Key correction:</strong><br>
+Previously, delivery teams were <em>implicitly accountable</em> for fairness outcomes. Under the new model, they became
+responsible (R) but not accountable (A) for high-risk decisions.</p>
+
+<p><strong>Example: Fairness threshold breach in LLM screening model</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Activity</th>
+      <th>Delivery Team</th>
+      <th>Product Lead</th>
+      <th>Fairness Lead</th>
+      <th>Legal / Risk</th>
+      <th>Governance Body</th>
+      <th>Executive</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Detect ΔTPR breach (&gt; 0.03)</td>
+      <td>R</td>
+      <td>A</td>
+      <td>C</td>
+      <td>I</td>
+      <td>I</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Analyse root cause</td>
+      <td>R</td>
+      <td>C</td>
+      <td>A</td>
+      <td>I</td>
+      <td>I</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Propose mitigation options</td>
+      <td>R</td>
+      <td>A</td>
+      <td>C</td>
+      <td>I</td>
+      <td>C</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Approve mitigation strategy</td>
+      <td>I</td>
+      <td>R</td>
+      <td>C</td>
+      <td>A</td>
+      <td>A</td>
+      <td>I</td>
+    </tr>
+    <tr>
+      <td>Accept residual risk</td>
+      <td>I</td>
+      <td>I</td>
+      <td>C</td>
+      <td>C</td>
+      <td>C</td>
+      <td>A</td>
+    </tr>
+    <tr>
+      <td>Approve external fairness claims</td>
+      <td>I</td>
+      <td>R</td>
+      <td>C</td>
+      <td>A</td>
+      <td>C</td>
+      <td>I</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This eliminated ambiguity about:</p>
+
+<ul>
+  <li>Who may <em>propose</em> fairness mitigations</li>
+  <li>Who may <em>approve</em> trade-offs</li>
+  <li>Who may <em>accept</em> residual risk</li>
+</ul>
+
+<h3><span style="color:#00008B">4.4 Fairness Decision Gates</span></h3>
+
+<p>Formal fairness decision gates were introduced to prevent uncontrolled progression of high-risk changes.</p>
+
+<h4><span style="color:#00008B">Gate 1: Pre-Deployment Fairness Approval</span></h4>
+
+<p><strong>Trigger</strong></p>
+<ul>
+  <li>New model version</li>
+  <li>Change to eligibility logic</li>
+  <li>Updated LLM fine-tuning data</li>
+</ul>
+
+<p><strong>Required evidence</strong></p>
+<ul>
+  <li>Disaggregated fairness metrics</li>
+  <li>Intersectional analysis (age × gender × language)</li>
+  <li>Updated Model Card</li>
+  <li>Fairness Decision Record (FDR)</li>
+</ul>
+
+<p><strong>Decision authority</strong></p>
+<ul>
+  <li>Fairness Governance Body (Accountable)</li>
+</ul>
+
+<h4><span style="color:#00008B">Gate 2: Material Change Control</span></h4>
+
+<p><strong>Trigger</strong></p>
+<ul>
+  <li>Performance fairness trade-off exceeding agreed thresholds</li>
+  <li>Change to decision thresholds or eligibility rules</li>
+</ul>
+
+<p><strong>Required evidence</strong></p>
+<ul>
+  <li>Trade-off analysis</li>
+  <li>Impact on protected and intersectional groups</li>
+  <li>Legal and regulatory review (consultative)</li>
+</ul>
+
+<p><strong>Decision authority</strong></p>
+<ul>
+  <li>Governance Body, with escalation to Executive if residual risk is accepted</li>
+</ul>
+
+<h4><span style="color:#00008B">Gate 3: Post-Deployment Monitoring Review</span></h4>
+
+<p><strong>Trigger</strong></p>
+<ul>
+  <li>Monitoring alert (ΔTPR &gt; 0.03 or ΔDP &gt; 0.01)</li>
+  <li>User complaints or regulator inquiry</li>
+</ul>
+
+<p><strong>Required evidence</strong></p>
+<ul>
+  <li>Monitoring dashboard snapshot</li>
+  <li>Root-cause analysis</li>
+  <li>Remediation plan or rollback proposal</li>
+</ul>
+
+<p><strong>Decision authority</strong></p>
+<ul>
+  <li>Governance Body; Executive oversight for repeated or systemic failures</li>
+</ul>
+
+<h3><span style="color:#00008B">4.5 Documentation and Traceability</span></h3>
+
+<p>All governance decisions were captured using <strong>Fairness Decision Records (FDRs)</strong>, linked to:</p>
+
+<ul>
+  <li>Sprint backlog items</li>
+  <li>Model versions</li>
+  <li>Release notes</li>
+  <li>Monitoring alerts</li>
+</ul>
+
+<p>Each FDR recorded:</p>
+
+<ul>
+  <li>Decision owner and approval level</li>
+  <li>Evidence reviewed</li>
+  <li>Alternatives considered</li>
+  <li>Residual risk and revalidation triggers</li>
+</ul>
+
+<p>This resolved the earlier inability to explain:</p>
+
+<ul>
+  <li>Why older women were excluded</li>
+  <li>Why certain fairness metrics were prioritised</li>
+  <li>Why some risks were accepted while others were mitigated</li>
+</ul>
+
+<h3><span style="color:#00008B">4.6 Governance Impact</span></h3>
+
+<p>The governance intervention transformed fairness from an informal team concern into an organisational control system.</p>
+
+<ul>
+  <li>Delivery teams gained clarity on <em>what they could decide</em> versus <em>what required escalation</em>.</li>
+  <li>Leadership gained visibility into fairness trade-offs affecting public funding and regulatory exposure.</li>
+  <li>Repeated fairness failures now triggered structured review rather than silent accumulation.</li>
+</ul>
+
+<p>Fairness outcomes became <em>owned, reviewable, and defensible</em>, rather than emergent and opaque.</p>
+
+<h3><span style="color:#00008B">4.7 Transition from Governance to Architectural Intervention</span></h3>
+
+<p>By this stage, the organisation’s governance mechanisms were operating as intended. Fairness risks were being surfaced consistently through Scrum artefacts, escalated through defined decision pathways, and reviewed by accountable roles using documented evidence. However, repeated governance reviews showed that the same intersectional harms continued to reappear across sprints and teams, even after process improvements and policy alignment.</p>
+
+<p>This pattern indicated that the root cause no longer lay in delivery practices or decision authority, but in the technical behaviour of the system itself. Fairness metrics detected harm, governance bodies mandated action, and responsibilities were clear; yet the available interventions at team and governance level were insufficient to materially change outcomes.</p>
+
+<p>At this point, governance formally triggered a model-level intervention decision gate. Responsibility shifted from process and oversight to architectural control, requiring targeted changes to how the AI system was designed, prompted, and evaluated. The organisation therefore applied the <strong>Advanced Architecture Cookbook</strong> (our internal library of technical patterns for LLM and ML architectures) to address fairness risks embedded in the LLM-based classification pipeline, as described in Section 5.</p>
+
+<blockquote>
+  <p>For high-risk AI systems, the <strong>EU AI Act</strong> requires that recurring fairness harms identified through monitoring and
+  governance review trigger proportionate technical remediation, not only procedural controls</p>
+</blockquote>
+
+<h2><span style="color:#00008B">5. Architectural Intervention: Applying the Advanced Architecture Cookbook</span></h2>
+
+<h3><span style="color:#00008B">5.1 Architectural Context</span></h3>
+
+<p>The hiring system is implemented as a <strong>Large Language Model (LLM)-based</strong> classification pipeline.
+Free-text candidate information (CVs, career-break explanations, personal statements) is processed by an LLM to generate structured signals used for screening and recommendation decisions.</p>
+
+<p>Key architectural characteristics include:</p>
+
+<ul>
+  <li>A general-purpose LLM pre-trained on large-scale web corpora.</li>
+  <li>Prompt-based classification and summarisation of candidate profiles.</li>
+  <li>Downstream ranking logic that consumes LLM outputs.</li>
+  <li>No explicit use of protected attributes, but reliance on proxy-laden textual cues (language style, career gaps, migration narratives).</li>
+</ul>
+
+<p>As documented in sprint reviews and governance escalations, fairness issues persisted despite Agile-level process improvements, indicating that root causes were embedded in the model architecture and interaction patterns, rather than solely in delivery practices.</p>
+
+<h3><span style="color:#00008B">5.2 Observed Fairness Failures at the Architectural Level</span></h3>
+
+<p>Governance review identified that:</p>
+
+<ul>
+  <li>The LLM produced systematically harsher assessments of career gaps when framed around caregiving or illness.</li>
+  <li>Linguistic differences associated with non-native English speakers led to lower inferred “role readiness”.</li>
+  <li>Intersectional effects (age × gender × language background) were masked in aggregate performance metrics.</li>
+  <li>Prompt wording changes led to material shifts in outcomes without formal approval or traceability.</li>
+</ul>
+
+<p>These signals aligned with known <strong>LLM-specific fairness risks</strong>, including prompt sensitivity, pre-training bias manifestation, and intersectional blindness.</p>
+
+<h3><span style="color:#00008B">5.3 Why Agile and Governance Controls Were Insufficient</span></h3>
+
+<p>While Sections 3 and 4 demonstrated that:</p>
+
+<ul>
+  <li>Fairness acceptance criteria were enforced</li>
+  <li>Escalation pathways were functioning</li>
+  <li>Decision ownership was clarified through RACI</li>
+</ul>
+
+<p>The organisation still lacked technical levers to address bias emerging inside the LLM behaviour.</p>
+
+<p>Key limitations included:</p>
+
+<ul>
+  <li>Fairness metrics detected harm but could not correct it.</li>
+  <li>Delivery teams lacked authority to alter model–prompt interactions.</li>
+  <li>Governance bodies could mandate action, but not specify <em>how</em> to intervene safely.</li>
+</ul>
+
+<p>This triggered a model-level decision gate, requiring application of the Advanced Architecture Cookbook.</p>
+
+<h3><span style="color:#00008B">5.4 Selected Architectural Fairness Recipes (LLM Suite)</span></h3>
+
+<p>Based on risk classification (high-risk recruitment system) and governance approval, the following <strong>LLM-specific recipes</strong> were selected and documented in Fairness Decision Records (FDRs):</p>
+
+<h4><span style="color:#00008B">A. Structured Fairness Prompts with Self-Check</span></h4>
+
+<p><strong>Purpose:</strong><br>
+Reduce hidden standards and prompt-driven bias in candidate evaluation.</p>
+
+<p><strong>Intervention:</strong></p>
+
+<ul>
+  <li>Introduced system-level prompts enforcing consistent evaluation criteria.</li>
+  <li>Added fairness self-check steps for a sampled subset of classifications.</li>
+  <li>Explicitly prohibited reliance on proxies such as age-coded language, gap explanations, or nationality cues.</li>
+</ul>
+
+<p><strong>Governance control:</strong><br>
+Prompt templates treated as policy artefacts, versioned and gated.</p>
+
+<h4><span style="color:#00008B">B. Counterfactual Prompt Probing</span></h4>
+
+<p><strong>Purpose:</strong><br>
+Detect latent bias that aggregate accuracy metrics failed to surface.</p>
+
+<p><strong>Intervention:</strong></p>
+
+<ul>
+  <li>Generated counterfactual candidate profiles with equivalent qualifications but varied surface cues (e.g. language register, framing of career breaks).</li>
+  <li>Logged outcome deltas and routed material differences to governance review.</li>
+</ul>
+
+<p><strong>Evidence produced:</strong></p>
+
+<ul>
+  <li>Intersectional consistency scores.</li>
+  <li>Drift signals tied to prompt and model updates.</li>
+</ul>
+
+<h4><span style="color:#00008B">C. Bias-Aware Output Re-Ranking</span></h4>
+
+<p><strong>Purpose:</strong><br>
+Mitigate residual disparities without retraining the base model.</p>
+
+<p><strong>Intervention:</strong></p>
+
+<ul>
+  <li>Multiple candidate classifications generated per profile.</li>
+  <li>Outputs re-ranked using fairness-aware criteria before downstream recommendation.</li>
+  <li>Trade-offs between consistency and confidence documented.</li>
+</ul>
+
+<p><strong>Constraint:</strong><br>
+Used only after governance rejected threshold-only mitigation as insufficient.</p>
+
+<h3><span style="color:#00008B">5.5 Validation and Decision Gates</span></h3>
+
+<p>All architectural interventions were subject to formal <strong>fairness decision gates</strong>, as defined in the Governance Toolkit:</p>
+
+<ul>
+  <li><strong>Pre-deployment approval:</strong> Validation across age × gender × language intersections.</li>
+  <li><strong>Material change gate:</strong> Prompt and policy updates required re-validation.</li>
+  <li><strong>Post-deployment monitoring:</strong> Monthly counterfactual probes and slice-based dashboards.</li>
+</ul>
+
+<p>Validation targets followed the LLM baselines defined in the cookbook (e.g. ≥ 90% counterfactual consistency across
+high-risk intersections). Residual risks and known limitations were explicitly documented and accepted at governance
+level, not absorbed silently by delivery teams.</p>
+
+<h3><span style="color:#00008B">5.6 Outcome of Architectural Intervention</span></h3>
+
+<p>The architectural changes:</p>
+
+<ul>
+  <li>Addressed fairness risks that process and governance controls alone could not resolve.</li>
+  <li>Reduced sensitivity to linguistic and narrative proxies.</li>
+  <li>Made fairness trade-offs explicit, testable, and reviewable.</li>
+  <li>Enabled ongoing detection of emergent and intersectional harms.</li>
+</ul>
+
+<p>Most importantly, the system moved from reactive metric correction to design-level fairness control, aligning technical implementation with organisational accountability and regulatory expectations.</p>
+
+<h3><span style="color:#00008B">5.7 Transition to Regulatory Prioritisation</span></h3>
+
+<p>Despite measurable improvements, governance concluded that:</p>
+
+<ul>
+  <li>The system remains high-risk under recruitment and employment regulations.</li>
+  <li>Certain trade-offs require regulatory interpretation rather than technical optimisation.</li>
+  <li>Documentation and validation artefacts must now be prioritised based on compliance criticality.</li>
+</ul>
+
+<p>This leads into Section 6, where regulatory obligations determine documentation depth, validation priority, and audit readiness.</p>
+
+<h2><span style="color:#00008B">6. Regulatory Compliance and Risk Alignment</span></h2>
+
+<h3><span style="color:#00008B">6.1 Purpose and Positioning</span></h3>
+
+<p>By this stage, the resume screening system had:</p>
+
+<ul>
+  <li>Embedded fairness into Scrum delivery (Section 3).</li>
+  <li>Established clear organisational accountability and decision authority (Section 4), and</li>
+  <li>Applied fairness-aware architectural interventions for an LLM-based text classification pipeline (Section 5).</li>
+</ul>
+
+<p>The team needed to formalise these practices into regulatory compliance controls, ensuring the system can demonstrate <strong>audit-ready evidence</strong> under applicable AI regulation, most notably the <strong>EU Artificial Intelligence Act (EU AI Act)</strong>.</p>
+
+<p>Although the service operates primarily in the UK, we use the EU AI Act framework as a reference benchmark for high-risk AI systems, due to its detailed requirements on fairness, governance, and post-market monitoring and our expectation of cross-border regulatory convergence.</p>
+
+<p>This section shows how fairness work already performed by the team was translated into legally meaningful artefacts, gates, and controls, rather than duplicated or reworked.</p>
+
+<blockquote>
+  <p><strong>EU AI Act:</strong><br>
+  Because the system supports employment decision-making, it is classified as a <strong>high-risk AI system under EU AI
+  Act Annex III</strong>, triggering mandatory risk management, documentation, human oversight, and post-market monitoring obligations.</p>
+</blockquote>
+
+<h3><span style="color:#00008B">6.2 Risk Classification and Governance Trigger</span></h3>
+
+<p>At Sprint 0, the organisation applied the <strong>Total Risk Score (TRS)</strong> model to the resume screening system:</p>
+
+<ul>
+  <li><strong>Probability (P):</strong> 4 – automated recommendations influence hiring outcomes</li>
+  <li><strong>Severity (S):</strong> 4 – potential discrimination affects access to employment</li>
+  <li><strong>Exposure (E):</strong> 3 – EU-wide applicant population</li>
+  <li><strong>Mitigation readiness (M):</strong> 2 – fairness testing and human oversight planned</li>
+</ul>
+
+<p><strong>TRS</strong> = (4 &times; 4) + 3 - 2 = 17 &Rightarrow; <strong>High Risk</strong></p>
+
+<p><strong>Governance implications</strong></p>
+
+<ul>
+  <li>Central AI governance review required</li>
+  <li>Mandatory fairness evaluation and documentation</li>
+  <li>DPIA triggered due to personal data and automated decision support</li>
+  <li>Pre-deployment approval gate enforced</li>
+</ul>
+
+<p>This risk classification <strong>cannot be downgraded</strong> by mitigation measures; mitigations reduce <em>residual risk</em>, not inherent risk, in line with EU AI Act expectations.</p>
+
+<h3><span style="color:#00008B">6.3 Mapping Fairness Work to EU AI Act Obligations</span></h3>
+
+<p>The <strong>Regulatory Compliance Guide</strong> (our internal translation layer that maps legal requirements into engineering and governance controls) provides a structured mapping from statutory obligations to the artefacts already produced by delivery and governance.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>EU AI Act Requirement</th>
+      <th>How it is satisfied in this case study</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Art. 9 – Risk Management</td>
+      <td>TRS scoring; fairness risks logged and reviewed every sprint</td>
+    </tr>
+    <tr>
+      <td>Art. 10 – Data Governance</td>
+      <td>Bias scans on training data; representativeness thresholds documented</td>
+    </tr>
+    <tr>
+      <td>Art. 11 – Technical Documentation</td>
+      <td>Model Card auto-generated per release</td>
+    </tr>
+    <tr>
+      <td>Art. 12 – Record Keeping</td>
+      <td>Immutable logs of model versions, metrics, and decisions</td>
+    </tr>
+    <tr>
+      <td>Art. 13 – Transparency</td>
+      <td>Intended use and limitations documented; recruiter-facing explanations</td>
+    </tr>
+    <tr>
+      <td>Art. 14 – Human Oversight</td>
+      <td>Manual override for screening decisions; override events logged</td>
+    </tr>
+    <tr>
+      <td>Art. 15 – Accuracy &amp; Robustness</td>
+      <td>Fairness and performance validation gates enforced</td>
+    </tr>
+    <tr>
+      <td>Art. 61 – Post-Market Monitoring</td>
+      <td>Fairness drift dashboards and escalation triggers</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>This mapping ensures that fairness metrics (ΔTPR, demographic parity) are not merely ethical signals, but compliance-relevant controls.</p>
+
+<h3><span style="color:#00008B">6.4 Compliance Gates Integrated with Delivery</span></h3>
+
+<p>Regulatory compliance is enforced through <strong>stage gates aligned with Agile delivery</strong>, rather than separate approval processes.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Gate</th>
+      <th>Trigger</th>
+      <th>Required Evidence</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>G1 – Design</td>
+      <td>New or modified screening logic</td>
+      <td>TRS, fairness requirements, architecture decision</td>
+    </tr>
+    <tr>
+      <td>G2 – Build</td>
+      <td>Model training or retraining</td>
+      <td>Fairness tests, Model Card draft</td>
+    </tr>
+    <tr>
+      <td>G3 – Validate</td>
+      <td>Pre-release</td>
+      <td>DPIA approved, fairness thresholds met or justified</td>
+    </tr>
+    <tr>
+      <td>G4 – Launch</td>
+      <td>Deployment</td>
+      <td>Monitoring live, governance sign-off</td>
+    </tr>
+    <tr>
+      <td>G5 – Operate</td>
+      <td>Ongoing use</td>
+      <td>Fairness drift reports, incident logs</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Each gate has:</p>
+
+<ul>
+  <li>A named accountable role (per RACI)</li>
+  <li>A required evidence set</li>
+  <li>A recorded decision outcome</li>
+</ul>
+
+<div class="mermaid">
+%%{init: {'theme': 'neutral', 'themeVariables': { 'fontSize': '14px'}}}%%
+flowchart LR
+
+    %% Main Parent Node
+    DG(Decision Gate)
+
+    %% Final Decision
+    DG --> A("Accountable (RACI)")
+    A --> ES("Evidence Set")
+    ES --> DR("Record Decision Outcome")
+
+    %% Styling
+    classDef main fill:#ECECFF,stroke:#333,stroke-width:1px;
+    classDef decision_flow fill:#c9e4ff,stroke:#333,stroke-width:1px;
+    classDef record fill:#D5E8D4,stroke:#333,stroke-width:1px;
+
+    class DG main;
+    class A,ES decision_flow;
+    class DR record;
+</div>
+
+<p>This structure prevents release-by-default and ensures fairness failures cannot bypass compliance through delivery pressure.</p>
+
+<h3><span style="color:#00008B">6.5 Documentation and Audit Readiness</span></h3>
+
+<p>All compliance evidence is generated <strong>as a by-product of normal work</strong>, including:</p>
+
+<ul>
+  <li><strong>Model Cards:</strong> Intended use, fairness metrics, limitations, oversight mechanisms.</li>
+  <li><strong>Fairness Assessment Records:</strong> ΔTPR and demographic parity results across gender × age intersections.</li>
+  <li><strong>DPIA Annex:</strong> Technical summary linked to the AI pipeline and data flows.</li>
+  <li><strong>Fairness Decision Records (FDRs):</strong> Trade-offs, threshold justifications, escalation outcomes.</li>
+  <li><strong>Audit Trail Registry:</strong> End-to-end traceability from model version to deployment decision.</li>
+</ul>
+
+<p>Because artefacts are versioned and linked, the organisation can reconstruct any hiring recommendation’s governance lineage in minutes, a key expectation under <strong>EU AI Act Articles 11, 12, and 18</strong>.</p>
+
+<h3><span style="color:#00008B">6.6 Outcome: From Fairness Practice to Legal Defensibility</span></h3>
+
+<p>By integrating the Regulatory Compliance Guide:</p>
+
+<ul>
+  <li>Fairness metrics became <strong>regulatory controls</strong>, not optional signals.</li>
+  <li>Governance gates replaced informal approvals.</li>
+  <li>Audit readiness was achieved without slowing delivery.</li>
+  <li>The organisation could <strong>demonstrate conformity</strong>, not just intent.</li>
+</ul>
+
+<p>Most importantly, the compliance layer did not introduce new fairness work; it consumed and formalised what Scrum teams and governance structures already produced.</p>
+
+<p><strong>Residual limitations</strong></p>
+
+<ul>
+  <li><strong>Sensitivity to population shifts</strong> – Performance and fairness metrics are still sensitive to major changes in the applicant pool (e.g. large shifts in age or migration profile) and may require recalibration over time.</li>
+  <li><strong>Data sparsity in some groups</strong> – Under-representation in certain demographic and intersectional subgroups limits the strength of fairness conclusions and makes some estimates more volatile.</li>
+  <li><strong>Dependence on upstream LLM components</strong> – Changes in upstream LLM models, embeddings, or third-party services could reintroduce bias, which is why continuous monitoring and explicit re-validation are required after major updates.</li>
+</ul>
+
+<h2><span style="color:#00008B">7. End-to-End Integration Summary</span></h2>
+
+<p>The case study demonstrates how fairness is operationalised through <strong>layered integration</strong>, rather than isolated interventions. Delivery practices surface risks, architecture mitigates them, governance resolves trade-offs, and regulation sets priorities and evidence requirements.</p>
+
+<h3><span style="color:#00008B">7.1 The Outcome</span></h3>
+
+<p><strong>Process outcomes</strong></p>
+<ul>
+  <li>Completion of planned fairness tasks increased from <strong>62% to 94%</strong>.</li>
+  <li>Fairness validation became a predictable part of sprint delivery rather than an afterthought.</li>
+  <li>Escalation paths reduced repeated debates on metrics and thresholds.</li>
+</ul>
+
+<p><strong>Product outcomes</strong></p>
+<ul>
+  <li>Disparity in screening recommendations dropped from <strong>48% to 4%</strong>.</li>
+  <li>Intersectional ΔTPR values met the agreed threshold (<strong>≤ 0.03</strong>).</li>
+  <li>Demographic parity differences fell within <strong>≤ 0.01</strong> for eligible candidates.</li>
+  <li>Candidates outside the defined eligibility criteria were no longer recommended.</li>
+</ul>
+
+<p><strong>Business and governance outcomes</strong></p>
+<ul>
+  <li>Regulatory and legal exposure related to discriminatory hiring practices was materially reduced.</li>
+  <li>Recruiter trust improved through transparent metrics and clearly defined system boundaries.</li>
+  <li>The candidate pipeline became more diverse without degrading role-relevant performance.</li>
+</ul>
+
+<h2><span style="color:#00008B">8. Key Lessons</span></h2>
+
+<p>The fairness failures in this case were not merely statistical anomalies; they amplified existing structural inequalities in a publicly funded programme intended to support disadvantaged groups. Addressing them required both technical and organisational change, along with clear ethical framing around the impact on access to employment, public trust, and legal risk.</p>
+
+<ul>
+  <li>Fairness issues surface first at the delivery level, but cannot be resolved there alone.</li>
+  <li>LLM-based classification systems require explicit architectural controls to prevent proxy discrimination.</li>
+  <li>Intersectional evaluation is essential where multiple vulnerability factors interact.</li>
+  <li>Risk-based governance enables proportionate and scalable fairness decisions.</li>
+  <li>Fairness outcomes improve when treated as a socio-technical responsibility, not a model-only fix.</li>
+</ul>
+
+<h3>8.1 Cross-Mapping Outcomes to EU AI Act Requirements</h3>
+
+<h3>A. Process Outcomes → Governance &amp; Risk Management Obligations</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Case study outcome</th>
+      <th>EU AI Act alignment</th>
+      <th>Explanation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Fairness tasks completion increased from 62% → 94%</td>
+      <td>Art. 9 – Risk management system</td>
+      <td>Demonstrates that fairness risks are systematically identified, addressed, and tracked through defined processes rather than ad-hoc activity.</td>
+    </tr>
+    <tr>
+      <td>Fairness validation embedded in sprint delivery</td>
+      <td>Art. 17 – Quality management system</td>
+      <td>Shows that fairness checks are integrated into standard development controls and not treated as optional or retrospective.</td>
+    </tr>
+    <tr>
+      <td>Clear escalation paths reduced repeated debates</td>
+      <td>Art. 9(2), Art. 14</td>
+      <td>Confirms that risk mitigation and human oversight mechanisms operate predictably and at the correct authority level.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>B. Product Outcomes → Data, Model, and Fairness Controls</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Case study outcome</th>
+      <th>EU AI Act alignment</th>
+      <th>Explanation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Screening disparity reduced from 48% → 4%</td>
+      <td>Art. 10 – Data governance</td>
+      <td>Indicates corrective action on biased inputs and downstream effects in a high-risk employment context.</td>
+    </tr>
+    <tr>
+      <td>Intersectional ΔTPR ≤ 0.03</td>
+      <td>Art. 10(2)(f), Recital 44</td>
+      <td>Demonstrates bias monitoring across relevant subgroups, including compounded vulnerabilities.</td>
+    </tr>
+    <tr>
+      <td>Demographic parity ≤ 0.01 for eligible candidates</td>
+      <td>Art. 15 – Accuracy and performance</td>
+      <td>Shows that performance is measured and constrained across groups, not only in aggregate.</td>
+    </tr>
+    <tr>
+      <td>Ineligible candidates no longer recommended</td>
+      <td>Art. 5 (boundary enforcement), Art. 14</td>
+      <td>Confirms that system scope is clearly defined and enforced, preventing unintended or misleading use.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>C. Business &amp; Governance Outcomes → Accountability &amp; Auditability</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Case study outcome</th>
+      <th>EU AI Act alignment</th>
+      <th>Explanation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Reduced legal and regulatory exposure</td>
+      <td>Art. 18 – Record-keeping</td>
+      <td>Evidence generation (FDRs, model cards, logs) supports conformity assessment and audit readiness.</td>
+    </tr>
+    <tr>
+      <td>Improved recruiter trust</td>
+      <td>Art. 13 – Transparency</td>
+      <td>Clear metrics, boundaries, and explanations support informed human use of the system.</td>
+    </tr>
+    <tr>
+      <td>More diverse pipeline without performance loss</td>
+      <td>Art. 9, Art. 15</td>
+      <td>Shows that risk mitigation is proportionate and does not undermine intended system performance.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>D. Lessons Learned → Structural Compliance Insights</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lesson</th>
+      <th>EU AI Act relevance</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Fairness issues emerge first at delivery level</td>
+      <td>Confirms the need for continuous risk management (Art. 9), not one-off assessments.</td>
+    </tr>
+    <tr>
+      <td>LLMs require architectural controls</td>
+      <td>Supports technical risk mitigation expectations under Art. 15 for complex models.</td>
+    </tr>
+    <tr>
+      <td>Intersectional evaluation is essential</td>
+      <td>Aligns with non-discrimination intent in Art. 10 and related recitals.</td>
+    </tr>
+    <tr>
+      <td>Risk-based governance scales fairness</td>
+      <td>Mirrors the risk-tiered structure of the EU AI Act.</td>
+    </tr>
+    <tr>
+      <td>Fairness is socio-technical</td>
+      <td>Reflects the Act’s combined focus on technical, organisational, and human oversight controls.</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Mermaid JS for GitHub Pages rendering -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    securityLevel: "loose",
+    theme: "neutral"
+  });
+</script>
+
+</body>
+</html>

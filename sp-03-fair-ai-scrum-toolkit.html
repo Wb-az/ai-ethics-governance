@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fair AI Scrum Toolkit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      color: #111827;
+      background: #ffffff;
+    }
+    h1, h2, h3, h4, h5 {
+      color: #0f172a;
+      line-height: 1.3;
+    }
+    h1 { font-size: 2rem; margin-top: 0; }
+    h2 { margin-top: 2.25rem; }
+    h3 { margin-top: 1.75rem; }
+    h4 { margin-top: 1.5rem; }
+
+    p { margin: 0.6rem 0 1rem; }
+
+    ul, ol {
+      margin: 0.4rem 0 1rem 1.5rem;
+    }
+
+    em, i { font-style: italic; }
+
+    a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 1.25rem 0;
+      font-size: 0.95rem;
+    }
+    table th, table td {
+      border: 1px solid #d1d5db;
+      padding: 0.5rem 0.6rem;
+      vertical-align: top;
+      text-align: left;
+    }
+    table th {
+      background: #e5e7eb;
+      font-weight: 600;
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 0.9em;
+    }
+    pre {
+      background: #0b1120;
+      color: #e5e7eb;
+      padding: 1rem 1.25rem;
+      overflow: auto;
+      border-radius: 0.5rem;
+      margin: 1.25rem 0;
+      font-size: 0.88rem;
+    }
+
+    blockquote {
+      margin: 1.25rem 0;
+      padding: 0.75rem 1rem;
+      border-left: 4px solid #1d4ed8;
+      background: #eff6ff;
+      color: #111827;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Fair AI Scrum Toolkit</h1>
+
+<h2><span style="color:#00008B">1. Introduction</span></h2>
+
+<p>Teams widely adopt Agile Scrum to develop technology and AI solutions. It is grounded in the principles of respect,
+openness and courage, all of which are essential to developing fair AI solutions. The main Scrum artefacts: product
+backlog, sprint backlog, and increment, provide transparency and structure for
+Agile teams (Figure 1).</p>
+
+<div class="mermaid">
+%%{init: {'theme': 'neutral', 'themeVariables': { 'fontSize': '14px'}}}%%
+graph TD
+
+    %% Main Parent Node
+    Root[Agile Scrum Artefacts]
+
+    %% Level 1: How it is applied (Purpose)
+    Root --> |Main Artefacts| Purpose1(Transparency <br> &amp; Structure)
+    Root --> |Extended Artefacts| Purpose2(Tracking <br>&amp; Quality)
+
+    %% Level 2: The Artefacts
+    Purpose1 --> PB[Product Backlog]
+    Purpose1 --> SB[Sprint Backlog]
+    Purpose1 --> Inc[Increment]
+
+    Purpose2 --> BC[Burndown Charts]
+    Purpose2 --> DoD[Definition of Done]
+
+    %% Level 3: Descriptions/Details
+    PB --> PB_Desc[Lists all desired work]
+    SB --> SB_Desc[Details tasks <br>for current sprint]
+    Inc --> Inc_Desc[Sum of completed work]
+
+    %% Styling for better readability
+    classDef main fill:#bbf, stroke:#333,stroke-width:2px;
+    classDef purpose fill:#c9e4ff,stroke:#333,stroke-width:1px;
+    classDef artefact fill:#D5E8D4,stroke:#333,stroke-width:1px;
+    classDef desc fill:#fff,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5;
+
+    class Root main;
+    class Purpose1,Purpose2 purpose;
+    class PB,SB,Inc,BC,DoD artefact;
+    class PB_Desc,SB_Desc,Inc_Desc desc;
+</div>
+
+<p style="font-size:0.8rem"><strong>Figure 1.</strong> Agile scrum artefacts supporting transparency, structure, tracking and quality.</p>
+
+<p>The main Scrum events (ceremonies) are the sprint, sprint planning, daily scrum, sprint review, and retrospective.
+A sprint is a short, defined period in which a scrum team completes a specific amount of work. Sprints are central
+to Scrum and agile methodologies and are the primary event of Scrum. Work for each sprint is selected from the
+product backlog, then refined in the sprint backlog during sprint planning. At the end of each sprint, an increment
+is produced that represents the completed work (Figure 2). Key artefacts such as burndown charts and the definition of
+done
+help track progress and maintain quality. Therefore, maintaining and reviewing these artefacts ensures alignment,
+visibility, and continuous delivery and enables transparency, inspection, and adaptation within the scrum team.</p>
+
+<div class="mermaid">
+%%{init: {'theme': 'neutral', 'themeVariables': { 'fontSize': '16px'}}}%%
+flowchart LR
+
+    PB(Product Backlog)
+    SPM[Sprint<br>Planning Meeting <br> Product <br> Increment]
+    SB[Sprint Backlog]
+    Sprint(Sprint Execution)
+    BC[Burndown<br/>Charts]
+    DSM[Daily Scrum<br/>Meeting]
+    Increment[Finished Work<br/> Product Increment]
+    Review(Sprint Review)
+    Retro(Sprint<br/>Retrospective)
+
+    subgraph Backlog Refinement
+        PB --> SPM
+        SPM --> SB
+    end
+
+    subgraph Sprint Execution
+        SB --> Sprint
+        Sprint -.-> DSM
+        DSM -.-> BC
+        BC -.-> Sprint
+    end
+
+    subgraph Increment Completion
+        Sprint --> Increment
+        Increment --> Review
+        Review --> Retro
+        Review -.-> PB
+        Retro -.-> SPM
+    end
+
+    classDef backlog fill:#bbf, stroke:#333,stroke-width:2px;
+    classDef sprint fill:#ECECFF,stroke:#333,stroke-width:1px;
+    classDef execution fill:#D5E8D4,stroke:#333,stroke-width:1px;
+    classDef increment fill:#c9e4ff,stroke:#333,stroke-width:1px;
+    classDef update fill:#ECECFF,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5;
+
+    class PB backlog;
+    class SPM,SB sprint;
+    class Sprint execution;
+    class Increment,Review,Retro increment;
+</div>
+
+<p style="font-size:0.8rem"><strong>Figure 2.</strong> Scrum sprint cycle.</p>
+
+<h3><span style="color:#00008B">Why Fair Scrum</span></h3>
+
+<p>Scrum provides a strong foundation for fairness by design because it encourages iterative learning, transparency, and shared accountability. By deliberately embedding fairness considerations into Scrum artefacts and events, teams can continuously surface risks, test assumptions, and adapt their approach as understanding evolves. Fairness becomes part of everyday delivery rather than a one-off review, allowing teams to respond early to emerging bias and societal impact. In this way, Scrum supports fairness not as a constraint on agility, but as a quality attribute that improves decision-making and long-term value.</p>
+
+<p>Organisations often commit to building AI systems fair, equitable, and responsible. However, even with the best intentions, fairness principles often fail to translate from an academic exercise into an organisational standard. This failure frequently happens at the team level. Standard agile methodologies like Scrum are highly effective for delivering functional software, but they are fairness blind. They do not include explicit mechanisms to address bias, which means fairness is often treated as an add-on, a nice-to-have, or a lower priority when deadlines loom.</p>
+
+<p>This implementation gap creates significant risk, including:</p>
+
+<ul>
+  <li><strong>Costly Rework:</strong> Finding bias late in the development cycle is expensive to fix.</li>
+  <li><strong>Compliance &amp; Legal Risk:</strong> New regulations like the EU AI Act, and Algorithmic Accountability Act of 2023 in
+  the USA (proposed) introduce clear legal obligations for fairness.</li>
+  <li><strong>Reputational &amp; Product Risk:</strong> Shipping biased products erodes user trust and fails our diverse customer base.</li>
+</ul>
+
+<p>Most AI efforts have focused on technical interventions within data and models. This toolkit offers practical tips
+and recommendations to help you embed fairness throughout the AI development process.
+Considering the social context in which AI operates leads to fairer solutions with real-world impact.</p>
+
+<p>This toolkit will provide practical guidance to embed fairness in key Scrum artefacts and events (ceremonies):</p>
+
+<ul>
+  <li><strong>Scrum Artefact Modification Guide:</strong> How to update your User Stories, Backlogs, and Acceptance Criteria to
+  include fairness.</li>
+  <li><strong>Fairness User Story Template Library:</strong> Ready-to-use templates (using the <strong>SAFE</strong> framework) for common AI bias
+   scenarios.</li>
+  <li><strong>Definition of Done (DoD) Framework:</strong> A mandatory validation checklist (using the <strong>FAIR</strong> framework) to ensure
+  fairness at each increment.</li>
+  <li><strong>Event Adaptation Guide:</strong> Step-by-step instructions for enhancing Sprint Planning (with capacity allocation),
+   Daily Standups, Sprint Reviews (with demo techniques), and Retrospectives (with specific prompts).</li>
+  <li><strong>User Documentation:</strong> A "getting started" guide on how to apply the toolkit in practice.</li>
+  <li><strong>Case Study:</strong> A practical example of how to apply this toolkit to an AI-based resume screening system.</li>
+</ul>
+
+<p><strong>Note:</strong> This document is not exhaustive or comprehensive guidance and should be used as a point of reference or
+baseline to adapt to your own specific needs and context. We advise risk-assessing what is possible to implement within the time,
+budget and quality (compliance). Prioritise the adoption of Fair AI Scrum for projects that fall in the "high-risk"
+or "limited-risk" classification by the EU AI Act or any other regulation relevant to your context, local authority
+and global deployments. Remember, there is always room for incremental improvement, and the perfect project does not
+exist.</p>
+
+<h3><span style="color:#00008B">Who can benefit from using this Toolkit</span></h3>
+
+<p>This toolkit is intended for cross-functional Scrum teams working on AI-enabled systems, including Product Owners, Scrum Masters, developers, and data practitioners. It is designed to support team-level adoption of fairness practices without requiring changes to organisational governance or delivery models.</p>
+
+<p>The Fair AI Scrum Toolkit is intended for:</p>
+
+<ul>
+  <li>Scrum teams developing AI-enabled features or systems</li>
+  <li>Hybrid Scrum–Kanban teams responsible for ongoing AI monitoring</li>
+  <li>Product Owners and Scrum Masters accountable for delivery and quality</li>
+  <li>Cross-functional teams including developers, data scientists, and analysts</li>
+</ul>
+
+<p>It is designed to support team-level adoption of fairness practices without requiring changes to organisational governance or delivery models. The toolkit assumes familiarity with Scrum fundamentals and can be applied across domains, from internal decision-support tools to high-risk, user-facing AI systems.</p>
+
+<h2><span style="color:#00008B">2. Artefact Modification Guide</span></h2>
+
+<p>This guide explains how to modify core Scrum artefacts to make fairness a visible, traceable part of your work.</p>
+
+<h3><span style="color:#00008B">2.1 User Stories</span></h3>
+
+<p>User stories describe the why and what behind the day-to-day work of development team members, often expressed as
+<strong>persona</strong> + <strong>need/feature</strong> + <strong>benefit</strong>. Traditional user stories are "fairness-blind", we must extend the
+traditional template to make fairness an explicit requirement.</p>
+
+<ul>
+  <li><strong>Traditional Format:</strong><br>
+  <em>As a [persona], I want [need/feature] so that [benefit].</em></li>
+  <li><strong>Fairness-Enhanced Format:</strong><br>
+  <em>As a [persona], I want [need/feature] so that [benefit], ensuring [fairness goal] across [protected attributes].</em></li>
+</ul>
+
+<div style="display: flex; gap: 14px; font-family: sans-serif;">
+
+  <div style="flex: 1; background-color: #c9e4ff; color: midnightblue; padding: 10px; min-height: 150px; border-radius: 4px;">
+    <h2 style="margin-top: 0; font-size: 1.2rem;">Standard User Story</h2>
+    <p style="color: midnightblue">As a hiring manager, I want to filter candidates by experience level, so I can
+    focus on qualified applicants.</p>
+  </div>
+
+  <div style="flex: 1; background-color: #c9e4ff; color: midnightblue; padding: 10px; min-height: 150px;
+  border-radius: 4px;">
+    <h2 style="margin-top: 0; font-size: 1.2rem;">Fairness Enhanced User Story</h2>
+    <p style="color:midnightblue">As a hiring manager, I want to filter candidates
+    by experience level so that I can focus on
+    qualified applicants, while ensuring equivalent
+    filtering accuracy across gender and age groups.</p>
+  </div>
+</div>
+
+<br>
+
+<h4><span style="color:#00008B">2.1.1 <strong>SAFE Framework</strong></span></h4>
+
+<p>To enhance the user stories to identify potential impacts on intersectional groups, not just single-attribute groups by using the SAFE Framework:</p>
+
+<ul>
+  <li><strong>Specific protected attributes (S)</strong>: Name the groups and intersections (e.g., gender and race, and their intersections) that require fairness analysis.</li>
+  <li><strong>Actionable fairness definition (A)</strong>: Specify the metric appropriate for your context and application (e.g.,
+  equal opportunity, demographic parity, equalised odds).</li>
+  <li><strong>Feature integration points (F)</strong>: Identify where in the feature fairness consideration is more critical to apply.</li>
+  <li><strong>Expected outcome measures (E)</strong>: Define the validation method to quantitative measure fairness.</li>
+</ul>
+
+<p>The expected outcome measures of this framework are essential for validating the fairness acceptance criteria and consequently the definitions of done.</p>
+
+<h3><span style="color:#00008B">2.2 Sprint Backlogs</span></h3>
+
+<p>A sprint backlog comprises the list of tasks to be completed by the development team in the current sprint cycle,
+and often assumes that fairness occurs automatically during functional development. When fairness-related items are
+included, they often lack adequate guidance on the efforts and resources needed to embed fairness successfully. A structured task taxonomy can help identify fairness practices with estimation guidance based on the task complexity and the risk associated. Example task types include:</p>
+
+<ul>
+  <li><strong>Fairness Analysis Tasks:</strong>
+    <ul>
+      <li><em>Example:</em> Audit training data for representation bias.</li>
+      <li><em>Example:</em> Conduct intersectional model performance testing.</li>
+    </ul>
+  </li>
+  <li><strong>Fairness Implementation Tasks:</strong>
+    <ul>
+      <li><em>Example:</em> Implement a bias mitigation strategy, for instance, re-weighting, feature engineering and fairness
+      constrains.</li>
+    </ul>
+  </li>
+  <li><strong>Fairness Validation Tasks:</strong>
+    <ul>
+      <li><em>Example:</em> Create fairness documentation for model card.</li>
+      <li><em>Example:</em> Test fairness acceptance criteria.</li>
+      <li><em>Example:</em> Perform regression testing.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>This fairness taxonomy impacts multiple stages of the sprint, such as the sprint planning, backlog refinement and the
+sprint execution. It also helps identify and allocate the necessary resources for fairness integration. A sprint backlog is modified by breaking down vague fairness goals into concrete, estimable tasks. This makes the
+work visible and prevents it from being de-prioritised. Your backlog prioritisation should consider the severity of impact on marginalised intersectional groups.</p>
+
+<table>
+  <tr><th>Sprint Backlog</th><th>Fairness Enhanced Sprint Backlog</th></tr>
+  <tr>
+    <td>
+
+      <p><strong>Story:</strong> As a hiring manager, I want to filter candidates by experience level, so I can focus on qualified applicants.</p>
+
+      <table>
+        <tr>
+          <td><strong>Task</strong></td>
+          <td>Create a feature that sort the best 100 applicants by rank</td>
+        </tr>
+        <tr>
+          <td><strong>Description</strong></td>
+          <td>Parse data from CVs, select the candidates with the highest match keyword and years of experience</td>
+        </tr>
+        <tr>
+          <td><strong>Priority</strong></td>
+          <td>High</td>
+        </tr>
+        <tr>
+          <td><strong>Assignee</strong></td>
+          <td>J Doe</td>
+        </tr>
+        <tr>
+          <td><strong>Deliverable</strong></td>
+          <td>A box displaying the top K ranked applicants</td>
+        </tr>
+        <tr>
+          <td><strong>Due date</strong></td>
+          <td>10 Jan</td>
+        </tr>
+      </table>
+
+    </td>
+
+    <td>
+
+      <p><strong>Story:</strong> As a hiring manager, I want to filter candidates by experience level so that I can focus on qualified
+      applicants, while ensuring equivalent filtering accuracy across gender and age groups.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Backlog Item</th>
+            <th>Description</th>
+            <th>Priority</th>
+            <th>Deliverable</th>
+            <th>Assignee</th>
+            <th>Due date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Task 1</td>
+            <td>Audit training data for representation bias.</td>
+            <td>High</td>
+            <td>A data analysis identifying percent applicants with disaggregated gender and age groups.</td>
+            <td>J Doe</td>
+            <td>7 Jan</td>
+          </tr>
+          <tr>
+            <td>Task 2</td>
+            <td>Create a feature that select the top K rank applicants across each disaggregated gender and age group.</td>
+            <td>High</td>
+            <td>A box displaying the top K applicants across each disaggregated gender and age group.</td>
+            <td>J Doe</td>
+            <td>12 Jan</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </td>
+  </tr>
+</table>
+
+<h3><span style="color:#00008B">2.3 Acceptance Criteria</span></h3>
+
+<p>Acceptance criteria define conditions for determining whether an item is complete and fit for purpose, meeting the user's requirements. Effective criteria are clear, concise, testable, outcome-based, measurable, and independent. They ensure clear communication and efficient development. Fairness acceptance criteria extend to include specific, measurable fairness conditions that a feature must satisfy. They translate abstract algorithmic fairness goals into validation requirements, which are verified during testing and are the foundation of the Definition of Done (DoD).</p>
+
+<p>The FAIR framework provides a structure for developing comprehensive acceptance criteria for fairness:</p>
+
+<ul>
+  <li><strong>Fairness metrics thresholds (F)</strong>: Define quantitative standards the feature <em>must</em> meet.</li>
+  <li><strong>Auditing requirements (A)</strong>: Specify the fairness tests that must be performed and documented.</li>
+  <li><strong>Intersectional analysis (I)</strong>: Mandate how performance across intersections of groups (e.g., gender and race)
+  will be validated.</li>
+  <li><strong>Reporting guidelines (R)</strong>: Define how fairness results will be documented and communicated.</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Component</th>
+      <th>FAIR Type</th>
+      <th>Fair Acceptance Criteria Example</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Data</td>
+      <td>A <br/> A</td>
+      <td>
+        <ul>
+          <li>Dataset contains at least 2,000 samples for each demographic group identified in the user story.</li>
+          <li>Data quality metrics (e.g., missing values, noise) are equivalent across groups.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Model</td>
+      <td>F <br/> F <br/> &nbsp;<br/> I <br/> F</td>
+      <td>
+        <ul>
+          <li>Demographic parity difference must not exceed 0.05 across specified protected attributes.</li>
+          <li>True positive rates (Equal Opportunity) must be equivalent (within 0.03) across all demographic groups.</li>
+          <li>Performance must be disaggregated and reported for key intersections (e.g., gender × age).</li>
+          <li>Calibration error differences between groups remain below 0.05.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>User Interface</td>
+      <td>R <br/> &nbsp; <br/> A <br/> I</td>
+      <td>
+        <ul>
+          <li>Decision explanations must be equally understandable across diverse users (validated through user testing).</li>
+          <li>Override mechanisms must be equally usable across all groups.</li>
+          <li>Interface has been tested with users from all demographic groups mentioned in user story.</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h2><span style="color:#00008B">3. Fairness User Story Template Library</span></h2>
+
+<p>This section provides a basic user story template library with common bias scenarios and fairness enhanced stories using <strong>SAFE</strong> Framework from section 2.1.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Domain</th>
+      <th>AI Scenario</th>
+      <th>Traditional User Story</th>
+      <th>Fairness-Enhanced User Story (using SAFE)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Education</td>
+      <td>University Admissions</td>
+      <td>As an admissions officer, I want to rank applicants by predicted grade so I can prioritise top candidates.</td>
+      <td>As an admissions officer, I want to rank applicants by predicted success so I can identify promising candidates (F), ensuring equivalent predictive accuracy across socioeconomic backgrounds, racial groups, first-generation status, and geographic regions with special attention to intersectional categories of these attributes (S,A).</td>
+    </tr>
+    <tr>
+      <td>Hiring</td>
+      <td>Resume Screening</td>
+      <td>As a recruiter, I want résumés categorised by relevant experience so I can efficiently screen candidates.</td>
+      <td>As a recruiter, I want résumés categorised by relevant experience so I can efficiently screen candidates, ensuring that experience evaluation works with equivalent accuracy (S: gender, age, race) for non-traditional career paths (F), achieving an equal opportunity difference &lt; 0.05 % (A, E).</td>
+    </tr>
+    <tr>
+      <td>Finance</td>
+      <td>Loan Approval</td>
+      <td>As a loan officer, I want to see applicants ranked by risk score so I can focus on qualified candidates.</td>
+      <td>As a loan officer, I want to see applicants ranked by risk score so I can focus on qualified candidates, ensuring equivalent score distribution (A) across gender, race, and age groups (S, E) at the scoring stage (F).</td>
+    </tr>
+    <tr>
+      <td>Healthcare</td>
+      <td>Medical Diagnosis</td>
+      <td>As a doctor, I want the AI to detect potential malign tumors from scans to speed up diagnosis.</td>
+      <td>As a doctor, I want AI to detect potential malign tumors from scans to speed up diagnosis, ensuring equivalent true positive rates (A) across all intersections of gender, race, and age (S, I), with a maximum disparity of 2% (E) and a false positive rate &lt; 5%  across intersections (A, E).</td>
+    </tr>
+    <tr>
+      <td>Social Media</td>
+      <td>Content Moderation</td>
+      <td>As a content moderator, I want offensive comments automatically flagged so I can review them quickly.</td>
+      <td>As a content moderator, I want offensive comments automatically flagged so I can review them quickly, ensuring equivalent false positive rates (A, E) for content discussing different cultures and identities (S) in the flagging model (F).</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2><span style="color:#00008B">4. Definition of Done (DoD) Framework</span></h2>
+
+<p>A major task in defining the <strong>Definition of Done (DoD)</strong> is setting the acceptance criteria that the team will use for the project. Acceptance criteria determine when a product or increment is complete and ready for release. A well-defined DoD ensures quality, minimises rework, and aligns team members on shared expectations for completion. The DoD should be visible, regularly reviewed, and updated as the team learns and adapts.</p>
+
+<p>The depth of fairness validation included in the DoD should be <strong>proportionate to the risk, impact, and use context of the AI system</strong>, with higher-risk systems requiring more rigorous and explicit fairness checks.</p>
+
+<p>To enhance the Definition of Done with fairness considerations, the DoD is extended to include:</p>
+
+<ul>
+  <li>Performance metrics disaggregated across relevant intersectional demographic groups.</li>
+  <li>Fairness-aware acceptance criteria associated with each relevant backlog item.</li>
+  <li>Automated and manual testing of agreed fairness metrics.</li>
+  <li>Documentation of tested fairness interventions and their outcomes.</li>
+  <li>Review of fairness results by a broad stakeholder panel, including representative users where appropriate.</li>
+</ul>
+
+<p>Expanding the DoD in this way makes fairness validation a <strong>non-negotiable completion criterion</strong> prior to deployment. Features are not considered “done” until bias testing has been completed and disaggregated performance results have been reviewed, documented, and accepted by the team. The table below provides some example of enhanced DoD.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>DoD Type</th>
+      <th>Standard DoD</th>
+      <th>Fairness-Enhanced DoD</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Code Quality</td>
+      <td>
+        <ul>
+          <li>All code has been thoroughly tested via unit, integration, and end-to-end.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>All code has been thoroughly tested using unit, integration, and end-to-end tests, with performance and outcome metrics disaggregated across relevant intersectional demographic subgroups.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Data</td>
+      <td>
+        <ul>
+          <li>Data has been audited for completeness, format and relevance.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Data has been audited for completeness, format and relevance including bias audit using approved metrics (demographic parity, equal opportunity).</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Model</td>
+      <td>
+        <ul>
+          <li>Model performance meet organisational.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Model performance met organisational fairness metrics thresholds across test data for the defined disaggregated subgroups.</li>
+          <li>Counterfactual analysis for high-stakes decisions was performed.</li>
+          <li>Fairness interventions at each stage were tested for each intersectional group.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>UI/UX</td>
+      <td>
+        <ul>
+          <li>All UI/UX tests passed.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>The UI/UX test was reviewed and validated through user testing across diverse users from the disaggregated subgroups.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Documentation</td>
+      <td>
+        <ul>
+          <li>All release documents has been written and updated with the appropriate version.</li>
+          <li>Intended use and limitations of the data, model and metrics are documented.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Model cards are created and include bias testing results and limitations.</li>
+          <li>Rationale for choice of fairness interventions and results for each intersectional subgroups is documented and version.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Deployment</td>
+      <td>
+        <ul>
+          <li>Increment has been deployed to staging environment and tested.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Increment has been deployed to staging environment and tested for all high impact disaggregated intersectional subgroups.</li>
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>Product Owner Sign-off</td>
+      <td>
+        <ul>
+          <li>Increment / product approved by the Product Owner.</li>
+        </ul>
+      </td>
+      <td>
+        <ul>
+          <li>Increment / product with evidence of meeting fairness requirements is approved by the Product Owner.</li>
+        </ul>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<h3><span style="color:#00008B">4.1 Fairness Validation Steps Before Deployment</span></h3>
+
+<p>To operationalise the fairness-aware Definition of Done, teams embed the following validation steps into their development workflow:</p>
+
+<ol>
+  <li>Add fairness-aware acceptance criteria to the Definition of Done for each relevant feature.</li>
+  <li>Include disaggregated performance testing across identified demographic and intersectional groups as part of the DoD.</li>
+  <li>Create automated unit and integration tests that verify agreed fairness metrics during development.</li>
+  <li>Establish clear testing protocols for validating fairness criteria prior to increment acceptance.</li>
+  <li>Conduct periodic fairness audits against defined acceptance criteria for models and datasets.</li>
+  <li>Require fairness documentation (e.g. test results, known limitations, trade-offs) for all model versions.</li>
+  <li>Add fairness-enhanced user stories and tasks to the product backlog to ensure fairness work is planned and prioritised.</li>
+</ol>
+
+<h2><span style="color:#00008B">5. Ceremony Adaptation Guide: Embedding Fairness into Scrum Events</span></h2>
+
+<p>This section explains how Scrum ceremonies can be adapted to embed fairness into everyday team practices. The objective is to integrate fairness discussions into existing Scrum events rather than introducing additional meetings or parallel governance processes. In doing so, fairness becomes part of the team’s regular inspection and adaptation cycle.</p>
+
+<p>The adaptations described below are designed to be lightweight, role-aware, and proportionate to the risk and impact of the AI system, ensuring that fairness supports delivery rather than hindering it.</p>
+
+<h3><span style="color:#00008B">5.1 Sprint Planning: Planning for Fairness by Design</span></h3>
+
+<p>Sprint Planning determines what will be built and how work will be delivered. It is the earliest and most effective point to identify potential fairness risks and plan appropriate mitigation activities.</p>
+
+<p><strong>Fairness-Enhanced Adaptations</strong></p>
+<ul>
+  <li>Review user stories to identify potential bias and fairness risks.</li>
+  <li>Identify protected and intersectional groups that may be affected by the planned work.</li>
+  <li>Allocate explicit sprint capacity for fairness activities such as testing, data analysis, audits, and documentation.</li>
+  <li>Confirm fairness-aware acceptance criteria and Definition of Done expectations for each relevant backlog item.</li>
+</ul>
+
+<p><strong>Guiding Questions</strong></p>
+<ul>
+  <li>Which backlog items in this sprint may introduce fairness or bias risks?</li>
+  <li>Which user groups could be disproportionately affected?</li>
+  <li>What fairness validation is required for this increment to meet the Definition of Done?</li>
+</ul>
+
+<p><strong>Outcome</strong></p>
+<ul>
+  <li>Fairness work is visible, planned, and prioritised from the start of the sprint.</li>
+  <li>Trade-offs between delivery and fairness are discussed early and transparently.</li>
+</ul>
+
+<h3><span style="color:#00008B">5.2 Daily Scrum: Monitoring Fairness in Progress</span></h3>
+
+<p>The Daily Scrum enables the team to synchronise work and surface blockers. Fairness-related issues should be raised with the same urgency as technical or delivery impediments.</p>
+
+<p><strong>Fairness-Enhanced Adaptations</strong></p>
+<ul>
+  <li>Treat fairness and bias-related risks as first-class blockers.</li>
+  <li>Report progress on fairness validation tasks alongside functional development.</li>
+  <li>Encourage team members to raise emerging concerns about data quality, model behaviour, or unintended impacts.</li>
+</ul>
+
+<p><strong>Example Prompt</strong></p>
+<ul>
+  <li>Are there any fairness or bias-related risks blocking progress today?</li>
+</ul>
+
+<p><strong>Outcome</strong></p>
+<ul>
+  <li>Fairness issues are identified early, reducing late-stage rework and risk.</li>
+  <li>Teams develop psychological safety around raising ethical and social concerns.</li>
+</ul>
+
+<h3><span style="color:#00008B">5.3 Sprint Review / Demo: Demonstrating Fairness Outcomes</span></h3>
+
+<p>Sprint Reviews inspect the increment and gather feedback from stakeholders. For AI systems, this inspection should include fairness outcomes in addition to functional behaviour.</p>
+
+<p><strong>Fairness-Enhanced Adaptations</strong></p>
+<ul>
+  <li>Demonstrate fairness and performance metrics alongside standard system metrics.</li>
+  <li>Present disaggregated results across relevant demographic and intersectional groups.</li>
+  <li>Communicate known limitations, trade-offs, and mitigation decisions clearly and transparently.</li>
+  <li>Invite feedback from diverse stakeholders where appropriate.</li>
+</ul>
+
+<p><strong>What to Show</strong></p>
+<ul>
+  <li>Evidence of fairness testing and validation.</li>
+  <li>Disaggregated performance metrics.</li>
+  <li>Documentation produced as part of the fairness-enhanced Definition of Done.</li>
+</ul>
+
+<p><strong>Outcome</strong></p>
+<ul>
+  <li>Stakeholders gain transparency into both system performance and fairness impacts.</li>
+  <li>Trust and accountability are strengthened through open communication.</li>
+</ul>
+
+<h3><span style="color:#00008B">5.4 Sprint Retrospective: Learning and Improving Fairness Practices</span></h3>
+
+<p>The Sprint Retrospective provides a structured opportunity for continuous improvement. It is the primary mechanism for refining how fairness is embedded into team practices over time.</p>
+
+<p><strong>Fairness-Enhanced Adaptations</strong></p>
+<ul>
+  <li>Include fairness as a standing retrospective topic.</li>
+  <li>Reflect on what worked well and what did not in fairness validation during the sprint.</li>
+  <li>Identify concrete actions to improve fairness practices in future sprints.</li>
+</ul>
+
+<p><strong>Example Prompts</strong></p>
+<ul>
+  <li>Did we identify fairness risks early enough this sprint?</li>
+  <li>What fairness skills does the team need to develop?</li>
+  <li>Where did fairness validation add the most value or cause friction?</li>
+  <li>What can we improve in the next sprint?</li>
+</ul>
+
+<p><strong>Outcome</strong></p>
+<ul>
+  <li>Fairness practices evolve incrementally alongside delivery practices.</li>
+  <li>Teams build shared understanding and capability over time.</li>
+</ul>
+
+<h3><span style="color:#00008B">5.5 Role-Specific Fairness Responsibilities During Ceremonies</span></h3>
+
+<p><strong>Product Owner</strong></p>
+<ul>
+  <li>Prioritises fairness-related work alongside functional requirements.</li>
+  <li>Makes and documents trade-off decisions involving fairness impacts.</li>
+  <li>Ensures stakeholder feedback on fairness is reflected in the product backlog.</li>
+</ul>
+
+<p><strong>Scrum Master</strong></p>
+<ul>
+  <li>Facilitates fairness discussions during Scrum ceremonies.</li>
+  <li>Ensures fairness topics are not deprioritised under delivery pressure.</li>
+  <li>Escalates unresolved or high-severity bias issues to product leadership.</li>
+</ul>
+
+<p><strong>Developers, Data Scientists, and Data Analysts</strong></p>
+<ul>
+  <li>Implement bias and fairness testing as part of feature development.</li>
+  <li>Conduct bias audits for relevant model and data iterations.</li>
+  <li>Apply appropriate bias mitigation techniques where needed.</li>
+  <li>Follow the fairness-enhanced Definition of Done.</li>
+  <li>Document fairness testing methodologies, results, and limitations.</li>
+  <li>Report discovered bias issues promptly.</li>
+  <li>Communicate fairness metrics and outcomes to non-technical stakeholders.</li>
+  <li>Participate in fairness skill development activities.</li>
+</ul>
+
+<p>By adapting Scrum ceremonies in this way, teams create regular and structured touchpoints for fairness inspection and adaptation. Embedding fairness into planning, daily coordination, review, and reflection ensures that fairness remains a shared responsibility throughout the sprint lifecycle and is addressed proactively rather than retrospectively.</p>
+
+<h3><span style="color:#00008B">5.6 Fairness Monitoring in Scrum–Kanban Hybrid Teams</span></h3>
+
+<p>Some teams use <strong>Scrum with Kanban</strong> to complement sprint-based planning with continuous flow and monitoring. This hybrid approach is particularly effective for fairness monitoring, as fairness-related risks can emerge at any point in the lifecycle and may not align neatly with sprint boundaries.</p>
+
+<p>For teams operating in a Scrum–Kanban hybrid, fairness monitoring should be supported through <strong>continuous visualisation, explicit policies, and flow-based metrics</strong>, while still integrating with existing Scrum ceremonies.</p>
+
+<p><strong>Key Practices</strong></p>
+<ul>
+  <li>Visualise fairness-related work on the Kanban board using dedicated swimlanes, labels, or tags (e.g. <em>Fairness</em>, <em>Bias Investigation</em>, <em>Monitoring Alert</em>).</li>
+  <li>Define explicit entry criteria for fairness items, such as:
+    <ul>
+      <li>Breaches of agreed fairness thresholds</li>
+      <li>Monitoring alerts from deployed models</li>
+      <li>User or stakeholder feedback indicating potential bias</li>
+    </ul>
+  </li>
+  <li>Define clear exit criteria, including documented investigation outcomes, mitigation actions, and sign-off where required.</li>
+  <li>Apply Work In Progress (WIP) limits to fairness investigations to ensure focus and avoid overload.</li>
+  <li>Track the age and flow of fairness items to identify bottlenecks and recurring issues.</li>
+</ul>
+
+<p><strong>Integration with Scrum Ceremonies</strong></p>
+<ul>
+  <li><strong>Daily Scrum</strong>: Review blocked or ageing fairness items alongside other impediments.</li>
+  <li><strong>Sprint Review</strong>: Inspect fairness-related flow metrics and highlight issues handled outside the sprint backlog.</li>
+  <li><strong>Sprint Retrospective</strong>: Use flow data to reflect on how effectively fairness issues are detected, prioritised, and resolved.</li>
+</ul>
+
+<p><strong>Flow-Based Metrics to Monitor</strong></p>
+<ul>
+  <li>Time to detection of fairness issues</li>
+  <li>Time to resolution of bias incidents</li>
+  <li>Number of fairness items exceeding agreed age thresholds</li>
+  <li>Recurrence of similar fairness issues across sprints</li>
+</ul>
+
+<p><strong>Outcome</strong></p>
+<p>By combining Scrum’s inspection and adaptation with Kanban’s flow-based monitoring, teams can respond to fairness risks quickly and consistently. Fairness becomes an operational concern that is continuously monitored and addressed, rather than an activity constrained to sprint boundaries. This approach strengthens accountability, supports regulatory readiness, and ensures that fairness considerations remain visible throughout development and deployment.</p>
+
+<p>The next section provides detailed, practical guidance on how to apply these ceremony adaptations in day-to-day Scrum and Scrum–Kanban practice.</p>
+
+<h2><span style="color:#00008B">6. User Documentation: How to Apply the Fair AI Scrum Toolkit in Practice</span></h2>
+
+<p>This section translates the principles and ceremony adaptations defined in Sections 5 into concrete, day-to-day practices. It explains how teams can embed fairness into existing Scrum and Scrum–Kanban workflows by <strong>adapting what already exists</strong>, rather than introducing new ceremonies or parallel reporting structures.</p>
+
+<p>The guidance in this section is intentionally flexible. Teams are encouraged to start small and scale their fairness practices over time, proportionate to the risk, impact, and maturity of their AI systems.</p>
+
+<h3><span style="color:#00008B">6.1 How to Start Using the Toolkit</span></h3>
+
+<p>Teams should begin with a <strong>minimum viable adoption</strong> of fairness practices, focusing first on AI-enabled features with the highest potential impact.</p>
+
+<p><strong>Recommended starting steps</strong></p>
+<ol>
+  <li>Identify backlog items that involve AI, automated decision-making, or data-driven inference.</li>
+  <li>Add basic fairness considerations to those user stories (e.g. affected users, potential harms).</li>
+  <li>Extend the Definition of Done with at least one fairness validation requirement.</li>
+  <li>Introduce fairness prompts into Sprint Planning and Sprint Retrospectives.</li>
+  <li>Ensure fairness outcomes are discussed during Sprint Reviews.</li>
+</ol>
+
+<p>These steps can typically be implemented within one or two sprints without changing existing delivery cadences.</p>
+
+<h3><span style="color:#00008B">6.2 Tailoring Adoption to Risk and Context</span></h3>
+
+<p>Fairness practices should be <strong>proportionate to risk</strong>, rather than applied uniformly.</p>
+
+<p>When deciding how deeply to apply the toolkit, teams should consider:</p>
+<ul>
+  <li>Severity and reversibility of potential harm</li>
+  <li>Scale of deployment and number of affected users</li>
+  <li>Use of personal or sensitive data</li>
+  <li>Regulatory exposure (e.g. EU AI Act risk categories)</li>
+</ul>
+
+<p><strong>Indicative guidance</strong></p>
+<ul>
+  <li><strong>Low-risk systems</strong>: Fairness-aware user stories, light metric disaggregation, retrospective reflection.</li>
+  <li><strong>Medium-risk systems</strong>: Explicit fairness acceptance criteria, stakeholder review, documented trade-offs.</li>
+  <li><strong>High-risk systems</strong>: Comprehensive disaggregated testing, continuous monitoring, advanced ceremony practices, and formal documentation.</li>
+</ul>
+
+<p>Teams should document the rationale for their chosen level of adoption to support transparency and auditability.</p>
+
+<h3><span style="color:#00008B">6.3 Running Fairness-Enhanced Scrum Ceremonies (Detailed Guidance)</span></h3>
+
+<p>The practices below show how fairness considerations can be <strong>embedded into existing Scrum ceremonies</strong>, rather than added as separate activities. They are particularly relevant for medium- and high-risk AI systems.</p>
+
+<h4>Sprint Planning (Detailed)</h4>
+
+<ul>
+  <li>Review AI-related backlog items explicitly for fairness and bias risk.</li>
+  <li>Prioritise work using fairness risk indicators such as:
+    <ul>
+      <li>Potential harm severity if the feature is biased</li>
+      <li>Regulatory or compliance exposure</li>
+    </ul>
+  </li>
+  <li>Reserve appropriate sprint capacity for fairness-related work (e.g. bias testing, audits, mitigation, documentation), treating this similarly to time allocated for technical debt or security work.</li>
+  <li>Confirm fairness-aware acceptance criteria and Definition of Done expectations before committing work.</li>
+</ul>
+
+<h4>Daily Scrum (Detailed)</h4>
+
+<ul>
+  <li>As part of standard progress updates, team members working on fairness-related tasks should be prepared to cover:
+    <ul>
+      <li>Progress made on fairness validation</li>
+      <li>Any fairness or bias-related blockers (e.g. missing data, unclear metrics)</li>
+    </ul>
+  </li>
+  <li>Fairness-related blockers should be raised and addressed with the same urgency as technical impediments.</li>
+</ul>
+
+<p>These prompts should be addressed <strong>within existing progress updates, alongside other delivery updates</strong>, rather than added as separate agenda items, to avoid increasing meeting duration.</p>
+
+<h4>Sprint Review / Demo (Detailed)</h4>
+
+<ul>
+  <li>Demonstrate fairness outcomes alongside functional behaviour.</li>
+  <li>Use concrete artefacts rather than verbal assurances, such as:
+    <ul>
+      <li>Disaggregated performance dashboards</li>
+      <li>Before-and-after comparisons showing the effect of fairness interventions</li>
+      <li>Clear explanations of remaining limitations and trade-offs</li>
+    </ul>
+  </li>
+  <li>Transparently track unresolved issues as “fairness debt” and add them to the backlog.</li>
+</ul>
+
+<p>Fairness demonstrations should be integrated into feature demos, not presented as standalone agenda items.</p>
+
+<h4>Sprint Retrospective (Detailed)</h4>
+
+<p>In addition to standard retrospective questions, include fairness-specific reflection such as:</p>
+
+<ul>
+  <li>Where did we miss potential fairness risks this sprint?</li>
+  <li>Did we allocate sufficient time and skills to fairness work?</li>
+  <li>Which user groups or intersectional combinations were not adequately tested?</li>
+  <li>What should we change next sprint to improve fairness outcomes?</li>
+</ul>
+
+<p>Fairness should be treated as a standing retrospective topic, not an occasional discussion.</p>
+
+<h3><span style="color:#00008B">6.4 Optional Advanced Practices for High-Risk AI Systems</span></h3>
+
+<p>Teams working on high-risk or regulated AI systems may choose to adopt <strong>additional fairness practices</strong> within existing Scrum ceremonies. These practices are optional and should be applied proportionately, based on risk and organisational maturity.</p>
+
+<p><strong>Examples</strong></p>
+<ul>
+  <li>Explicit sprint capacity allocation for fairness work (e.g. bias testing, audits, documentation).</li>
+  <li>Fairness-focused backlog prioritisation using harm severity and regulatory exposure.</li>
+  <li>Mid-sprint fairness checkpoints for complex features, such as:
+    <ul>
+      <li>Data validation checks after preprocessing</li>
+      <li>Early model evaluation before full integration</li>
+    </ul>
+  </li>
+  <li>Explicit tracking and management of unresolved “fairness debt”.</li>
+</ul>
+
+<p>These practices aim to surface bias earlier and reduce costly late-stage rework.</p>
+
+<h3><span style="color:#00008B">6.5 Applying the Toolkit in Scrum–Kanban Hybrid Teams</span></h3>
+
+<p>For teams using Scrum with Kanban, fairness work often extends beyond sprint boundaries, particularly for monitoring deployed systems.</p>
+
+<p><strong>Practical guidance</strong></p>
+<ul>
+  <li>Visualise fairness-related work on the Kanban board using swimlanes, labels, or tags.</li>
+  <li>Define clear entry and exit policies for fairness investigations.</li>
+  <li>Monitor flow-based metrics such as time to detection and time to resolution of fairness issues.</li>
+  <li>Review fairness-related flow during Daily Scrums, Sprint Reviews, and Retrospectives.</li>
+</ul>
+
+<p>This approach is especially effective for continuous monitoring and operational AI systems.</p>
+
+<h3><span style="color:#00008B">6.6 Roles and Responsibilities in Practice</span></h3>
+
+<p>While fairness is a shared responsibility, clear ownership supports consistent execution.</p>
+
+<ul>
+  <li><strong>Product Owner</strong>: Prioritises fairness-related work and documents trade-off decisions.</li>
+  <li><strong>Scrum Master</strong>: Facilitates fairness discussions and ensures space is protected within ceremonies.</li>
+  <li><strong>Developers, Data Scientists, and Analysts</strong>: Implement, test, document, and explain fairness validation activities.</li>
+  <li><strong>Stakeholders</strong>: Provide context on real-world impact and user experience.</li>
+</ul>
+
+<p>Roles and expectations should be revisited as fairness practices mature.</p>
+
+<h3><span style="color:#00008B">6.7 Common Pitfalls and How to Avoid Them</span></h3>
+
+<ul>
+  <li>Treating fairness as an add-on rather than embedding it into Scrum artefacts and ceremonies.</li>
+  <li>Over-engineering fairness processes too early.</li>
+  <li>Failing to document assumptions, decisions, and limitations.</li>
+  <li>Ignoring intersectional impacts where risk warrants deeper analysis.</li>
+  <li>Avoiding explicit discussion of fairness-related trade-offs.</li>
+</ul>
+
+<p>Addressing these pitfalls early improves delivery quality, trust, and accountability.</p>
+
+<h3><span style="color:#00008B">6.8 Continuous Improvement</span></h3>
+
+<p>Fairness is not a one-off activity. Teams should treat fairness practices as <strong>evolving capabilities</strong> that improve over time as systems, data, and contexts change. To support continuous improvement, teams should:</p>
+
+<ul>
+  <li>Review fairness outcomes and metrics on a regular basis.</li>
+  <li>Adapt acceptance criteria, thresholds, and validation approaches as systems evolve.</li>
+  <li>Incorporate learnings from incidents, audits, monitoring alerts, and user feedback.</li>
+  <li>Share lessons learned across teams and projects where possible.</li>
+</ul>
+
+<p>The Fair AI Scrum Toolkit is designed to help teams move from good intentions to consistent practice. By embedding fairness into everyday Scrum work, tailoring effort to risk, and iterating over time, teams can deliver AI systems that are not only functional, but also fair, accountable, and trustworthy.</p>
+
+<h3><span style="color:#00008B">6.9 Post-Release and Maintenance: Adapting the Toolkit for Kanban</span></h3>
+
+<p>This toolkit is designed primarily around Scrum, which is well-suited to the planned, iterative development of AI-enabled systems. However, post-release phases such as maintenance, hypercare, or live operations often involve a continuous and unpredictable stream of incidents, bug reports, and hotfixes. In these contexts, teams may choose to operate using <strong>Kanban</strong> rather than sprint-based Scrum. Kanban supports continuous flow and rapid response, allowing high-priority issues such as newly discovered fairness risks to be addressed immediately rather than waiting for the next Sprint Planning event.</p>
+
+<h4>Keeping Fairness Intact in Kanban</h4>
+
+<p>While the workflow changes, the fairness principles of the toolkit remain the same.</p>
+
+<ul>
+  <li><strong>Use the Same Artefacts</strong><br>
+  All bugs, incidents, and hotfixes remain work items and must include fairness-aware acceptance criteria, as defined in Section 3. Fixes should not introduce new bias or regress previously validated fairness outcomes.</li>
+
+  <li><strong>Enforce Fairness Validation Before Done</strong><br>
+   Teams should add a dedicated <strong>Fairness Validation</strong> step (or column) before work items are considered complete. Items cannot move to “Done” until fairness checks are satisfied.</li>
+
+  <li><strong>Maintain Fairness-Aware Prioritisation</strong><br>
+   Fairness-related incidents should be prioritised based on potential harm and impact. A severe fairness issue should take precedence over lower-impact functional or cosmetic defects.</li>
+</ul>
+
+<p>By applying these practices, teams can maintain fairness standards during post-release operations while benefiting from Kanban’s responsiveness and flexibility.</p>
+
+<!-- Mermaid JS for GitHub Pages rendering -->
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+  mermaid.initialize({
+    startOnLoad: true,
+    securityLevel: "loose",
+    theme: "neutral"
+  });
+</script>
+
+</body>
+</html>
+

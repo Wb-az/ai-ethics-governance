@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fairness Implementation Playbook</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem 4rem;
+      color: #111827;
+      background: #ffffff;
+    }
+    h1, h2, h3, h4, h5 {
+      color: #0f172a;
+      line-height: 1.3;
+    }
+    h1 { font-size: 2rem; margin-top: 0; }
+    h2 { margin-top: 2.25rem; }
+    h3 { margin-top: 1.75rem; }
+    h4 { margin-top: 1.5rem; }
+
+    p { margin: 0.6rem 0 1rem; }
+
+    ul, ol {
+      margin: 0.4rem 0 1rem 1.5rem;
+    }
+
+    em, i {
+      font-style: italic;
+    }
+
+    a {
+      color: #1d4ed8;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #e5e7eb;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+
+<h1><span style="color: Black">Fairness Implementation Playbook</span></h1>
+
+<h3><span style="color:#00008B">Introduction</span></h3>
+
+<p>Fairness in AI systems cannot be achieved through technical interventions alone.
+It emerges from the interaction between data, models, organisational decisions,
+and the regulatory and social contexts in which systems operate. As AI systems
+increasingly influence access to employment, healthcare, finance, and public
+services, organisations must ensure that fairness, non-discrimination, and
+fundamental rights are addressed systematically and consistently throughout the
+AI lifecycle.</p>
+
+<p>This playbook provides a practical framework for translating fairness principles
+and regulatory obligations into concrete development, governance, and validation
+practices. It is designed to support teams in building AI systems that are not
+only performant, but also accountable, auditable, and aligned with societal and
+legal expectations.</p>
+
+<p>Fairness risks are first surfaced through Agile delivery, escalated and resolved through organisational governance, mitigated where necessary through architectural controls, and prioritised, validated, and evidenced in line with regulatory obligations. This playbook builds on two companion resources of the <em>AI Fairness Audit Playbook</em> and the <em>AI Fairness Interventions Playbook</em> and focuses on putting their concepts into practice across the ML lifecycle.</p>
+
+<h3><span style="color:#00008B">Purpose and Scope</span></h3>
+
+<p>The Fairness Implementation Playbook supports organisations in operationalising fairness across the full lifecycle of AI systems, from early design decisions to post-deployment monitoring and retirement. It is intended for use across multiple domains, including healthcare, finance, recruitment, and the public sector, and across a range of AI techniques such as classification, regression, ranking, and generative models.</p>
+
+<p>The guidance is domain and model-agnostic, relying on risk-based classification and proportionate controls rather than prescriptive technical rules. The playbook is not a legal interpretation of regulations. Instead, it focuses on making regulatory and ethical requirements actionable within real-world delivery environments.</p>
+
+<p>The Fairness Implementation Playbook operationalises the auditing methods defined in the <em>AI Fairness Audit Playbook</em> and the mitigation and intervention strategies explored in the <em>AI Fairness Interventions Playbook</em>. Use of those two playbooks is recommended but not mandatory: you may instead rely on any equivalent, domain- and model-agnostic auditing and intervention methodology, provided that, before applying this playbook, you have (1) identified potential sources of bias in the data, (2) agreed an appropriate fairness definition, and (3) defined candidate interventions.</p>
+
+<h3><span style="color:#00008B">Structure of the Playbook</span></h3>
+
+<p>The playbook is organised into four interconnected toolkits, supported by a practical case study. The Fair AI Scrum Toolkit integrates fairness activities into Agile delivery, ensuring that risk assessment, testing, and documentation are embedded into backlog refinement, sprint planning, and review ceremonies.</p>
+
+<p>The Organisational Integration Toolkit defines roles, responsibilities, and escalation pathways, enabling fairness decisions to be owned, reviewed, and challenged at appropriate levels of the organisation. The Advanced Architecture Cookbook provides technical patterns for implementing fairness controls, monitoring, and auditability across different system architectures and deployment contexts.</p>
+
+<p>The Regulatory Compliance Guide translates regulatory obligations into concrete engineering tasks, governance gates, documentation templates, and audit trail mechanisms, enabling teams to demonstrate compliance without excessive overhead. Outputs from each toolkit feed into the others, creating a coherent workflow that connects team-level practices with organisational governance and regulatory requirements.</p>
+
+<h3><span style="color:#00008B">How the Playbook is Used</span></h3>
+
+<p>The playbook follows a risk-based and proportionate approach to fairness implementation. AI systems are classified according to their inherent risk using a structured risk scoring model. This classification determines the depth of governance, documentation, and validation required. Regulatory principles such as fairness, human oversight, transparency, and accountability are mapped to concrete development tasks, acceptance criteria, and evidence artefacts.</p>
+
+<p>Fairness is treated as a socio-technical concern. Technical evaluations, such as subgroup and intersectional analysis, are combined with documented governance decisions, escalation mechanisms, and audit trails. This approach ensures that trade-offs are explicit, justified, and reviewable over time.</p>
+
+<h3><span style="color:#00008B">Validation and Assurance</span></h3>
+
+<p>The playbook includes a validation framework that enables teams and governance functions to verify whether fairness has been implemented effectively. Validation focuses on confirming that required artefacts are produced at each lifecycle stage, that governance gates are applied consistently with system risk, and that fairness, robustness, and oversight controls are tested and monitored in practice.</p>
+
+<p>Auditability is embedded into everyday delivery through versioned documentation, monitoring signals, and traceable decision records, rather than relying on retrospective reconstruction. This approach supports both internal assurance and external regulatory readiness.</p>
+
+<h3><span style="color:#00008B">Adaptability and Evolution</span></h3>
+
+<p>The playbook is designed to be adaptable rather than static. Sector-specific considerations are addressed through risk classification and impact assessment, allowing the same framework to be applied across domains with different harm profiles and regulatory constraints. It is also intended to evolve over time.</p>
+
+<p>Future iterations may incorporate new regulatory guidance, improved automation of documentation and validation activities, and lessons learned from operational use and incident response. By treating fairness governance as an ongoing process rather than a one-off exercise, organisations can maintain alignment with regulatory expectations and societal values as AI systems and their contexts change.</p>
+
+<h3><span style="color:#00008B">Intended Audience</span></h3>
+
+<p>This playbook is written for delivery teams, product and domain leaders, fairness and responsible AI practitioners, legal and compliance functions, and executive leadership responsible for AI risk oversight. It aims to support informed decision-making at all levels while remaining practical enough to integrate into existing engineering and organisational processes.</p>
+
+</body>
+</html>
