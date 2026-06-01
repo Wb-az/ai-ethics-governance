@@ -144,16 +144,8 @@
   </script>
   <script>
     window.addEventListener('load', function() {
-      fetch('https://azhill.goatcounter.com/counter/TOTAL.json')
-        .then(r => r.json())
-        .then(data => {
-          document.getElementById('view-count').textContent = data.count || '—';
-        })
-        .catch(() => {
-          // CORS fallback: use GoatCounter's counter image
-          var el = document.getElementById('view-count');
-          el.innerHTML = '<img src="https://azhill.goatcounter.com/counter/TOTAL.svg" alt="visit counter" style="filter:invert(1);height:1.4rem;vertical-align:middle;">';
-        });
+      document.getElementById('view-count').innerHTML =
+        '<img src="https://azhill.goatcounter.com/counter/TOTAL.svg" alt="visit counter" style="filter:invert(1) brightness(2);height:1.6rem;vertical-align:middle;">';
     });
   </script>
   <script data-goatcounter="https://azhill.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
