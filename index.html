@@ -143,16 +143,17 @@
     });
   </script>
   <script>
-    fetch('https://azhill.goatcounter.com/api/v0/stats/total')
-      .then(r => r.json())
-      .then(data => {
-        const total = data.total || 0;
-        document.getElementById('view-count').textContent =
-          total.toLocaleString();
-      })
-      .catch(() => {
-        document.getElementById('view-count').textContent = '—';
-      });
+    window.addEventListener('load', function() {
+      fetch('https://azhill.goatcounter.com/counter/TOTAL.json')
+        .then(r => r.json())
+        .then(data => {
+          document.getElementById('view-count').textContent =
+            (data.count || '—').toLocaleString();
+        })
+        .catch(() => {
+          document.getElementById('view-count').textContent = '—';
+        });
+    });
   </script>
   <script data-goatcounter="https://azhill.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
