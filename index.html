@@ -4,230 +4,325 @@
   <meta charset="UTF-8" />
   <title>AI Fairness Implementation Playbook</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
-  * {
-    box-sizing: border-box;
-  }
+    * {
+      box-sizing: border-box;
+    }
 
-  body {
-    margin: 0;
-    /*font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",*/
-    /*  Roboto, Helvetica, Arial, sans-serif;*/
-    font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-    background: #f9fafb;
-    color: #0f172a;
-  }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+      background: #f9fafb;
+      color: #0f172a;
+    }
 
-  .layout {
-    display: flex;
-    min-height: 100vh;
-  }
-
-  .sidebar {
-    width: 270px;
-    /*background: #0f172a;*/
-    /*background: #073352;*/
-    background: #040634;
-    color: #e5e7eb;
-    padding: 1.75rem 1.25rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-
-
-  .nav-section-title {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: #9ca3af;
-    margin: 0 0 0.4rem 0.2rem;
-  }
-
-  .sidebar-author {
-    font-size: 0.9rem;
-    color: #6b7280;
-    margin: 0.25rem 0 0;
-  }
-
-  .sidebar-meta {
-    font-size: 0.75rem;
-    color: #6b7280;
-    margin: 0.25rem 0 0;
-  }
-
-  .nav-link {
-    display: block;
-    padding: 0.45rem 0.6rem;
-    margin-bottom: 0.1rem;
-    border-radius: 0.45rem;
-    text-decoration: none;
-    color: #e5e7eb;
-    font-size: 0.9rem;
-    cursor: pointer;
-    border: 1px solid transparent;
-    line-height: 1.3;
-  }
-
-  .nav-link:hover {
-    background: #252974;;
-    border-color: #2A4D69;
-  }
-
-  .content {
-    flex: 1;
-    padding: 0.75rem;
-  }
-
-  iframe {
-    width: 100%;
-    height: calc(100vh - 1.5rem);
-    border: 1px solid #e5e7eb;
-    border-radius: 0.75rem;
-    background: #ffffff;
-  }
-
-  .view-counter {
-    margin-top: auto;
-    padding-top: 1.25rem;
-    border-top: 1px solid #1f2937;
-  }
-
-  .view-counter-label {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: #6b7280;
-    margin-bottom: 0.3rem;
-  }
-
-  .view-counter-value {
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: #e5e7eb;
-    letter-spacing: 0.02em;
-  }
-
-  @media (max-width: 800px) {
     .layout {
-      flex-direction: column;
+      display: flex;
+      min-height: 100vh;
     }
+
     .sidebar {
-      width: 100%;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: center;
-      padding: 1rem 1.25rem;
+      width: 270px;
+      background: #040634;
+      color: #e5e7eb;
+      padding: 1.75rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
     }
+
+    .sidebar h1 {
+      font-size: 1.25rem;
+      line-height: 1.2;
+      margin: 0 0 0.75rem;
+      color: #ffffff;
+    }
+
+    .sidebar p {
+      margin: 0.25rem 0;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      line-height: 1.4;
+    }
+
+    .sidebar-meta {
+      font-size: 0.75rem;
+      color: #8b93b5;
+      margin: 0.25rem 0 0;
+    }
+
     .nav-section-title {
-      width: 100%;
-      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #a5accf;
+      margin: 0 0 0.4rem 0.2rem;
     }
+
+    .nav-link {
+      display: block;
+      padding: 0.45rem 0.6rem;
+      margin-bottom: 0.1rem;
+      border-radius: 0.45rem;
+      text-decoration: none;
+      color: #e5e7eb;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border: 1px solid transparent;
+      line-height: 1.3;
+    }
+
+    .nav-link:hover {
+      background: #252974;
+      border-color: #2a4d69;
+      color: #ffffff;
+    }
+
+    .nav-link.active {
+      background: #2a4d69;
+      border-color: #3b6f95;
+      color: #ffffff;
+      font-weight: 600;
+    }
+
     .content {
-      padding: 0.5rem;
+      flex: 1;
+      padding: 0.75rem;
     }
+
     iframe {
-      height: calc(100vh - 6.5rem);
+      width: 100%;
+      height: calc(100vh - 1.5rem);
+      border: 1px solid #e5e7eb;
+      border-radius: 0.75rem;
+      background: #ffffff;
     }
-  }
+
+    .view-counter {
+      margin-top: auto;
+      padding-top: 1.25rem;
+      border-top: 1px solid #252974;
+    }
+
+    .view-counter-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #a5accf;
+      margin-bottom: 0.5rem;
+    }
+
+    .view-counter-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.75rem;
+      background: #030526;
+      border: 1px solid #252974;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #e5e7eb;
+      min-height: 2rem;
+    }
+
+    .badge-dot {
+      width: 6px;
+      height: 6px;
+      background: #22c55e;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    #view-count {
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      min-width: 2ch;
+      display: inline-block;
+    }
+
+    @media (max-width: 800px) {
+      .layout {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        padding: 1rem 1.25rem;
+      }
+
+      .sidebar > div:first-child {
+        width: 100%;
+      }
+
+      .nav-section-title {
+        width: 100%;
+        margin-top: 0.75rem;
+      }
+
+      .view-counter {
+        width: 100%;
+        margin-top: 0.75rem;
+      }
+
+      .content {
+        padding: 0.5rem;
+      }
+
+      iframe {
+        height: calc(100vh - 6.5rem);
+      }
+    }
   </style>
 
+  <!-- Page loader -->
   <script>
     function loadPage(page, linkId) {
       const frame = document.getElementById('content-frame');
-      frame.src = page;
 
-      // update active state
+      if (frame) {
+        frame.src = page;
+      }
+
       const links = document.querySelectorAll('.nav-link');
-      links.forEach(l => l.classList.remove('active'));
+      links.forEach(function (link) {
+        link.classList.remove('active');
+      });
+
       if (linkId) {
         const active = document.getElementById(linkId);
-        if (active) active.classList.add('active');
+
+        if (active) {
+          active.classList.add('active');
+        }
       }
     }
 
     window.addEventListener('DOMContentLoaded', function () {
-      // default: load Introduction
       loadPage('sp-03-introduction.html', 'link-intro');
     });
   </script>
-  <script>
-    window.addEventListener('load', function() {
-      fetch('https://azhill.goatcounter.com/counter/TOTAL.json')
-        .then(r => r.json())
-        .then(data => {
-          document.getElementById('view-count').textContent = data.count || '—';
-        })
-        .catch(() => {
-          var el = document.getElementById('view-count');
-          el.innerHTML = '<img src="https://azhill.goatcounter.com/counter/TOTAL.svg" alt="visit counter" style="filter:invert(1);height:1.4rem;vertical-align:middle;">';
-        });
-    });
+
+  <!-- GoatCounter tracking script -->
+  <script data-goatcounter="https://azhill.goatcounter.com/count"
+          async src="https://gc.zgo.at/count.js">
   </script>
-  <script data-goatcounter="https://azhill.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+
+  <!-- Compact custom GoatCounter TOTAL badge counter -->
+  <script>
+    function loadViewCounter() {
+      const counter = document.getElementById('view-count');
+
+      if (!counter) {
+        return;
+      }
+
+      fetch('https://azhill.goatcounter.com/counter/TOTAL.json')
+        .then(function (response) {
+          if (!response.ok) {
+            throw new Error('Counter unavailable');
+          }
+
+          return response.json();
+        })
+        .then(function (data) {
+          counter.textContent = data.count || '0';
+          counter.style.opacity = '1';
+        })
+        .catch(function () {
+          counter.textContent = '—';
+          counter.style.opacity = '1';
+        });
+    }
+
+    window.addEventListener('DOMContentLoaded', loadViewCounter);
+  </script>
 </head>
+
 <body>
   <div class="layout">
+
     <aside class="sidebar">
+
       <div>
         <h1>AI Fairness Implementation</h1>
-        <p>AI Ethics &amp; Governance Portfolio</p>
-        <p class="sidebar-author">Author: Azucena Ascencio</p>
-        <p class="sidebar-meta">Version 1.02 &nbsp;·&nbsp; June 2026</p>
+        <p>AI Ethics & Governance Portfolio</p>
+        <p>Author: Azucena Ascencio</p>
+        <p class="sidebar-meta">Version 1.02 · June 2026</p>
       </div>
 
       <div>
         <div class="nav-section-title">Playbook Sections</div>
 
         <a id="link-intro" class="nav-link"
+           href="sp-03-introduction.html"
            onclick="loadPage('sp-03-introduction.html', 'link-intro'); return false;">
           1. Introduction
         </a>
 
         <a id="link-scrum" class="nav-link"
+           href="sp-03-fair-ai-scrum-toolkit.html"
            onclick="loadPage('sp-03-fair-ai-scrum-toolkit.html', 'link-scrum'); return false;">
           2. Fair AI Scrum Toolkit
         </a>
 
         <a id="link-org" class="nav-link"
+           href="sp-03-organisational-integration-toolkit.html"
            onclick="loadPage('sp-03-organisational-integration-toolkit.html', 'link-org'); return false;">
           3. Organisational Integration & Governance
         </a>
 
         <a id="link-arch" class="nav-link"
+           href="sp-03-advanced-architecture-cookbook.html"
            onclick="loadPage('sp-03-advanced-architecture-cookbook.html', 'link-arch'); return false;">
           4. Advanced Architecture Cookbook
         </a>
 
         <a id="link-reg" class="nav-link"
+           href="sp-03-regulatory-compliance-guide.html"
            onclick="loadPage('sp-03-regulatory-compliance-guide.html', 'link-reg'); return false;">
           5. Regulatory Compliance & Risk Alignment
         </a>
 
         <a id="link-val" class="nav-link"
+           href="sp-03-validation-framework.html"
            onclick="loadPage('sp-03-validation-framework.html', 'link-val'); return false;">
           6. Validation Framework
         </a>
 
         <a id="link-app" class="nav-link"
+           href="sp-03-appendices.html"
            onclick="loadPage('sp-03-appendices.html', 'link-app'); return false;">
           7. Appendices
         </a>
 
         <a id="link-case" class="nav-link"
+           href="sp-03-case-study.html"
            onclick="loadPage('sp-03-case-study.html', 'link-case'); return false;">
           8. Case Study: Fairness, Governance & LLM Intervention
         </a>
 
         <a id="link-iter" class="nav-link"
+           href="sp-03-playbook-iterations-insights.html"
            onclick="loadPage('sp-03-playbook-iterations-insights.html', 'link-iter'); return false;">
           9. Future Iterations & Insights
         </a>
       </div>
+
       <div class="view-counter">
-        <div class="view-counter-label">Views since June 2026</div>
-        <div class="view-counter-value" id="view-count">—</div>
+        <div class="view-counter-label">Total portfolio views</div>
+
+        <div class="view-counter-badge">
+          <div class="badge-dot"></div>
+          <span id="view-count">—</span>
+        </div>
       </div>
+
     </aside>
 
     <main class="content">
@@ -235,6 +330,7 @@
         Your browser does not support iframes.
       </iframe>
     </main>
+
   </div>
 </body>
 </html>
