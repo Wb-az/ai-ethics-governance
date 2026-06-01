@@ -34,11 +34,17 @@
 
 
   .nav-section-title {
-    font-size: 0.78rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: #9ca3af;
     margin: 0 0 0.4rem 0.2rem;
+  }
+
+  .sidebar-meta {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin: 0.25rem 0 0;
   }
 
   .nav-link {
@@ -70,6 +76,27 @@
     border: 1px solid #e5e7eb;
     border-radius: 0.75rem;
     background: #ffffff;
+  }
+
+  .view-counter {
+    margin-top: auto;
+    padding-top: 1.25rem;
+    border-top: 1px solid #1f2937;
+  }
+
+  .view-counter-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #6b7280;
+    margin-bottom: 0.3rem;
+  }
+
+  .view-counter-value {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #e5e7eb;
+    letter-spacing: 0.02em;
   }
 
   @media (max-width: 800px) {
@@ -115,14 +142,28 @@
       loadPage('sp-03-introduction.html', 'link-intro');
     });
   </script>
+  <script>
+    fetch('https://azhill.goatcounter.com/api/v0/stats/total')
+      .then(r => r.json())
+      .then(data => {
+        const total = data.total || 0;
+        document.getElementById('view-count').textContent =
+          total.toLocaleString();
+      })
+      .catch(() => {
+        document.getElementById('view-count').textContent = '—';
+      });
+  </script>
+  <script data-goatcounter="https://azhill.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
   <div class="layout">
     <aside class="sidebar">
       <div>
         <h1>AI Fairness Implementation</h1>
-        <p> AI Ethics &amp; Governance Portfolio</p>
+        <p>AI Ethics &amp; Governance Portfolio</p>
         <p class="sidebar-subtitle">Author: Azucena Ascencio</p>
+        <p class="sidebar-meta">Version 1.02 &nbsp;·&nbsp; June 2026</p>
       </div>
 
       <div>
@@ -172,6 +213,10 @@
            onclick="loadPage('sp-03-playbook-iterations-insights.html', 'link-iter'); return false;">
           9. Future Iterations & Insights
         </a>
+      </div>
+      <div class="view-counter">
+        <div class="view-counter-label">Views since June 2026</div>
+        <div class="view-counter-value" id="view-count">—</div>
       </div>
     </aside>
 
