@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Fairness Case Study: AI Hiring Platform for Career Returners</title>
+  <title>Fairness Case Study: AI Hiring Platform for Returners to Work</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
@@ -88,7 +88,7 @@
 </head>
 <body>
 
-<h1>Fairness Case Study: AI Hiring Platform for Career Returners</h1>
+<h1>Fairness Case Study: AI Hiring Platform for Returner to Work</h1>
 
 <h2>Intersectional Fairness, Governance, and LLM Intervention</h2>
 
@@ -98,13 +98,13 @@
 
 <p><strong>What the system does</strong></p>
 <ul>
-  <li>Screens and recommends candidates for interviews into a “career returner” programme.</li>
+  <li>Screens and recommends candidates for interviews into a “returner” programme.</li>
   <li>Target population: individuals with significant career breaks (e.g. caring responsibilities, illness, redundancy), primarily in the UK, with some cross-border applicants.</li>
 </ul>
 
 <p><strong>What went wrong</strong></p>
 <ul>
-  <li>Eligible candidates, especially <em>women over 40, non-native English speakers, candidates from minority ethnic backgrounds, and migrants with lawful residence</em>, were systematically less likely to be recommended than comparable peers.</li>
+  <li>Eligible candidates, especially <em> anyone over 40, non-native English speakers, candidates from minority ethnic backgrounds, and migrants with lawful residence</em>, were systematically less likely to be recommended than comparable peers.</li>
   <li>Candidates under 30 with no career break were frequently recommended, contrary to the programme’s goals.</li>
   <li>Fairness KPIs did not improve, and a formal complaint alleged discriminatory outcomes and misuse of public funds, triggering an internal investigation.</li>
 </ul>
@@ -142,11 +142,11 @@
   <li>Women over 40 were significantly less likely to be recommended for interviews.</li>
   <li>Disparities were amplified for non-native English speakers and candidates from minority ethnic backgrounds.</li>
   <li>Candidates under 30 without career breaks were recommended despite being outside the intended user population.</li>
-  <li>No candidates with lawful residence outside Europe or the Commonwealth were invited to interviews.</li>
+  <li>No candidates with lawful residence in the UK with origin outside Europe or the Commonwealth were invited to interviews.</li>
   <li>KPIs showed no improvement in equal opportunity or demographic parity.</li>
 </ul>
 
-<p>In practical terms, this meant that <em>eligible career returners; particularly older women, migrants, and candidates from minority ethnic backgrounds were systematically excluded from a programme explicitly intended to support them</em>. This represented not only a fairness failure in a publicly funded service, but also an ethical breach that risked eroding trust and exposing the organisation to discrimination and public law challenges.</p>
+<p>In practical terms, this meant that <em>eligible career returners; particularly mature women, and candidates from minority ethnic backgrounds were systematically excluded from a programme explicitly intended to support them</em>. This represented not only a fairness failure in a publicly funded service, but also an ethical breach that risked eroding trust and exposing the organisation to discrimination and public law challenges.</p>
 
 <p>A formal complaint alleged discriminatory outcomes and misuse of public funding. This triggered internal escalation and a full application of the <strong>Fairness Implementation Playbook</strong> (our internal guide for systematically identifying, testing, and mitigating bias in AI systems across the lifecycle).</p>
 
@@ -214,10 +214,9 @@
 
 <blockquote>
   <p>As a recruiter,<br>
-  I want the system to classify candidates based on role-relevant skills,<br>
-  so that I can prioritise suitable applicants,<br>
-  while ensuring equivalent true positive rates across age, gender,<br>
-  and their intersections for eligible career returners.</p>
+  I want the system to classify candidates based on role-relevant skills so that<br>
+  I canprioritise suitable applicants for the Returners Programme, while ensuring<br>
+  equivalent true positive rates across age, gender, ethnicity, and their intersections</p>
 </blockquote>
 
 <p>Before defining acceptance criteria, we clarified how key fairness metrics are used in this context:</p>
@@ -498,7 +497,7 @@ responsible (R) but not accountable (A) for high-risk decisions.</p>
 
 <blockquote>
   <p>For high-risk AI systems, the <strong>EU AI Act</strong> requires that recurring fairness harms identified through monitoring and
-  governance review trigger proportionate technical remediation, not only procedural controls</p>
+  governance review trigger proportionate technical remediation, not only procedural controls.</p>
 </blockquote>
 
 <h2><span style="color:#00008B">5. Architectural Intervention: Applying the Advanced Architecture Cookbook</span></h2>
